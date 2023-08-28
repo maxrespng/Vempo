@@ -10,9 +10,40 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_08_28_130320) do
+ActiveRecord::Schema[7.0].define(version: 2023_08_28_144427) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "bahaviours", force: :cascade do |t|
+    t.bigint "shape_id", null: false
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["shape_id"], name: "index_bahaviours_on_shape_id"
+  end
+
+  create_table "projects", force: :cascade do |t|
+    t.string "name"
+    t.string "description"
+    t.bigint "user_id", null: false
+    t.boolean "has_mic"
+    t.string "music_file"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_projects_on_user_id"
+  end
+
+  create_table "shapes", force: :cascade do |t|
+    t.string "name"
+    t.bigint "project_id", null: false
+    t.integer "start_x"
+    t.integer "start_y"
+    t.integer "height"
+    t.integer "width"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["project_id"], name: "index_shapes_on_project_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -26,4 +57,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_28_130320) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "bahaviours", "shapes"
+  add_foreign_key "projects", "users"
+  add_foreign_key "shapes", "projects"
 end
