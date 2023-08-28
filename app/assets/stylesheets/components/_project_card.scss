@@ -1,0 +1,20 @@
+.cards-container {
+  width: 100%;
+  justify-content: center;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.project-card {
+  background: $light-gray;
+  border-radius: 12px;
+  padding: 10px;
+}
+
+.image-placeholder {
+  background-color: $mid-gray;
+  border-radius: 12px;
+  height: 100%;
+  height: 70%;
+  margin-bottom: 10px;
+}
