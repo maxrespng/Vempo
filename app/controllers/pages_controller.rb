@@ -3,4 +3,13 @@ class PagesController < ApplicationController
 
   def home
   end
+
+  def testp5
+  end
+
+  def testproject
+  end
+
+  def testhome
+  end
 end
