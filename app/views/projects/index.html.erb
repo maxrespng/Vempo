@@ -1,5 +1,6 @@
 <h1>Hello from index page</h1>
 
 <% @projects.each do |project| %>
-<%= project.name %>
+  <%= project.name %>
+  <%= cl_image_tag project.photo.key %>
 <% end %>
