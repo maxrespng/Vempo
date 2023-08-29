@@ -10,7 +10,7 @@
 # 10.times do
 #   Project.create(name: "test_file", description: "just testing", user_id: 1, has_mic: false)
 # end
-User.create(email: "max@lewagon.com", password: "123456")
+max = User.create(email: "max@lewagon.com", password: "123456")
 User.create(email: "bruno@lewagon.com", password: "123456")
 User.create(email: "helder@lewagon.com", password: "123456")
 User.create(email: "pinar@lewagon.com", password: "123456")
