@@ -1,0 +1,44 @@
+.green-btn {
+  background-color: $v-green;
+  color: $black;
+  padding: 6px 14px;
+  justify-content: center;
+  align-items: center;
+  margin: 0px;
+  border-radius: 20px;
+  border: black solid 1px;
+  text-decoration: none;
+  margin: 20px;
+}
+
+.yellow-btn {
+  background-color: $v-yellow;
+  color: $black;
+  padding: 6px 14px;
+  justify-content: center;
+  align-items: center;
+  margin: 0px;
+  border-radius: 20px;
+  border: black solid 1px;
+  text-decoration: none;
+  margin: 20px;
+}
+
+.purple-btn {
+  background-color: $v-purple;
+  color: $black;
+  padding: 6px 14px;
+  justify-content: center;
+  align-items: center;
+  margin: 0px;
+  border-radius: 20px;
+  border: black solid 1px;
+  text-decoration: none;
+  margin: 20px;
+}
+
+// SOME BUTTON EXAMPLES:
+
+// <a class="green-btn">start from blank <i class="fa-solid fa-arrow-right" style="color: #000000;"></i></a>
+// <a class="purple-btn">start from template <i class="fa-solid fa-arrow-down" style="color: #000000;"></i></a>
+// <a class="yellow-btn">back to top <i class="fa-solid fa-arrow-up" style="color: #000000;"></i></a>
