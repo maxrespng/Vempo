@@ -2,12 +2,75 @@
   <div class="header-container">
     <h1>Where sound takes shape.</h1>
     <div class="description">
-      <h4>Vempo merges the realms of audio and visual <br> by giving sound a canvas to move on.</h4>
+      <h4>Vempo merges the realms of audio and visual <br> by giving sound a
+canvas to move on.</h4>
     </div>
-    <%# <p>Create an audio canvas from scratch, or check out our templates to get started.</p> %>
+ <!-- Modal to disp -->
     <div class="buttons">
       <a class="purple-btn">start from template</a>
-      <a class="green-btn">start from blank</a>
+      <div class="modal fade" id="exampleModalToggle" aria-hidden="true" aria-
+labelledby="exampleModalToggleLabel" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content align-items-center">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalToggleLabel">Choose a sound
+to play with:</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-
+label="Close"></button>
+      </div>
+      <div class="modal-body d-flex flex-column w-50">
+        <button class="btn" id="btn-mic" data-bs-target="#exampleModalToggle2" data-bs-
+toggle="modal">Use microphone <svg xmlns="http://www.w3.org/2000/svg" width="35" height="26" fill="currentColor" class="bi bi-arrow-right-circle" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H4.5z"/>
+</svg></button>
+        <br>
+        <button class="btn" id="btn-upload" data-bs-target="#exampleModalToggle2" data-bs-
+toggle="modal">Upload a sound <svg xmlns="http://www.w3.org/2000/svg" width="35" height="26" fill="currentColor" class="bi bi-arrow-right-circle" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H4.5z"/>
+</svg></button>
+        <br>
+        <button class="btn" id="btn-choose" data-bs-target="#exampleModalToggle2" data-bs-
+toggle="modal">Choose a sound from library <svg xmlns="http://www.w3.org/2000/svg" width="35" height="26" fill="currentColor" class="bi bi-arrow-right-circle" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H4.5z"/>
+</svg></button>
+      </div>
+      <div class="modal-footer">
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="exampleModalToggle2" aria-hidden="true" aria-
+labelledby="exampleModalToggleLabel2" tabindex="-1">
+  <!-- Modal to activate the microfone -->
+<div class="modal-body">
+  <audio id="audioPlayer" controls></audio>
+</div>
+<div class="modal-footer">
+  <button class="btn btn-primary" id="startRecording">Start Recording</button>
+  <button class="btn btn-secondary" id="stopRecording">Stop Recording</button>
+  <button class="btn btn-primary" data-bs-target="#exampleModalToggle" data-bs-
+toggle="modal">Back to first</button>
+</div>
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content d-flex flex-column w-50">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalToggleLabel2">Modal 2</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-
+label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Hide this modal and show the first with the button below.
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-primary" data-bs-target="#exampleModalToggle" data-
+bs-toggle="modal">Back to first</button>
+      </div>
+    </div>
+  </div>
+</div>
+    <!-- option to call the modal to choose the  -->
+      <a class="green-btn" data-bs-target="#exampleModalToggle"
+      data-bs-toggle="modal">start from blank</a>
     </div>
   </div>
   <h4>How it works</h4>
@@ -25,4 +88,3 @@
       <p>Play your selected audio, and watch your canvas dance!</p>
     </div>
   </div>
-</div>
