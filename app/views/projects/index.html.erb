@@ -3,4 +3,5 @@
 <% @projects.each do |project| %>
   <%= project.name %>
   <%= cl_image_tag project.photo.key if project.photo.attached? %>
+  <%= project.svg.html_safe unless project.svg.nil? %>
 <% end %>
