@@ -2,10 +2,10 @@
 <div class="container">
     <div class="card-1">
 
-      <%= form_with(url: root_path, method: :get) do |form| %>
-        <%= form.text_field :screenshot_url %>
-        <%= form.submit %>
-      <% end %>
+      <%#= form_with(url: root_path, method: :get) do |form| %>
+        <%#= form.text_field :screenshot_url %>
+        <%#= form.submit %>
+      <%# end %>
 
       <% if @image %>
         <%= image_tag "data:image/png;base64,#{Base64.strict_encode64(@image)}" %>
