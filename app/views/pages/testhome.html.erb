@@ -4,10 +4,32 @@
     <div class="description">
       <h4>Vempo merges the realms of audio and visual <br> by giving sound a canvas to move on.</h4>
     </div>
-    <%# <p>Create an audio canvas from scratch, or check out our templates to get started.</p> %>
+ <!-- Modal to disp -->
     <div class="buttons">
       <a class="purple-btn">start from template</a>
-      <a class="green-btn">start from blank</a>
+      <div class="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content align-items-center">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalToggleLabel">Choose a sound to play with:</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body d-flex flex-column w-50">
+        <button class="btn" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal">Use a mic</button>
+        <br>
+        <button class="btn" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal">Upload a sound</button>
+        <br>
+        <button class="btn" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal">Choose a sound from library</button>
+      </div>
+      <div class="modal-footer">
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="exampleModalToggle2" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2" tabindex="-1">
+</div>
+     <a class="green-btn" data-bs-target="#exampleModalToggle"
+      data-bs-toggle="modal">start from blank</a>
     </div>
   </div>
   <h4>How it works</h4>
