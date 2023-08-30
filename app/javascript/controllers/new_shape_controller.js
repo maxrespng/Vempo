@@ -82,6 +82,7 @@ export default class extends Controller {
       else if (this.shape === "oval") {
         //insert script tag with instructions for a square
         // trigger save/update method
+        
         ellipse(mouse_x, mouse_y, 200, 150);
       }
       else if (this.shape === "rectangle") {
