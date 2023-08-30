@@ -74,7 +74,7 @@
 
 #btn-mic {
   box-sizing: border-box;
-  width: 290px;
+  width: 280px;
   height: 40px;
   left: 30px;
   top: 100px;
@@ -82,37 +82,37 @@
   border-radius: 42.67px;
     .bi {
       border-radius: 50px;
-      background-color: rgba(255, 188, 0, 1);
+      fill: rgba(255, 188, 0, 1);
       color:white;
     }
 }
 
 #btn-upload {
   box-sizing: border-box;
-  width: 290px;
+  width: 280px;
   height: 40px;
-  left: 30px;
+  left: 10px;
   top: 100px;
   border: 1px solid #000000;
   border-radius: 42.67px;
   .bi {
     border-radius: 50px;
-    background-color: rgba(159, 232, 0, 1);
+    fill: rgba(159, 232, 0, 1);
     color:white;
   }
 }
 
 #btn-choose {
   box-sizing: border-box;
-  width: 290px;
+  width: 280px;
   height: 40px;
   left: 30px;
   top: 100px;
   border: 1px solid #000000;
   border-radius: 42.67px;
   .bi {
-    border-radius: 50px;
-    background-color: rgba(242, 148, 255, 1);
+    border-radius: 100%;
+    fill: rgba(242, 148, 255, 1);
     color:white;
   }
 }
