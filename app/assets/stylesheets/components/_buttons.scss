@@ -1,0 +1,80 @@
+.green-btn {
+  background-color: $v-green;
+  color: $black;
+  padding: 8px 16px;
+  justify-content: center;
+  align-items: center;
+  // margin: 0px;
+  border-radius: 20px;
+  border: black solid 1px;
+  box-shadow: 0px 6px 0px rgba(0, 0, 0, 1.0);
+  text-decoration: none;
+  margin: 20px;
+  cursor: pointer;
+  font-size: 0.9em;
+  position: absolute;
+  right: 0px;
+
+  &:hover {
+    transition: 300ms;
+    box-shadow: 0px 0px 0px rgba(0, 0, 0, 0);
+    background-color: #5cd300;
+    transform: translateY(6px);
+  }
+}
+
+.yellow-btn {
+  background-color: $v-yellow;
+  color: $black;
+  padding: 8px 16px;
+  justify-content: center;
+  align-items: center;
+  margin: 0px;
+  border-radius: 20px;
+  border: black solid 1px;
+  text-decoration: none;
+  margin: 20px;
+  cursor: pointer;
+  font-size: 0.9em;
+  box-shadow: 0px 6px 0px rgba(0, 0, 0, 1.0);
+  position: absolute;
+  right: 44%;
+
+  &:hover {
+    transition: 300ms;
+    box-shadow: 0px 0px 0px rgba(0, 0, 0, 0);
+    background-color: #e4951f;
+    transform: translateY(6px)
+  }
+}
+
+.purple-btn {
+  background-color: $v-purple;
+  color: $black;
+  padding: 8px 16px;
+  justify-content: center;
+  align-items: center;
+  margin: 0px;
+  border-radius: 20px;
+  border: black solid 1px;
+  box-shadow: 0px 6px 0px rgba(0, 0, 0, 1.0);
+  text-decoration: none;
+  margin: 20px;
+  cursor: pointer;
+  font-size: 0.9em;
+  position: absolute;
+  left: 0px;
+
+  &:hover {
+    transition: 300ms;
+    box-shadow: 0px 0px 0px rgba(0, 0, 0, 0);
+    background-color: #d655e7;
+    transform: translateY(6px)
+  }
+}
+
+// SOME BUTTON EXAMPLES:
+
+// <a class="green-btn">start from blank <i class="fa-solid fa-arrow-right" style="color: #000000;"></i></a>
+// <a class="purple-btn">start from template <i class="fa-solid fa-arrow-down" style="color: #000000;"></i></a>
+// <a class="yellow-btn">back to top <i class="fa-solid fa-arrow-up" style="color: #000000;"></i></a>

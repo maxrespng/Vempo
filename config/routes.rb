@@ -8,4 +8,5 @@ Rails.application.routes.draw do
   get 'testproject', to: 'pages#testproject', as: :testproject
   # Defines the root path route ("/")
   # root "articles#index"
+  resources :projects, only: [:index, :show, :create]
 end
