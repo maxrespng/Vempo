@@ -11,6 +11,7 @@
 #   Project.create(name: "test_file", description: "just testing", user_id: 1, has_mic: false)
 # end
 
+Shape.destroy_all
 Project.destroy_all
 User.destroy_all
 puts "Database cleaned"
@@ -41,8 +42,8 @@ project2 = Project.new(
   music_file: "She Wolf"
 )
 project2.user = bruno
-file = URI.open("https://ukclippingpath.com/wp-content/uploads/2021/10/Slight-Angling.jpg")
-project2.photo.attach(io: file, filename: "nes.png", content_type: "image/png")
+file = URI.open("https://svgshare.com/i/U7z.svg")
+project2.photo.attach(io: file, filename: "computer.svg", content_type: "image/svg")
 project2.save!
 
 project3 = Project.new(
@@ -52,7 +53,7 @@ project3 = Project.new(
   music_file: "Panic Attack"
 )
 project3.user = helder
-file = URI.open("https://ukclippingpath.com/wp-content/uploads/2021/10/Slight-Angling.jpg")
+file = URI.open("/Users/pinarboztepe/code/maxrespng/Vempo/app/assets/images/cybercat.jpg")
 project3.photo.attach(io: file, filename: "nes.png", content_type: "image/png")
 project3.save!
 
