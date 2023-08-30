@@ -77,24 +77,11 @@
     </div>
     <h4>Quick-start templates</h4>
     <div class="template-container">
-      <div class="template-card">
-       <h6>Template 1</h6>
-      </div>
-      <div class="template-card">
-       <h6>Template 2</h6>
-      </div>
-      <div class="template-card">
-        <h6>Template 3</h6>
-      </div>
-      <div class="template-card">
-        <h6>Template 4</h6>
-      </div>
-      <div class="template-card">
-        <h6>Template 5</h6>
-      </div>
-      <div class="template-card">
-        <h6>Template 6</h6>
-      </div>
+      <% @projects.each do |project| %>
+        <div class="template-card" style="background-image:url('<%= cl_image_path project.photo.key if project.photo.attached? %>');">
+          <h6><%= project.name %></h6>
+        </div>
+      <% end %>
     </div>
     <div class="back-to-top">
     <a class="yellow-btn">back to top <i class="fa-solid fa-arrow-up" style="color: #000000;"></i></a>
