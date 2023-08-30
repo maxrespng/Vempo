@@ -3,4 +3,4 @@ import "@hotwired/turbo-rails"
 import "controllers"
 import "@popperjs/core"
 import "bootstrap"
-import p5 from "p5"
+import "p5";
