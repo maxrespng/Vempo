@@ -1,0 +1,33 @@
+canvas {
+  background: gray;
+  position: fixed;
+
+  width: 90%;
+  height: 90%;
+}
+
+body {
+  overflow: hidden;
+}
+
+audio {
+  position: fixed;
+  left: 10px;
+  bottom: 10px;
+  width: calc(100% - 20px);
+}
+
+
+.side-bar {
+  background-color: red;
+  width: 10%;
+  height: 90vh;
+  position: absolute;
+  right: 0px;
+  top:67px;
+}
+
+.parent {
+  display: flex;
+  justify-content: space-between;
+}

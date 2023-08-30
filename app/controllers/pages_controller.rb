@@ -4,7 +4,7 @@ class PagesController < ApplicationController
   def home
   end
 
-  def testp5
+  def testpfive
   end
 
   def testproject
