@@ -96,6 +96,7 @@
   }
 }
 
+
 .num-outline {
   color: black;
   -webkit-text-fill-color: rgb(255, 255, 255);
@@ -105,26 +106,6 @@
 }
 
 .template-container {
-<<<<<<< HEAD
-  justify-content: space-between;
-  align-items: center;
-  display: flex;
-  flex-wrap: wrap;
-  padding-left: 150px;
-  padding-right: 150px;
-  margin-bottom: 50px;
-
-}
-
-#btn-mic {
-  box-sizing: border-box;
-  width: 290px;
-  height: 40px;
-  left: 30px;
-  top: 100px;
-  border: 1px solid #000000;
-  border-radius: 42.67px;
-=======
     justify-content: space-between;
     align-items: center;
     display: flex;
@@ -156,7 +137,6 @@
     top: 100px;
     border: 1px solid #000000;
     border-radius: 42.67px;
->>>>>>> 59fbeb2823a8c5f01a37f905b1ac3ab0ead3a1f6
     .bi {
       border-radius: 50px;
       background-color: rgba(159, 232, 0, 1);
