@@ -1,0 +1,25 @@
+.template-card {
+  width: 500px;
+  height: 350px;
+  position: relative;
+  background-image: url("app/assets/images/test-template-project.png");
+  background-size: cover;
+  background-position: center;
+  background-color: $v-mid-gray;
+  border-radius: 10px;
+  margin-bottom: 40px;
+
+  h6 {
+    position: absolute;
+    bottom: 0;
+    padding-left: 15px;
+    padding-bottom: 5px;
+  }
+
+  &:hover {
+    transition: 300ms;
+    box-shadow: -10px 10px 10px rgba(0, 0, 0, 0.2);
+    transform: translate(10px, -10px);
+    cursor: pointer;
+  }
+}

@@ -1,0 +1,7 @@
+<h1>Hello from index page</h1>
+<%= button_to "Create a new project", projects_path, data: {turbo_method: "post"}%>
+<% @projects.each do |project| %>
+  <%= project.name %>
+  <%= cl_image_tag project.photo.key if project.photo.attached? %>
+  <%= project.svg.html_safe unless project.svg.nil? %>
+<% end %>
