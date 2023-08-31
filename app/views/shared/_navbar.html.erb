@@ -12,74 +12,66 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto">
         <% if user_signed_in? %>
-
-            <li class="nav-item active">
+          <li class="nav-item active">
             <%= link_to "P5", testpfive_path, class: "nav-link" %>
           </li>
 <!------------------START THE MODAL------------------------------------------->
-  <div class="nav-item active" type="button" data-bs-toggle="modal" data-bs-target="#myModal">
-    <%# <li class="nav-item active"> %>
-        <button type="button" class="nav-link" data-bs-toggle="modal-dialog modal-xl" data-bs-target="#myModal">
-            My Creations
-        </button>
-        <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="nav-item active" type="button" data-bs-toggle="modal" data-bs-target="#myModal">
+            <button type="button" class="nav-link">
+                My Creations
+            </button>
+          </div>
+          <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-xl" id="box">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel"> My creations</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="container">
-                            <div class="row">
-                                 <div class="cards-container">
-<!------------------START THE CARD------------------------------------------->
-
-      <% @projects.each do |project| %>
-        <div class="project-card">
-          <div class="image-placeholder" style="background-image:url('<%= cl_image_path project.photo.key if project.photo.attached? %>');">
-          </div>
-          <div class="title">
-            <div class="left-box">
-              <h5><strong><%= project.name %></strong></h5>
-            </div>
-            <div class="right-box">
-              <p><%= project.created_at.strftime("%d/%m/%Y") %></p>
-            </div>
-            <div class="btn-cancel">
-              <p><%= link_to "Delete", project_path(project), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %></p>
-            </div>
-          </div>
-          <h5><i class="fa-solid fa-ellipsis" style="color: #000000;"></i></h5>
-        </div>
-      <% end %>
-    </div>
- <!------------------START THE CARD------------------------------------------->
-
-                            </div>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">close</button>
-                    </div>
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel"> My creations</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
                 </div>
+                <div class="modal-body">
+                  <div class="container">
+                    <div class="row">
+                      <div class="cards-container">
+<!------------------START THE CARD------------------------------------------->
+                        <% @projects.each do |project| %>
+                          <div class="project-card">
+                            <div class="image-placeholder" style="background-image:url('<%= cl_image_path project.photo.key if project.photo.attached? %>');">
+                            </div>
+                            <div class="title">
+                              <div class="left-box">
+                                <h5><strong><%= project.name %></strong></h5>
+                              </div>
+                              <div class="right-box">
+                                <p><%= project.created_at.strftime("%d/%m/%Y") %></p>
+                              </div>
+                              <div class="btn-cancel">
+                                <p><%= link_to "Delete", project_path(project), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %></p>
+                              </div>
+                            </div>
+                            <h5><i class="fa-solid fa-ellipsis" style="color: #000000;"></i></h5>
+                          </div>
+                        <% end %>
+ <!------------------START THE CARD------------------------------------------->
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">close</button>
+                </div>
+              </div>
             </div>
-        </div>
-    </li>
-</div>
+          </div>
 <!----------------------FINISHED THE MODAL----------------------------------------------------->
-           <li class="nav-item active">
-
+          <li class="nav-item active">
             <%= link_to "testhome", testhome_path, class: "nav-link" %>
           </li>
-
-
           <li class="nav-item active">
-          <% if current_user %>
-            <%= link_to "Logout", destroy_user_session_path, data: {turbo_method: :delete}, class: "nav-link" %>
-            <% else %>
-            <%= link_to "Login", new_user_session_path, class: "nav-link" %>
-          <% end %>
+            <% if current_user %>
+              <%= link_to "Logout", destroy_user_session_path, data: {turbo_method: :delete}, class: "nav-link" %>
+              <% else %>
+              <%= link_to "Login", new_user_session_path, class: "nav-link" %>
+            <% end %>
           </li>
 
           <%# <li class="nav-item"> %>
