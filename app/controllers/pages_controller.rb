@@ -5,6 +5,10 @@ class PagesController < ApplicationController
   def index
   end
 
+  def home
+    @projects = Project.all
+  end
+
   def testpfive
     @projects = Project.all
   end
