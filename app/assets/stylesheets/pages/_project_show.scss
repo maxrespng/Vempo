@@ -1,13 +1,18 @@
 canvas {
-  background: gray;
-  position: fixed;
+  background: $v-mid-gray;
+  // position: fixed;
 
-  width: 90%;
-  height: 90%;
+  width: 100vw;
+  height: 100%;
+}
+
+.myCanvas {
+  width: 100%;
+  height: 100%;
 }
 
 body {
-  overflow: hidden;
+  overflow: scroll;
 }
 
 audio {
@@ -28,6 +33,6 @@ audio {
 }
 
 .parent {
-  display: flex;
+  // display: flex;
   justify-content: space-between;
 }
