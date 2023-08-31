@@ -53,8 +53,11 @@
         </div>
       </div>
 
-      <div class="back-to-top">
-        <a class="yellow-btn">back to top <i class="fa-solid fa-arrow-up" style="color: #000000;"></i></a>
-      </div>
-  </div>
-  <%= render "pages/start" %>
+    <div class="back-to-top">
+    <%= link_to testhome_path, class: "yellow-btn" do %>
+      Back To Top <i class="fa-solid fa-arrow-up" style="color: #000000;"></i>
+    <% end %>
+    </div>
+</div>
+<%= render "pages/start" %>
+
