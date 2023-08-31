@@ -12,13 +12,55 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto">
         <% if user_signed_in? %>
-
             <li class="nav-item active">
             <%= link_to "P5", testpfive_path, class: "nav-link" %>
           </li>
-           <li class="nav-item active">
-            <%= link_to "testproject", testproject_path, class: "nav-link" %>
-          </li>
+<!------------------START THE MODAL------------------------------------------->
+  <div class="btn" type="button" data-bs-toggle="modal" data-bs-target="#myModal">
+    <li class="nav-item active">
+        <button type="button" class="btn" data-bs-toggle="modal-dialog modal-xl" data-bs-target="#myModal">
+            My Creations
+        </button>
+        <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-xl" id="box">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Template</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="container">
+                            <div class="row">
+                                 <div class="cards-container">
+<!------------------START THE CARD------------------------------------------->
+ <div class="project-card">
+   <div class="image-placeholder">
+  </div>
+   <div class="title">
+     <div class="left-box">
+       <h5><strong>Title of project goes here</strong></h5>
+     </div>
+     <div class="right-box">
+       <p>28/08/2023</p>
+     </div>
+   </div>
+  <h5><i class="fa-solid fa-ellipsis" style="color: #000000;"></i></h5>
+ </div>
+ </div>
+ <!------------------START THE CARD------------------------------------------->
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
+</div>
+<!----------------------FINISHED THE MODAL----------------------------------------------------->
            <li class="nav-item active">
             <%= link_to "testhome", testhome_path, class: "nav-link" %>
           </li>
