@@ -1,8 +1,8 @@
 
-<div data-controller="new-shape">
+<div data-controller="new-shape" data-new-shape-url-value="<%= shapes_url %>">
 
   <div class="parent">
-        <div class="" id="myCanvas" data-action="click->new-shape#draw mousedown->new-shape#mouseDown mouseup->new-shape#mouseUp" data-new-shape-target="p5Canvas">
+        <div class="" id="myCanvas" data-action="mousedown->new-shape#mouseDown mouseup->new-shape#mouseUp" data-new-shape-target="p5Canvas">
         </div>
         <script> function setup() {
           const canvas = createCanvas(displayWidth,displayHeight);
