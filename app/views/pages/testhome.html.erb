@@ -1,3 +1,4 @@
+
 <div class="main-container">
   <div class="header-container">
     <h1>Let sound take shape</h1>
@@ -24,53 +25,33 @@
         <%#= image_tag("step2.svg", alt: "Step 1", style: "width: 80%; height: 80%;") %>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19.78 4H4.22A2.25 2.25 0 002 6.29v11.42A2.25 2.25 0 004.22 20h15.56A2.25 2.25 0 0022 17.71V6.29A2.25 2.25 0 0019.78 4zm-1.15 13.12H5.37a.57.57 0 01-.46-.89l2.42-3.58a.54.54 0 01.91 0l2.4 3.55 3.76-5.58a.54.54 0 01.91 0l3.78 5.61a.57.57 0 01-.46.89z"></path></svg>
       </div>
-      <div class="tile-yellow">
-        <h2 class="num-outline">3</h2>
-       <p>Play your selected audio, and watch your canvas dance!</p>
-       <%= image_tag("step3.svg", alt: "Step 1", style: "width: 80%; height: 80%;") %>
+      <div class="buttons">
+        <a class="purple-btn" data-bs-target="#exampleModalToggle" data-bs-toggle="modal">start from a template <i class="fa-solid fa-arrow-down" style="color: #000000;"></i></a>
+        <a class="green-btn" data-bs-target="#exampleModalToggle" data-bs-toggle="modal">start from a blank canvas  <i class="fa-solid fa-arrow-right" style="color: #000000;"></i></a>
       </div>
     </div>
+  
     <h4>Quick-start templates</h4>
       <div id="anchor-tag" class="template-container">
-      <div class="template-card" style="background-image: url('<%= image_path "step1.svg" %>')">
-       <h6>Template 1</h6>
-      </div>
-      <div class="template-card" style="background-image: url('<%= image_path "blob.svg" %>')" >
-       <h6>Template 2</h6>
-      </div>
-      <div class="template-card" style="background-image: url('<%= image_path "step2.svg" %>')">
-        <h6>Template 3</h6>
-      </div>
-      <div class="template-card" style="background-image: url('<%= image_path "step3.svg" %>')">
-        <h6>Template 4</h6>
-      </div>
-      <div class="template-card" style="background-image: url('<%= image_path "blob (1).svg" %>')">
-        <h6>Template 5</h6>
-      </div>
-      <div class="template-card" style="background-image: url('<%= image_path "test-template-project.png" %>')">
-        <h6>Template 6</h6>
-      </div>
-    </div>
-
-    <h4> My creations</h4>
-
-    <div class="cards-container">
-      <% @projects.each do |project| %>
-        <div class="project-card">
-          <div class="image-placeholder" style="background-image:url('<%= cl_image_path project.photo.key if project.photo.attached? %>');">
-          </div>
-          <div class="title">
-            <div class="left-box">
-              <h5><strong><%= project.name %></strong></h5>
-            </div>
-            <div class="right-box">
-              <p><%= project.created_at.strftime("%d/%m/%Y") %></p>
-            </div>
-          </div>
-          <h5><i class="fa-solid fa-ellipsis" style="color: #000000;"></i></h5>
+        <div class="template-card" style="background-image: url('<%= image_path "step1.svg" %>')">
+         <h6>Template 1</h6>
         </div>
-      <% end %>
-    </div>
+        <div class="template-card" style="background-image: url('<%= image_path "blob.svg" %>')" >
+         <h6>Template 2</h6>
+        </div>
+        <div class="template-card" style="background-image: url('<%= image_path "step2.svg" %>')">
+          <h6>Template 3</h6>
+        </div>
+        <div class="template-card" style="background-image: url('<%= image_path "step3.svg" %>')">
+          <h6>Template 4</h6>
+        </div>
+        <div class="template-card" style="background-image: url('<%= image_path "blob (1).svg" %>')">
+          <h6>Template 5</h6>
+        </div>
+        <div class="template-card" style="background-image: url('<%= image_path "test-template-project.png" %>')">
+          <h6>Template 6</h6>
+        </div>
+      </div>
 
     <div class="back-to-top">
     <%= link_to testhome_path, class: "yellow-btn" do %>
@@ -79,3 +60,4 @@
     </div>
 </div>
 <%= render "pages/start" %>
+

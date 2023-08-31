@@ -6,6 +6,7 @@ class PagesController < ApplicationController
   end
 
   def testpfive
+    @projects = Project.all
   end
 
   def testproject
