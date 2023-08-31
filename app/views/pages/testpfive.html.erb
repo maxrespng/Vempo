@@ -2,7 +2,7 @@
 <div data-controller="new-shape">
 
   <div class="parent">
-        <div class="" id="myCanvas" data-action="click->new-shape#draw" data-new-shape-target="p5Canvas">
+        <div class="" id="myCanvas" data-action="click->new-shape#draw mousedown->new-shape#mouseDown mouseup->new-shape#mouseUp" data-new-shape-target="p5Canvas">
         </div>
         <script> function setup() {
           const canvas = createCanvas(displayWidth,displayHeight);
@@ -42,6 +42,18 @@
                 Rectangle
               </label>
             </div>
+      <%# START OF FORM %>
+      <div class="hidden-form">
+        <%= simple_form_for(Shape.new) do |f| %>
+        <%= f.input :start_x, input_html: { data: {new_shape_target: "input1"} } %>
+        <%= f.input :start_y, input_html: { data: {new_shape_target: "input2"} } %>
+        <%= f.input :width, input_html: { data: {new_shape_target: "input3"} } %>
+        <%= f.input :height, input_html: { data: {new_shape_target: "input4"} } %>
+        <div><%= f.submit %></div>
+        <% end %>
+      </div>
+      <%# END OF FORM %>
+      <input type="color" data-new-shape-target="colorPicker">
          </div>
       </div>
 </div>
