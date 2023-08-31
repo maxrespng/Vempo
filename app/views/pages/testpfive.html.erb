@@ -1,0 +1,127 @@
+
+<div data-controller="new-shape">
+
+  <div class="parent">
+        <div class="" id="myCanvas" data-action="click->new-shape#draw" data-new-shape-target="p5Canvas">
+        </div>
+        <script> function setup() {
+          const canvas = createCanvas(displayWidth,displayHeight);
+
+          canvas.parent('myCanvas')
+          console.log('canvas');
+        }
+          </script>
+        <div class="side-bar child" data-new-shape-target="checkboxes">
+            <div class="form-check" data-new-shape-target="checkbox" data-action="click->new-shape#handleCheckboxClick" data-shape="triangle">
+              <input class="form-check-input" type="checkbox" value="" id="triangle" data-new-shape-target="checkbox">
+              <label class="form-check-label" for="triangle">
+                 Triangle
+              </label>
+            </div>
+              <div class="form-check" data-new-shape-target="checkbox" data-action="click->new-shape#handleCheckboxClick" data-shape="circle" >
+              <input class="form-check-input" type="checkbox" value="" id="circle">
+              <label class="form-check-label" for="circle">
+                Circle
+              </label>
+            </div>
+              <div class="form-check" data-new-shape-target="checkbox" data-action="click->new-shape#handleCheckboxClick" data-shape="square">
+              <input class="form-check-input"  type="checkbox" value="" id="square">
+              <label class="form-check-label" for="square">
+                Square
+              </label>
+            </div>
+              <div class="form-check" data-new-shape-target="checkbox" data-action="click->new-shape#handleCheckboxClick"  data-shape="oval">
+              <input class="form-check-input" data-shape="oval" type="checkbox" value="" id="oval">
+              <label class="form-check-label" for="oval">
+                Oval
+              </label>
+            </div>
+              <div class="form-check" data-new-shape-target="checkbox" data-action="click->new-shape#handleCheckboxClick" data-shape="rectangle">
+              <input class="form-check-input"  type="checkbox" value="" id="rectangle">
+              <label class="form-check-label" for="rectangle">
+                Rectangle
+              </label>
+            </div>
+         </div>
+      </div>
+</div>
+
+
+
+
+
+
+
+
+
+<%# <div id="content">
+  <input type="file" id="thefile" accept="audio/*" />
+  <canvas id="canvas"></canvas>
+  <audio id="audio" controls></audio>
+</div>
+<script>
+window.onload = function() {
+
+  var file = document.getElementById("thefile");
+  var audio = document.getElementById("audio");
+
+  file.onchange = function() {
+    var files = this.files;
+    audio.src = URL.createObjectURL(files[0]);
+    audio.load();
+    audio.play();
+    var context = new AudioContext();
+    var src = context.createMediaElementSource(audio);
+    var analyser = context.createAnalyser();
+
+    var canvas = document.getElementById("canvas");
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    var ctx = canvas.getContext("2d");
+
+    src.connect(analyser);
+    analyser.connect(context.destination);
+
+    analyser.fftSize = 256;
+
+    var bufferLength = analyser.frequencyBinCount;
+    console.log(bufferLength);
+
+    var dataArray = new Uint8Array(bufferLength);
+
+    var WIDTH = canvas.width;
+    var HEIGHT = canvas.height;
+
+    var barWidth = (WIDTH / bufferLength) * 2.5;
+    var barHeight;
+    var x = 0;
+
+    function renderFrame() {
+      requestAnimationFrame(renderFrame);
+
+      x = 0;
+
+      analyser.getByteFrequencyData(dataArray);
+
+      ctx.fillStyle = "#000";
+      ctx.fillRect(0, 0, WIDTH, HEIGHT);
+
+      for (var i = 0; i < bufferLength; i++) {
+        barHeight = dataArray[i];
+
+        var r = barHeight + (25 * (i/bufferLength));
+        var g = 250 * (i/bufferLength);
+        var b = 50;
+
+        ctx.fillStyle = "rgb(" + r + "," + g + "," + b + ")";
+        ctx.fillRect(x, HEIGHT - barHeight, barWidth, barHeight);
+
+        x += barWidth + 1;
+      }
+    }
+
+    audio.play();
+    renderFrame();
+  };
+};
+</script> %>

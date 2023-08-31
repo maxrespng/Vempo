@@ -5,7 +5,7 @@ class PagesController < ApplicationController
   def index
   end
 
-  def testp5
+  def testpfive
   end
 
   def testproject
