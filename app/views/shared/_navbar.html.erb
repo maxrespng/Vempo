@@ -46,6 +46,9 @@
             <div class="right-box">
               <p><%= project.created_at.strftime("%d/%m/%Y") %></p>
             </div>
+            <div class="btn-cancel">
+              <p><%= link_to "Delete", project_path(project), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %></p>
+            </div>
           </div>
           <h5><i class="fa-solid fa-ellipsis" style="color: #000000;"></i></h5>
         </div>
