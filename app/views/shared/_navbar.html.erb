@@ -1,6 +1,6 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
   <div class="container-fluid">
-    <%= link_to "#", class: "navbar-brand" do %>
+    <%= link_to root_path, class: "navbar-brand" do %>
       <h6 class="navbar_text"><strong>Vempo</strong></h6>
       <%#= image_tag "https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/logo.png" %>
     <% end %>
@@ -12,6 +12,16 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto">
         <% if user_signed_in? %>
+        
+<!-- CONF<ICT WAS BELOW-->
+          <li class="nav-item active">
+            <%= link_to "P5", testpfive_path, class: "nav-link" %>
+          </li>
+          <li class="nav-item active">
+            <%= link_to "testproject", testproject_path, class: "nav-link" %>
+          </li>
+          <li class="nav-item active">
+<!-- CONF<ICT WAS ABOVE-->
             <li class="nav-item active">
             <%= link_to "P5", testpfive_path, class: "nav-link" %>
           </li>
@@ -62,15 +72,18 @@
 </div>
 <!----------------------FINISHED THE MODAL----------------------------------------------------->
            <li class="nav-item active">
+
             <%= link_to "testhome", testhome_path, class: "nav-link" %>
           </li>
 
+
           <li class="nav-item active">
           <% if current_user %>
-            <%= link_to "Logout", destroy_user_session_path, method: :delete, class: "nav-link" %>
+            <%= link_to "Logout", destroy_user_session_path, data: {turbo_method: :delete}, class: "nav-link" %>
             <% else %>
             <%= link_to "Login", new_user_session_path, class: "nav-link" %>
-          <% end %></li>
+          <% end %>
+          </li>
 
           <%# <li class="nav-item"> %>
             <%#= link_to "Login", new_user_session_path, class: "nav-link" %>
