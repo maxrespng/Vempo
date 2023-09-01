@@ -44,18 +44,20 @@
             </div>
       <%# START OF FORM %>
       <div class="hidden-form">
-        <%= simple_form_for(Shape.new) do |f| %>
+        <%= simple_form_for((@shape), data: { new_shape_target: "formElement"}) do |f| %>
         <%= f.input :start_x, input_html: { data: {new_shape_target: "input1"} } %>
         <%= f.input :start_y, input_html: { data: {new_shape_target: "input2"} } %>
         <%= f.input :width, input_html: { data: {new_shape_target: "input3"} } %>
         <%= f.input :height, input_html: { data: {new_shape_target: "input4"} } %>
+        <%= f.input :project_id, input_html: { data: {new_shape_target: "projectId"}, value: @project.id } %>
         <div><%= f.submit %></div>
         <% end %>
       </div>
       <%# END OF FORM %>
-      <input type="color" data-new-shape-target="colorPicker">
-         </div>
-      </div>
+      Colour:
+        <input class="color-picker" type="color" data-new-shape-target="colorPicker">
+        </div>
+    </div>
 </div>
 
 

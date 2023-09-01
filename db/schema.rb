@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_08_29_142809) do
+ActiveRecord::Schema[7.0].define(version: 2023_09_01_113131) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -65,10 +65,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_29_142809) do
   create_table "shapes", force: :cascade do |t|
     t.string "name"
     t.bigint "project_id", null: false
-    t.integer "start_x"
-    t.integer "start_y"
-    t.integer "height"
-    t.integer "width"
+    t.string "start_x"
+    t.string "start_y"
+    t.string "height"
+    t.string "width"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["project_id"], name: "index_shapes_on_project_id"
