@@ -1,67 +1,68 @@
 <div data-controller="new-shape" data-new-shape-url-value="<%= shapes_url %>">
 
   <div class="parent">
-        <div class="" id="myCanvas" data-action="mousedown->new-shape#mouseDown mouseup->new-shape#mouseUp" data-new-shape-target="p5Canvas">
-        </div>
-        <script> function setup() {
-          const canvas = createCanvas(displayWidth,displayHeight);
+    <div class="" id="myCanvas" data-action="mousedown->new-shape#mouseDown mouseup->new-shape#mouseUp" data-new-shape-target="p5Canvas">
+  </div>
+  <script> function setup() {
+    const canvas = createCanvas(displayWidth,displayHeight);
 
-          canvas.parent('myCanvas')
-          console.log('canvas');
-        }
-          </script>
-        <div class="side-bar child" data-new-shape-target="checkboxes">
-            <div class="form-check" data-new-shape-target="checkbox" data-action="click->new-shape#handleCheckboxClick" data-shape="triangle">
-              <input class="form-check-input" type="checkbox" value="" id="triangle" data-new-shape-target="checkbox">
-              <label class="form-check-label" for="triangle">
-                 Triangle
-              </label>
-            </div>
-              <div class="form-check" data-new-shape-target="checkbox" data-action="click->new-shape#handleCheckboxClick" data-shape="circle" >
-              <input class="form-check-input" type="checkbox" value="" id="circle">
-              <label class="form-check-label" for="circle">
-                Circle
-              </label>
-            </div>
-              <div class="form-check" data-new-shape-target="checkbox" data-action="click->new-shape#handleCheckboxClick" data-shape="square">
-              <input class="form-check-input"  type="checkbox" value="" id="square">
-              <label class="form-check-label" for="square">
-                Square
-              </label>
-            </div>
-              <div class="form-check" data-new-shape-target="checkbox" data-action="click->new-shape#handleCheckboxClick"  data-shape="oval">
-              <input class="form-check-input" data-shape="oval" type="checkbox" value="" id="oval">
-              <label class="form-check-label" for="oval">
-                Oval
-              </label>
-            </div>
-              <div class="form-check" data-new-shape-target="checkbox" data-action="click->new-shape#handleCheckboxClick" data-shape="rectangle">
-              <input class="form-check-input"  type="checkbox" value="" id="rectangle">
-              <label class="form-check-label" for="rectangle">
-                Rectangle
-              </label>
-            </div>
+      canvas.parent('myCanvas')
+      console.log('canvas');
+  }
+  </script>
+  <div class="side-bar child" data-new-shape-target="checkboxes">
+    <div class="form-check" data-new-shape-target="checkbox" data-action="click->new-shape#handleCheckboxClick" data-shape="triangle">
+      <input class="form-check-input" type="checkbox" value="" id="triangle" >
+      <label class="form-check-label" for="triangle">
+        Triangle
+      </label>
+    </div>
+
+    <div class="form-check" data-new-shape-target="checkbox" data-action="click->new-shape#handleCheckboxClick" data-shape="circle" >
+      <input class="form-check-input" type="checkbox" value="" id="circle">
+      <label class="form-check-label" for="circle">
+        Circle
+      </label>
+    </div>
+
+    <div class="form-check" data-new-shape-target="checkbox" data-action="click->new-shape#handleCheckboxClick" data-shape="square">
+      <input class="form-check-input"  type="checkbox" value="" id="square">
+      <label class="form-check-label" for="square">
+        Square
+      </label>
+    </div>
+
+    <div class="form-check" data-new-shape-target="checkbox" data-action="click->new-shape#handleCheckboxClick"  data-shape="oval">
+      <input class="form-check-input" type="checkbox" value="" id="oval">
+      <label class="form-check-label" for="oval">
+        Oval
+      </label>
+    </div>
+
+    <div class="form-check" data-new-shape-target="checkbox" data-action="click->new-shape#handleCheckboxClick" data-shape="rectangle">
+      <input class="form-check-input"  type="checkbox" value="" id="rectangle">
+      <label class="form-check-label" for="rectangle">
+        Rectangle
+      </label>
+    </div>
+
       <%# START OF FORM %>
-      <div class="hidden-form">
-        <%= simple_form_for(Shape.new) do |f| %>
-        <%= f.input :start_x, input_html: { data: {new_shape_target: "input1"} } %>
-        <%= f.input :start_y, input_html: { data: {new_shape_target: "input2"} } %>
-        <%= f.input :width, input_html: { data: {new_shape_target: "input3"} } %>
-        <%= f.input :height, input_html: { data: {new_shape_target: "input4"} } %>
-        <div><%= f.submit %></div>
-        <% end %>
-      </div>
-      <%# END OF FORM %>
+
+    <div class="hidden-form">
+      <%= simple_form_for(Shape.new) do |f| %>
+      <%= f.input :start_x, input_html: { data: {new_shape_target: "input1"} } %>
+      <%= f.input :start_y, input_html: { data: {new_shape_target: "input2"} } %>
+      <%= f.input :width, input_html: { data: {new_shape_target: "input3"} } %>
+      <%= f.input :height, input_html: { data: {new_shape_target: "input4"} } %>
+      <div><%= f.submit %></div>
+      <% end %>
+    </div>
+    <%# END OF FORM %>
+    <div>
       <input type="color" data-new-shape-target="colorPicker">
-         </div>
-      </div>
+    </div>
+  </div>
 </div>
-
-
-
-
-
-
 
 
 
