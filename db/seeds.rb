@@ -31,7 +31,7 @@ project1 = Project.new(
   music_file: "Nightfall"
 )
 project1.user = max
-file = URI.open("https://ukclippingpath.com/wp-content/uploads/2021/10/Slight-Angling.jpg")
+file = URI.open("/Users/heldervictoretti/code/maxrespng/Vempo/app/assets/images/test-template-project.png")
 project1.photo.attach(io: file, filename: "nes.png", content_type: "image/png")
 project1.save!
 
@@ -42,7 +42,7 @@ project2 = Project.new(
   music_file: "She Wolf"
 )
 project2.user = bruno
-file = URI.open("https://svgshare.com/i/U7z.svg")
+file = URI.open("/Users/heldervictoretti/code/maxrespng/Vempo/app/assets/images/test-template-project.png")
 project2.photo.attach(io: file, filename: "computer.svg", content_type: "image/svg")
 project2.save!
 
@@ -53,8 +53,41 @@ project3 = Project.new(
   music_file: "Panic Attack"
 )
 project3.user = helder
-file = URI.open("/Users/pinarboztepe/code/maxrespng/Vempo/app/assets/images/cybercat.jpg")
+file = URI.open("/Users/heldervictoretti/code/maxrespng/Vempo/app/assets/images/test-template-project.png")
 project3.photo.attach(io: file, filename: "nes.png", content_type: "image/png")
 project3.save!
 
-puts "3 Projects Created"
+project4 = Project.new(
+  name: "Project 4",
+  description: "Progressive Metal",
+  has_mic: false,
+  music_file: "Panic Attack"
+)
+project4.user = helder
+file = URI.open("/Users/heldervictoretti/code/maxrespng/Vempo/app/assets/images/test-template-project.png")
+project4.photo.attach(io: file, filename: "nes.png", content_type: "image/png")
+project4.save!
+
+project5 = Project.new(
+  name: "Project 5",
+  description: "Progressive Metal",
+  has_mic: false,
+  music_file: "Panic Attack"
+)
+project5.user = helder
+file = URI.open("/Users/heldervictoretti/code/maxrespng/Vempo/app/assets/images/test-template-project.png")
+project5.photo.attach(io: file, filename: "nes.png", content_type: "image/png")
+project5.save!
+
+project6 = Project.new(
+  name: "Project 6",
+  description: "Progressive Metal",
+  has_mic: false,
+  music_file: "Panic Attack"
+)
+project6.user = helder
+file = URI.open("/Users/heldervictoretti/code/maxrespng/Vempo/app/assets/images/test-template-project.png")
+project6.photo.attach(io: file, filename: "nes.png", content_type: "image/png")
+project6.save!
+
+puts "6 Projects Created"
