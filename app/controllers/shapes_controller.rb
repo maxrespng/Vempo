@@ -3,7 +3,6 @@ class ShapesController < ApplicationController
   end
 
   def create
-    # raise
     @shape = Shape.new(shape_params)
     @shape.save
   end
