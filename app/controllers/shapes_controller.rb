@@ -1,16 +1,15 @@
 class ShapesController < ApplicationController
+  def index
+  end
+
   def create
-    raise
     @shape = Shape.new(shape_params)
-    if @shape.save
-    else
-      render status: :unprocessable_entity
-    end
+    @shape.save
   end
 
   private
 
   def shape_params
-    params.require(:shape).permit(:name)
+    params.require(:shape).permit(:name, :start_x, :start_y, :width, :height, :project_id)
   end
 end

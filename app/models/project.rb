@@ -3,6 +3,7 @@ class Project < ApplicationRecord
   has_many :shapes
   has_one_attached :photo
   has_one_attached :music_file
+
   before_save :save_svg
   mount_uploader :music_file, MusicFileUploader
 

@@ -46,23 +46,47 @@
       </label>
     </div>
 
+          <% if @project.music_file == nil %>
+        <div class="bottom-microphone" >
+            <button
+            data-controller="microphone"
+                    data-action="click->new-shape#requestMicrophoneAccess">
+
+              <i class="fa-solid fa-microphone"></i>
+            </button>
+
+            <button data-action="click->new-shape#stopRecording">
+              <i class="fa-solid fa-microphone-slash"></i>
+            </button>
+           </div>
+
+          <% end %>
+
+
       <%# START OF FORM %>
 
     <div class="hidden-form">
-      <%= simple_form_for(Shape.new) do |f| %>
+      <%= simple_form_for((@shape), data: { new_shape_target: "formElement"}) do |f| %>
       <%= f.input :start_x, input_html: { data: {new_shape_target: "input1"} } %>
       <%= f.input :start_y, input_html: { data: {new_shape_target: "input2"} } %>
       <%= f.input :width, input_html: { data: {new_shape_target: "input3"} } %>
       <%= f.input :height, input_html: { data: {new_shape_target: "input4"} } %>
+      <%= f.input :project_id, input_html: { data: {new_shape_target: "projectId"}, value: @project.id } %>
       <div><%= f.submit %></div>
       <% end %>
     </div>
+
     <%# END OF FORM %>
     <div>
-      <input type="color" data-new-shape-target="colorPicker">
+      <input class="colorPicker" type="color" data-new-shape-target="colorPicker">
     </div>
+
   </div>
-</div>
+      <button  class="bottom-d"   data-invert-button-target="button" data-action="click->new-shape#toggle" data-new-shape-target="bottomD">
+
+            <i class="fa-solid fa-arrow-right" data-new-shape-target="arrow"></i>
+            </button>
+        </div>
 
 
 
@@ -137,3 +161,13 @@ window.onload = function() {
   };
 };
 </script> %>
+
+    <%# <div class="hidden-form">
+      <%= simple_form_for(Shape.new) do |f| %>
+      <%# <%= f.input :start_x, input_html: { data: {new_shape_target: "input1"} } %>
+      <%# <%= f.input :start_y, input_html: { data: {new_shape_target: "input2"} } %>
+      <%# <%= f.input :width, input_html: { data: {new_shape_target: "input3"} } %>
+      <%# <%= f.input :height, input_html: { data: {new_shape_target: "input4"} } %>
+      <%# <div><%= f.submit</div> %>
+      <%# <% end %>
+    <%# </div> %>

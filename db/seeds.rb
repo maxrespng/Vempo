@@ -22,9 +22,7 @@ helder = User.create!(email: "helder@lewagon.com", password: "123456")
 pinar = User.create!(email: "pinar@lewagon.com", password: "123456")
 david = User.create!(email: "david@lewagon.com", password: "123456")
 
-puts "5 Users Created"
-
-url = "/home/bruno/code/maxrespng/Vempo/app/assets/images/test-template-project.png"
+url = "/Users/maximilianlana/code/maxrespng/Vempo/app/assets/images/test-template-project.png"
 
 project1 = Project.new(
   name: "Project 1",
@@ -92,4 +90,74 @@ file = URI.open(url)
 project6.photo.attach(io: file, filename: "nes.png", content_type: "image/png")
 project6.save!
 
-puts "6 Projects Created"
+# DEMO_PROJECTS_BELOW:
+
+demo_project_1 = Project.new(
+  name: "Electronic",
+  description: "Power Metal",
+  has_mic: false,
+  music_file: "Nightfall"
+)
+project1.user = pinar
+file = URI.open("app/assets/images/Screenshot 2023-09-01 at 14.12.29.png")
+project1.photo.attach(io: file, filename: "template.png", content_type: "image/png")
+project1.save!
+
+demo_project_2 = Project.new(
+  name: "Rock",
+  description: "Power Metal",
+  has_mic: false,
+  music_file: "Nightfall"
+)
+project1.user = pinar
+file = URI.open("app/assets/images/Screenshot 2023-09-01 at 14.12.29.png")
+project1.photo.attach(io: file, filename: "template.png", content_type: "image/png")
+project1.save!
+
+demo_project_3 = Project.new(
+  name: "Techno",
+  description: "Power Metal",
+  has_mic: false,
+  music_file: "Nightfall"
+)
+project1.user = pinar
+file = URI.open("app/assets/images/Screenshot 2023-09-01 at 14.12.29.png")
+project1.photo.attach(io: file, filename: "template.png", content_type: "image/png")
+project1.save!
+
+demo_project_4 = Project.new(
+  name: "Bass",
+  description: "Power Metal",
+  has_mic: false,
+  music_file: "Nightfall"
+)
+project1.user = pinar
+file = URI.open("app/assets/images/Screenshot 2023-09-01 at 14.12.29.png")
+project1.photo.attach(io: file, filename: "template.png", content_type: "image/png")
+project1.save!
+
+demo_project_5 = Project.new(
+  name: "Classical",
+  description: "Power Metal",
+  has_mic: false,
+  music_file: "Nightfall"
+)
+project1.user = pinar
+file = URI.open("app/assets/images/Screenshot 2023-09-01 at 14.12.29.png")
+project1.photo.attach(io: file, filename: "template.png", content_type: "image/png")
+project1.save!
+
+demo_project_6 = Project.new(
+  name: "Reggae",
+  description: "Power Metal",
+  has_mic: false,
+  music_file: "Nightfall"
+)
+project1.user = pinar
+file = URI.open("app/assets/images/Screenshot 2023-09-01 at 14.12.29.png")
+project1.photo.attach(io: file, filename: "template.png", content_type: "image/png")
+project1.save!
+
+puts "#{User.count} Users Created"
+
+puts "#{Project.count} Projects Created"
