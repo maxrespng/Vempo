@@ -4,7 +4,7 @@ import { Controller } from "@hotwired/stimulus"
 export default class extends Controller {
 
 
-  static targets = ["p5Canvas", "checkboxes", "checkbox", "input1", "input2", "input3", "input4", "colorPicker",  "container", "projectId", "formElement","bottom","close","element","arrow", 'bottomD',"microphone"]
+  static targets = ["p5Canvas", "checkboxes", "checkbox", "input1", "input2", "input3", "input4", "colorPicker",  "container", "projectId", "formElement","bottom","close","element","arrow", 'bottomD',"microphone","undoLastDrawing"]
   static values = {
     input: String,
     url: String
@@ -176,6 +176,8 @@ export default class extends Controller {
   }
 
   draw(mouse_x, mouse_y, newMouse_x, newMouse_y, color) {
+    mouse_x = parseInt(mouse_x, 10);
+    mouse_y = parseInt(mouse_y, 10);
     console.log(this.colorPickerTarget.value)
     console.log(typeof this.colorPickerTarget.value)
     let selectedColor = ''
@@ -191,8 +193,9 @@ export default class extends Controller {
     if (this.userCanDraw) {
       if (this.shape === "triangle") {
         // triangle(mouse_x, mouse_y - 50, newMouse_x - 100, newMouse_y + 100, mouse_x + 200, mouse_y + 200);
-        triangle(100, 250, 250, 170, mouse_x, mouse_y);
+        triangle(mouse_x, mouse_y - 50, newMouse_x + 100, newMouse_y, mouse_x + 200, mouse_y);
         name = 'triangle'
+
         // trigger save/update method
         const shapeData =  JSON.stringify({
           name: name, start_x: mouse_x, start_y: mouse_y,
@@ -201,6 +204,8 @@ export default class extends Controller {
         });
         this.saveShape(shapeData)
       }
+
+
       else if (this.shape === "circle") {
         circle(mouse_x, mouse_y - 50, newMouse_x);
         name = 'circle'
