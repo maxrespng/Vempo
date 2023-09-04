@@ -1,18 +1,24 @@
-import { Controller } from "@hotwired/stimulus"
+// En tu controlador Stimulus
+import { Controller } from "@hotwired/stimulus";
 
-// Connects to data-controller="delete-shape"
 export default class extends Controller {
 
-  static targets = ["last"]
-  connect() {
-    this.drawShape(shape);
-  }
+  static targets = ["canvas","undoLastDrawing"];
+  drawingHistory = [];
 
+  // ... (otros métodos y código)
+
+  // Método para eliminar la última forma dibujada
   undoLastDrawing() {
-
-    console.log('Undo last drawing');
-    // Verifica si hay formas en el historial para deshacer
-   
+    if (this.drawingHistory.length > 0) {
+      this.drawingHistory.pop();
+      this.clearCanvas();
+      // Vuelve a dibujar las formas restantes en el historial
+      for (const shape of this.drawingHistory) {
+        this.drawShape(shape);
+      }
+    }
   }
 
+  // ... (otros métodos y código)
 }

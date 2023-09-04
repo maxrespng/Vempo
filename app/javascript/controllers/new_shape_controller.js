@@ -194,7 +194,8 @@ export default class extends Controller {
       if (this.shape === "triangle") {
         // triangle(mouse_x, mouse_y - 50, newMouse_x - 100, newMouse_y + 100, mouse_x + 200, mouse_y + 200);
         triangle(mouse_x, mouse_y - 50, newMouse_x + 100, newMouse_y, mouse_x + 200, mouse_y);
-        name = 'triangle'
+        
+              name = 'triangle'
 
         // trigger save/update method
         const shapeData =  JSON.stringify({
