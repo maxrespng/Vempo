@@ -1,13 +1,21 @@
 .bottom-d {
-  background-color: wheat;
-  border: 2px solid rgb(219, 98, 98);
-  width: 5%;
-  height: 10vh;
+  background-color: $v-dark-gray;
+  width: 3%;
+  height: 5vh;
   position: absolute;
-  right: 0px;
-  top: 490px;
-  border-top-left-radius: 15px; /* Redondea la esquina superior izquierda */
-  // border-top-right-radius: 15px; /* Redondea la esquina superior derecha */
-  border-bottom-left-radius: 15px; /* Redondea la esquina inferior izquierda */
-  // border-bottom-right-radius: 15px;
+  right: 130px;
+  top: 445px;
+  border-top-left-radius: 15px;
+  border-bottom-left-radius: 15px;
+  transition: right 0.5s ease-in;
+  border: 0;
+}
+
+.arrow {
+  transition: right 0.5s ease-in;
+}
+
+.move-right {
+  right: -13px;
+  transition: right 0.6s ease-in;
 }
