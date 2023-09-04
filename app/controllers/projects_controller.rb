@@ -8,6 +8,8 @@ class ProjectsController < ApplicationController
     @projects = Project.all
     @project = Project.find(params[:id])
     @shape = Shape.new
+    @shapes = Shape.where(params[:project_id])
+    # raise
   end
 
   def create
@@ -20,6 +22,8 @@ class ProjectsController < ApplicationController
       render 'pages/home'
     end
   end
+
+  private
 
   def project_params
     params.require(:project).permit(:name, :description, :has_mic, :music_file, :other_attributes)
