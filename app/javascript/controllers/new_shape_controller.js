@@ -1,31 +1,49 @@
 
 import { Controller } from "@hotwired/stimulus"
 
-
-
-
 export default class extends Controller {
 
 
-  static targets = ["p5Canvas", "checkboxes", "checkbox", "input1", "input2", "input3", "input4", "colorPicker",  "container", "projectId", "formElement","bottom","audio"]
+  static targets = ["p5Canvas", "checkboxes", "checkbox", "input1", "input2", "input3", "input4", "colorPicker",  "container", "projectId", "formElement","bottom","close","element","arrow", 'bottomD',"microphone"]
   static values = {
     input: String,
     url: String
   }
 
 
-  toggle(event) {
+  close(event) {
+    const bottomDElement = this.bottomDTarget;
+    const currentRight = window.getComputedStyle(bottomDElement).getPropertyValue("right");
+    const currentRightValue = parseInt(currentRight);
 
+    if (currentRightValue === 0) {
+      bottomDElement.style.right = "148px";
+    } else {
+      bottomDElement.style.right = "0px";
+
+    }  console.log(close);
+  }
+
+  toggle(event) {
       // this one is to displey the side-bar
     console.log(this.checkboxesTarget);
+    console.log(this.bottomDTarget)
 
-  if (this.checkboxesTarget.style.display === "block") {
-    this.checkboxesTarget.style.display = "none";
-  } else {
-    this.checkboxesTarget.style.display = "block";
-  }
-  }
+    if (this.checkboxesTarget.style.display === "none") {
+      console.log('hello checkbox')
+      this.checkboxesTarget.style.display = "block";
+      this.arrowTarget.classList.remove('fa-arrow-left')
+      this.arrowTarget.classList.add('fa-arrow-right')
 
+    } else {
+      this.checkboxesTarget.style.display = "none";
+      this.arrowTarget.classList.add('fa-arrow-left')
+      this.arrowTarget.classList.remove('fa-arrow-right')
+    }
+
+    this.bottomDTarget.classList.toggle('move-right');
+
+  }
 
   connect() {
     console.log({ url: this.urlValue })
@@ -89,9 +107,7 @@ export default class extends Controller {
             requestAnimationFrame(getAmplitudeData);
 
           let averageAmplitude = dataArray.reduce((acc, value) => acc + value, 0) / dataArray.length;
-
           console.log(averageAmplitude)
-
           }
 
           // getting the time
@@ -127,8 +143,6 @@ export default class extends Controller {
     // const checkbox = event.currentTarget;
     this.shape = target.dataset.shape;
     this.userCanDraw = true;
-
-
 
   }
 
@@ -252,17 +266,3 @@ export default class extends Controller {
     });
   }
 }
-
-
-
-
-// write a save/update function below
-
-
-
-
-// Today's task (31/08/2023):
-// 1. create form in sidebar to contain all the data for our shapes (start_x, start_y, etc.)
-// 2. implement a mouseDown event listener that records the start_x and start_y of the shape
-// 3. implement a mouseUp event listener that records the width and height values for our shape.
-// 4. implement a save function and call it after every shape drawn.

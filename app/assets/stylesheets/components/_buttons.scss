@@ -89,18 +89,13 @@
 }
 
 #btn-upload {
-  box-sizing: border-box;
-  width: 280px;
-  height: 40px;
-  left: 10px;
-  top: 100px;
-  border: 1px solid #000000;
-  border-radius: 42.67px;
-  .bi {
-    border-radius: 50px;
-    fill: rgba(159, 232, 0, 1);
-    color:white;
-  }
+
+}
+.bi {
+  border-radius: 50px;
+  fill: rgba(159, 232, 0, 1);
+  color:white;
+  cursor: pointer;
 }
 
 #btn-choose {
@@ -117,6 +112,23 @@
     color:white;
   }
 }
+
+#form-btn-upload:focus-within {
+    display: block;
+}
+
+.container-btn {
+  text-align: center;
+  box-sizing: border-box;
+  width: 280px;
+  height: 40px;
+  left: 10px;
+  top: 100px;
+  border: 1px solid #000000;
+  border-radius: 42.67px;
+}
+
+
 
 // SOME BUTTON EXAMPLES:
 

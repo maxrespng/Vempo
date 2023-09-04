@@ -13,5 +13,11 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "articles#index"
   resources :projects, only: [:index, :show, :create]
-  resources :shapes, only: [:index, :create]
+  resources :shapes, only: [:create]
+
+  resources :projects do
+    member do
+      get 'music'
+    end
+  end
 end
