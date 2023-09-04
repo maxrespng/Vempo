@@ -37,7 +37,7 @@ export default class extends Controller {
       square(start_x, start_y - 50, width - start_x);
     }
     if (name === "oval") {
-      ellipse(start_x, start_y - 50, width - start_x);
+      ellipse(start_x, start_y - 50, width - start_x, height - start_y);
     }
     if (name === "rectangle") {
       rect(start_x, start_y - 50, width - start_x, height - start_y);
