@@ -207,7 +207,7 @@ export default class extends Controller {
 
 
       else if (this.shape === "circle") {
-        circle(mouse_x, mouse_y - 50, newMouse_x);
+        circle(mouse_x, mouse_y - 50, newMouse_x - mouse_x);
         name = 'circle'
         // trigger save/update method
         const shapeData =  JSON.stringify({
@@ -230,7 +230,7 @@ export default class extends Controller {
 
       }
       else if (this.shape === "oval") {
-        ellipse(mouse_x, mouse_y - 50, newMouse_x - mouse_x);
+        ellipse(mouse_x, mouse_y - 50, newMouse_x - mouse_x, newMouse_y - mouse_y);
         name = 'oval'
         // trigger save/update method
         const shapeData =  JSON.stringify({
