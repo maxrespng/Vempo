@@ -16,5 +16,4 @@ Rails.application.routes.draw do
       get 'music'
     end
   end
-
 end

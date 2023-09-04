@@ -28,18 +28,4 @@ class ProjectsController < ApplicationController
     @project = Project.find(params[:id])
     send_file @project.music_file.current_path
   end
-
-
-  # def upload_music
-  #   #@project = Project.new(project_params)
-
-  #   if @project.save
-  #     @project.process_music_file(params[:project][:music_file])
-  #     redirect_to project_path
-  #   else
-  #     render :new
-  #   end
-  # end
-
-
 end
