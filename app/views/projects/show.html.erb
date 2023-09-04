@@ -47,8 +47,8 @@
       </label>
     </div>
 
-
-          <div class="bottom-microphone" >
+          <% if @project.music_file == nil %>
+        <div class="bottom-microphone" >
             <button
             data-controller="microphone"
                     data-action="click->new-shape#requestMicrophoneAccess">
@@ -59,7 +59,10 @@
             <button data-action="click->new-shape#stopRecording">
               <i class="fa-solid fa-microphone-slash"></i>
             </button>
-      </div>
+           </div>
+
+          <% end %>
+
 
       <%# START OF FORM %>
 

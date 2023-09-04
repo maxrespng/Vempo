@@ -107,7 +107,6 @@ export default class extends Controller {
             requestAnimationFrame(getAmplitudeData);
 
           let averageAmplitude = dataArray.reduce((acc, value) => acc + value, 0) / dataArray.length;
-
           console.log(averageAmplitude)
           }
 
