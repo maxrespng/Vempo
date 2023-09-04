@@ -47,7 +47,7 @@
       </label>
     </div>
 
-          <% if @project.music_file == nil %>
+          <%# <% if @project.music_file == nil %> %>
         <div class="bottom-microphone" >
             <button
             data-controller="microphone"
@@ -61,7 +61,10 @@
             </button>
            </div>
 
-          <% end %>
+          <%# <% end %> %>
+
+
+      <button data-action="click->delete-shape#undoLastDrawing">Delete</button>
 
 
       <%# START OF FORM %>
