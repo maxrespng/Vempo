@@ -16,6 +16,18 @@
 }
 
 .move-right {
-  right: -13px;
+  right: -18px;
   transition: right 0.6s ease-in;
+}
+
+.bottom-microphone{
+  display: flex;
+  justify-content: space-between;
+  padding: 3px;
+}
+
+.colorPicker{
+  width: 110px; /* Ajusta el ancho según lo deseado */
+  height: 70px; /* Ajusta la altura según lo deseado */
+  margin-left: 3px;
 }

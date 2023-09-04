@@ -4,7 +4,7 @@ import { Controller } from "@hotwired/stimulus"
 export default class extends Controller {
 
 
-  static targets = ["p5Canvas", "checkboxes", "checkbox", "input1", "input2", "input3", "input4", "colorPicker",  "container", "projectId", "formElement","bottom","audio","close","element","arrow", 'bottomD']
+  static targets = ["p5Canvas", "checkboxes", "checkbox", "input1", "input2", "input3", "input4", "colorPicker",  "container", "projectId", "formElement","bottom","close","element","arrow", 'bottomD',"microphone"]
   static values = {
     input: String,
     url: String
