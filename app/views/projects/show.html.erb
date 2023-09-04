@@ -45,7 +45,7 @@
         Rectangle
       </label>
     </div>
-
+    
           <%# <% if @project.music_file == nil %> %>
         <div class="bottom-microphone" >
             <button
@@ -66,31 +66,23 @@
       <button   data-controller="last"
        data-action="click->delete-shape#undoLastDrawing">Delete</button>
 
-
       <%# START OF FORM %>
 
     <div class="hidden-form">
-      <%= simple_form_for((@shape), data: { new_shape_target: "formElement"}) do |f| %>
+      <%= simple_form_for(Shape.new) do |f| %>
       <%= f.input :start_x, input_html: { data: {new_shape_target: "input1"} } %>
       <%= f.input :start_y, input_html: { data: {new_shape_target: "input2"} } %>
       <%= f.input :width, input_html: { data: {new_shape_target: "input3"} } %>
       <%= f.input :height, input_html: { data: {new_shape_target: "input4"} } %>
-      <%= f.input :project_id, input_html: { data: {new_shape_target: "projectId"}, value: @project.id } %>
       <div><%= f.submit %></div>
       <% end %>
     </div>
-
     <%# END OF FORM %>
     <div>
-      <input class="colorPicker" type="color" data-new-shape-target="colorPicker">
+      <input type="color" data-new-shape-target="colorPicker">
     </div>
-
   </div>
-      <button  class="bottom-d"   data-invert-button-target="button" data-action="click->new-shape#toggle" data-new-shape-target="bottomD">
-
-            <i class="fa-solid fa-arrow-right" data-new-shape-target="arrow"></i>
-            </button>
-        </div>
+</div>
 
 
 
@@ -165,13 +157,3 @@ window.onload = function() {
   };
 };
 </script> %>
-
-    <%# <div class="hidden-form">
-      <%= simple_form_for(Shape.new) do |f| %>
-      <%# <%= f.input :start_x, input_html: { data: {new_shape_target: "input1"} } %>
-      <%# <%= f.input :start_y, input_html: { data: {new_shape_target: "input2"} } %>
-      <%# <%= f.input :width, input_html: { data: {new_shape_target: "input3"} } %>
-      <%# <%= f.input :height, input_html: { data: {new_shape_target: "input4"} } %>
-      <%# <div><%= f.submit</div> %>
-      <%# <% end %>
-    <%# </div> %>
