@@ -1,4 +1,4 @@
-<div data-controller="new-shape load-shapes" data-new-shape-url-value="<%= shapes_url %>" data-load-shapes-shape-info-value="<%= @shapes.to_json() %>">
+<div data-controller="new-shape load-shapes delete-shape" data-new-shape-url-value="<%= shapes_url %>" data-load-shapes-shape-info-value="<%= @shapes.to_json() %>">
 
   <div class="parent"  data-load-shapes-project-id-value="<%= @project.id %>">
     <div class="" id="myCanvas" data-action="mousedown->new-shape#mouseDown mouseup->new-shape#mouseUp" data-new-shape-target="p5Canvas">
@@ -63,7 +63,8 @@
           <%# <% end %> %>
 
 
-      <button data-action="click->delete-shape#undoLastDrawing">Delete</button>
+      <button   data-controller="last"
+       data-action="click->delete-shape#undoLastDrawing">Delete</button>
 
 
       <%# START OF FORM %>

@@ -175,7 +175,7 @@ export default class extends Controller {
     this.draw(this.input1Target.value, this.input2Target.value, newMouse_x, newMouse_y,);
   }
 
-  draw(mouseP_x, mouse_y, newMouse_x, newMouse_y, color) {
+  draw(mouse_x, mouse_y, newMouse_x, newMouse_y, color) {
     mouse_x = parseInt(mouse_x, 10);
     mouse_y = parseInt(mouse_y, 10);
     console.log(this.colorPickerTarget.value)
