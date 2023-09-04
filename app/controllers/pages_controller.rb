@@ -18,5 +18,6 @@ class PagesController < ApplicationController
 
   def testhome
     @projects = Project.all
+    @project = Project.new
   end
 end

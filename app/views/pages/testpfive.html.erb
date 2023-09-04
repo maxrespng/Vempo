@@ -10,8 +10,11 @@
           canvas.parent('myCanvas')
           console.log('canvas');
         }
-          </script>
-        <div class="side-bar child" data-new-shape-target="checkboxes">
+       </script>
+
+
+
+        <div class="side-bar child" data-new-shape-target="checkboxes"  data-new-shape-target="buttonsContainer">
             <div class="form-check" data-new-shape-target="checkbox" data-action="click->new-shape#handleCheckboxClick" data-shape="triangle">
               <input class="form-check-input" type="checkbox" value="" id="triangle" data-new-shape-target="checkbox">
               <label class="form-check-label" for="triangle">
@@ -41,7 +44,27 @@
               <label class="form-check-label" for="rectangle">
                 Rectangle
               </label>
+
+              <div class="" data-new-shape-target="playButtonClick">
+
+                  <button data-action="click->new-shape#playButtonClick"><i class="fa-solid fa-play"></i></button>
+                  <button data-action="click->new-shape#stopButtonClick"><i class="fa-solid fa-pause"></i></button>
+                </div>
+
+
+
             </div>
+             <button id="microphone-button" data-action="click->new-shape#requestMicrophoneAccess" >
+                <i class="fa-solid fa-microphone"></i>
+              </button>
+              <button data-action="click->new-shape#stopRecording">
+                <i class="fa-solid fa-microphone-slash"></i>
+              </button>
+
+              <div id="unsupported-audio-context-message" style="display: none;">
+                  AudioContext is not supported in this browser.
+                </div>
+
       <%# START OF FORM %>
       <div class="hidden-form">
         <%= simple_form_for(Shape.new) do |f| %>
@@ -52,10 +75,17 @@
         <div><%= f.submit %></div>
         <% end %>
       </div>
+
       <%# END OF FORM %>
       <input type="color" data-new-shape-target="colorPicker">
          </div>
       </div>
+      <button  class="bottom-d" data-action="click->new-shape#toggle">
+
+         <i class="fa-solid fa-arrow-right"></i>
+         </button>
+
+
 </div>
 
 
@@ -67,6 +97,7 @@
 
 
 <%# <div id="content">
+      </div>
   <input type="file" id="thefile" accept="audio/*" />
   <canvas id="canvas"></canvas>
   <audio id="audio" controls></audio>

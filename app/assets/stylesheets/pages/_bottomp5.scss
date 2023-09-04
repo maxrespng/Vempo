@@ -1,0 +1,13 @@
+.bottom-d {
+  background-color: wheat;
+  border: 2px solid rgb(219, 98, 98);
+  width: 5%;
+  height: 10vh;
+  position: absolute;
+  right: 0px;
+  top: 490px;
+  border-top-left-radius: 15px; /* Redondea la esquina superior izquierda */
+  // border-top-right-radius: 15px; /* Redondea la esquina superior derecha */
+  border-bottom-left-radius: 15px; /* Redondea la esquina inferior izquierda */
+  // border-bottom-right-radius: 15px;
+}

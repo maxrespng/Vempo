@@ -1,43 +1,192 @@
 
-// import { Controller } from "@hotwired/stimulus"
-
-// // Connects to data-controller="new-shape"
-// export default class extends Controller {
-//   static targets = ["p5Canvas", "checkbox", "checkboxes"]
-//   connect() {
-//     console.log("all connected!")
-//   }
-
-
-//  draw() {
-//   this.checkboxesTarget.foreach
-//   const checkbox = this.checkboxTarget
-//   const shape = checkbox.dataset.shape
-//   if (shape === "triangle") {
-//     console.log("im a triangle")
-//   }
-
-
-// }
-// }
 
 import { Controller } from "@hotwired/stimulus"
 
+
+
+
 export default class extends Controller {
-  static targets = ["p5Canvas", "checkboxes", "checkbox", "input1", "input2", "input3", "input4", "colorPicker"]
+  static targets = ["p5Canvas", "checkboxes", "checkbox", "input1", "input2", "input3", "input4", "colorPicker","container", "bottom","audio"]
   static values = {
     input: String
   }
 
+
+  toggle(event) {
+
+      // this one is to displey the side-bar
+    console.log(this.checkboxesTarget);
+
+  if (this.checkboxesTarget.style.display === "block") {
+    this.checkboxesTarget.style.display = "none";
+  } else {
+    this.checkboxesTarget.style.display = "block";
+  }
+  }
+
+
   connect() {
     this.shape
+    this.soundData
     this.userCanDraw = false;
-    // Agregar un evento click a cada checkbox
-    // const checkboxes = this.checkboxesTarget.querySelectorAll('[data-shape]');
-    // checkboxes.forEach(checkbox => {
-    //   checkbox.addEventListener('click', this.handleCheckboxClick.bind(this));
+    // this.audioContext = new (window.AudioContext || window.webkitAudioContext)();
+    // navigator.mediaDevices.getUserMedia({ audio: true }).then(stream => {
+    //   this.microphoneInput = this.audioContext.createMediaStreamSource(stream);
     // });
+
   }
+
+
+  requestMicrophoneAccess() {
+    let audioRecorder;
+    let audioBitsPerSecond = 127;
+    let dataArray;
+
+    console.log('Requesting microphone access');
+    if (window.AudioContext || window.webkitAudioContext) {
+      this.audioContext = new (window.AudioContext || window.webkitAudioContext)();
+      navigator.mediaDevices.getUserMedia({ audio: true })
+
+      .then(stream => {
+          const options = {
+            audioBitsPerSecond: audioBitsPerSecond,
+          };
+          this.MediaRecorder = new MediaRecorder(stream, options);
+
+          // to check the manitud
+          const analyser = this.audioContext.createAnalyser();
+          analyser.fftSize = 256; // make gigger
+          const bufferLength = analyser.frequencyBinCount;
+          dataArray = new Uint8Array(bufferLength);
+            // console.log( analyser.fftSize)
+          // conect the audio
+        console.log(dataArray);
+
+          const microphoneSource = this.audioContext.createMediaStreamSource(stream);
+          microphoneSource.connect(analyser);
+          console.log(analyser)
+
+          this.MediaRecorder.ondataavailable = (event) => {
+            // to use
+            console.log(this.MediaRecorder)
+          };
+
+          this.MediaRecorder.onstop = () => {
+            console.log("Recording stopped.");
+          };
+
+          this.MediaRecorder.start();
+          alert("Microphone access granted successfully!");
+
+          // get nthe number
+          function getAmplitudeData() {
+            analyser.getByteFrequencyData(dataArray);
+            // console.log(dataArray); // this code we get the vipes
+            requestAnimationFrame(getAmplitudeData);
+
+          let averageAmplitude = dataArray.reduce((acc, value) => acc + value, 0) / dataArray.length;
+
+          console.log(averageAmplitude)
+
+
+          // // Calcula la media de los valores en el arreglo
+          // const averageAmplitude = dataArray.reduce((acc, value) => acc + value, 0) / dataArray.length;
+
+          // // Muestra la media en la consola
+          // console.log("Media de amplitud:", averageAmplitude);
+
+          // // Calcula el valor máximo en el arreglo
+          // const maxAmplitude = Math.max(...dataArray);
+
+          // // Muestra el valor máximo en la consola
+          // console.log("Valor máximo de amplitud:", maxAmplitude);
+
+          // requestAnimationFrame(getAmplitudeData);
+
+            // setTimeout(() => {
+            //   console.log(dataArray); // Aquí puedes trabajar con los datos de amplitud
+            // }, 4);
+
+            // requestAnimationFrame(getAmplitudeData);
+          }
+
+          // getting the time
+          this.soundData = getAmplitudeData();
+        })
+
+
+        .catch(error => {
+          console.error("Error accessing microphone:", error);
+        });
+
+    } else {
+      console.error("AudioContext is not supported in this browser.");
+    }
+  }
+
+
+  // getAmplitudeData() {
+  //   // Obtiene datos de amplitud en tiempo real
+  //   analyser.getByteFrequencyData(dataArray);
+
+  //   // Ahora, dataArray contiene valores que representan la amplitud del audio
+  //   // Puedes trabajar con estos valores según tus necesidades
+  //   console.log(dataArray);
+
+  //   // Llama a esta función de nuevo para obtener datos continuamente
+  //   requestAnimationFrame(getAmplitudeData);
+  // }
+
+
+
+  // requestMicrophoneAccess() {
+  //   let audioRecorder; // Variable global para el objeto MediaRecorder
+  //   let audioBitsPerSecond = 128000; // Valor inicial de audioBitsPerSecond
+  //   console.log('request microphone access')
+  //   if (window.AudioContext || window.webkitAudioContext) {
+  //     this.audioContext = new (window.AudioContext || window.webkitAudioContext)();
+  //     navigator.mediaDevices.getUserMedia({ audio: true })
+  //       .then(stream => {
+  //         const options = {
+  //           audioBitsPerSecond: audioBitsPerSecond,
+
+  //         };
+  //         this.MediaRecorder = new MediaRecorder(stream, options);
+  //         audioBitsPerSecond.getByteFrequencyData(dataArray);
+
+  //         this.MediaRecorder.start()
+  //         alert('"Microphone access granted successfully!"');
+  //        // console.log("audioBitsPerSecond:", options.audioBitsPerSecond);
+  //       })
+  //       .catch(error => {
+  //         console.error("Error accessing microphone:", error);
+  //       });
+  //   } else {
+  //     console.error("AudioContext is not supported in this browser.");
+  //    }
+
+  // }
+
+  // getAmplitudeData() {
+  //   // Obtiene datos de amplitud en tiempo real
+  //   analyser.getByteFrequencyData(dataArray);
+
+  //   // Ahora, dataArray contiene valores que representan la amplitud del audio
+  //   // Puedes trabajar con estos valores según tus necesidades
+  //   console.log(dataArray);
+
+  //   // Llama a esta función de nuevo para obtener datos continuamente
+  //   requestAnimationFrame(getAmplitudeData);
+  // }
+
+  stopRecording() {
+    console.log('stop recording')
+    this.MediaRecorder.stream.getTracks()[0].stop()
+    // this.MediaRecorder.stop()
+  }
+
+
+
 
   handleCheckboxClick(event) {
     console.log(event.target)
@@ -101,6 +250,7 @@ export default class extends Controller {
     mouse_x = parseInt(mouse_x, 10);
     mouse_y = parseInt(mouse_y, 10);
     if (this.userCanDraw) {
+
       const selectedColor = this.colorPickerTarget.value;
       if (this.shape === "triangle") {
         console.log("this is a triangle")
@@ -138,6 +288,9 @@ export default class extends Controller {
     }
   }
 }
+
+
+
 
 // write a save/update function below
 

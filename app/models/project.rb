@@ -2,6 +2,7 @@ class Project < ApplicationRecord
   belongs_to :user
   has_many :shapes
   has_one_attached :photo
+  has_one_attached :audio_file
   before_save :save_svg
 
   def save_svg
