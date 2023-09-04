@@ -92,26 +92,6 @@ export default class extends Controller {
 
           console.log(averageAmplitude)
 
-
-          // // Calcula la media de los valores en el arreglo
-          // const averageAmplitude = dataArray.reduce((acc, value) => acc + value, 0) / dataArray.length;
-
-          // // Muestra la media en la consola
-          // console.log("Media de amplitud:", averageAmplitude);
-
-          // // Calcula el valor máximo en el arreglo
-          // const maxAmplitude = Math.max(...dataArray);
-
-          // // Muestra el valor máximo en la consola
-          // console.log("Valor máximo de amplitud:", maxAmplitude);
-
-          // requestAnimationFrame(getAmplitudeData);
-
-            // setTimeout(() => {
-            //   console.log(dataArray); // Aquí puedes trabajar con los datos de amplitud
-            // }, 4);
-
-            // requestAnimationFrame(getAmplitudeData);
           }
 
           // getting the time
@@ -128,69 +108,11 @@ export default class extends Controller {
     }
   }
 
-
-  // getAmplitudeData() {
-  //   // Obtiene datos de amplitud en tiempo real
-  //   analyser.getByteFrequencyData(dataArray);
-
-  //   // Ahora, dataArray contiene valores que representan la amplitud del audio
-  //   // Puedes trabajar con estos valores según tus necesidades
-  //   console.log(dataArray);
-
-  //   // Llama a esta función de nuevo para obtener datos continuamente
-  //   requestAnimationFrame(getAmplitudeData);
-  // }
-
-
-
-  // requestMicrophoneAccess() {
-  //   let audioRecorder; // Variable global para el objeto MediaRecorder
-  //   let audioBitsPerSecond = 128000; // Valor inicial de audioBitsPerSecond
-  //   console.log('request microphone access')
-  //   if (window.AudioContext || window.webkitAudioContext) {
-  //     this.audioContext = new (window.AudioContext || window.webkitAudioContext)();
-  //     navigator.mediaDevices.getUserMedia({ audio: true })
-  //       .then(stream => {
-  //         const options = {
-  //           audioBitsPerSecond: audioBitsPerSecond,
-
-  //         };
-  //         this.MediaRecorder = new MediaRecorder(stream, options);
-  //         audioBitsPerSecond.getByteFrequencyData(dataArray);
-
-  //         this.MediaRecorder.start()
-  //         alert('"Microphone access granted successfully!"');
-  //        // console.log("audioBitsPerSecond:", options.audioBitsPerSecond);
-  //       })
-  //       .catch(error => {
-  //         console.error("Error accessing microphone:", error);
-  //       });
-  //   } else {
-  //     console.error("AudioContext is not supported in this browser.");
-  //    }
-
-  // }
-
-  // getAmplitudeData() {
-  //   // Obtiene datos de amplitud en tiempo real
-  //   analyser.getByteFrequencyData(dataArray);
-
-  //   // Ahora, dataArray contiene valores que representan la amplitud del audio
-  //   // Puedes trabajar con estos valores según tus necesidades
-  //   console.log(dataArray);
-
-  //   // Llama a esta función de nuevo para obtener datos continuamente
-  //   requestAnimationFrame(getAmplitudeData);
-  // }
-
   stopRecording() {
     console.log('stop recording')
     this.MediaRecorder.stream.getTracks()[0].stop()
     // this.MediaRecorder.stop()
   }
-
-
-
 
   handleCheckboxClick(event) {
     console.log(event.target)
@@ -223,17 +145,7 @@ export default class extends Controller {
     this.input2Target.value = mouse_y;
     console.log(`input2Target.value - ${mouse_y}`);
     console.log(`--------------------------------`);
-    // this.p5CanvasTarget.addEventListener('mouseup', (event1) => {
-    //   console.log('Mouse up!')
-    //   const newMouse_x = event1.clientX;
-    //   const newMouse_y = event1.clientY;
-    //   this.input3Target.value = newMouse_x;
-    //   console.log(`input3Target.value - ${newMouse_x}`);
-    //   this.input4Target.value = newMouse_y;
-    //   console.log(`input4Target.value - ${newMouse_y}`);
-    //   console.log(`--------------------------------`);
-    //   this.draw(mouse_x, mouse_y, newMouse_x, newMouse_y);
-    // })
+
   }
 
   mouseUp(event) {
@@ -246,19 +158,26 @@ export default class extends Controller {
     console.log(`input4Target.value - ${newMouse_y}`);
     console.log(`--------------------------------`);
     console.log(this.input1Target.value, this.input2Target.value, newMouse_x, newMouse_y);
-    this.draw(this.input1Target.value, this.input2Target.value, newMouse_x, newMouse_y);
+    this.draw(this.input1Target.value, this.input2Target.value, newMouse_x, newMouse_y,);
   }
 
-  draw(mouse_x, mouse_y, newMouse_x, newMouse_y) {
-    console.log('firing draw')
+  draw(mouse_x, mouse_y, newMouse_x, newMouse_y, color) {
+    console.log(this.colorPickerTarget.value)
+    console.log(typeof this.colorPickerTarget.value)
+    let selectedColor = ''
     let name = ''
-    const selectedColor = this.colorPickerTarget.value;
-    fill(selectedColor);
+    if (this.colorPickerTarget.value === null) {
+      selectedColor = "#000000"
+    } else {
+      selectedColor = this.colorPickerTarget.value;
+    }
+      fill(selectedColor);
     // mouse_x = parseInt(mouse_x, 10);
     // mouse_y = parseInt(mouse_y, 10);
     if (this.userCanDraw) {
       if (this.shape === "triangle") {
-        triangle(mouse_x, mouse_y - 50, newMouse_x + 100, newMouse_y, mouse_x + 200, mouse_y);
+        // triangle(mouse_x, mouse_y - 50, newMouse_x - 100, newMouse_y + 100, mouse_x + 200, mouse_y + 200);
+        triangle(100, 250, 250, 170, mouse_x, mouse_y);
         name = 'triangle'
         // trigger save/update method
         const shapeData =  JSON.stringify({
@@ -269,7 +188,7 @@ export default class extends Controller {
         this.saveShape(shapeData)
       }
       else if (this.shape === "circle") {
-        circle(mouse_x, mouse_y - 50, 55)
+        circle(mouse_x, mouse_y - 50, newMouse_x);
         name = 'circle'
         // trigger save/update method
         const shapeData =  JSON.stringify({
@@ -280,7 +199,7 @@ export default class extends Controller {
         this.saveShape(shapeData)
       }
       else if (this.shape === "square") {
-        square(mouse_x, mouse_y - 50, newMouse_x);
+        square(mouse_x, mouse_y - 50, newMouse_x - mouse_x);
         name = 'square'
         // trigger save/update method
         const shapeData =  JSON.stringify({

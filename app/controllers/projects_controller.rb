@@ -8,6 +8,8 @@ class ProjectsController < ApplicationController
     @projects = Project.all
     @project = Project.find(params[:id])
     @shape = Shape.new
+    @shapes = Shape.where(params[:project_id])
+    # raise
   end
 
   def create
@@ -16,9 +18,13 @@ class ProjectsController < ApplicationController
     if @project.save
       redirect_to project_path(@project), notice: 'Project was successfully created.'
     else
-      
+
     end
   end
+
+  # def get_shapes
+  #   @shapes = Shape.where(params[:project_id])
+  # end
 
   private
 
