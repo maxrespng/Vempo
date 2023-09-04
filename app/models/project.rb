@@ -2,8 +2,10 @@ class Project < ApplicationRecord
   belongs_to :user
   has_many :shapes
   has_one_attached :photo
-  has_one_attached :audio_file
+  has_one_attached :music_file
+
   before_save :save_svg
+  mount_uploader :music_file, MusicFileUploader
 
   def save_svg
     shapes_string = ""
@@ -12,4 +14,12 @@ class Project < ApplicationRecord
     end
     self.svg = "<svg viewBox=\"0 0 300 500\">#{shapes_string}</svg>"
   end
+
+    def process_music_file(file)
+      if file.present?
+        self.music_file = file
+        save!
+      end
+    end
+
 end

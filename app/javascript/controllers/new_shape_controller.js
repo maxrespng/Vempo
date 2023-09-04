@@ -189,45 +189,64 @@ export default class extends Controller {
   draw(mouse_x, mouse_y, newMouse_x, newMouse_y) {
     console.log('firing draw')
     let name = ''
+    const selectedColor = this.colorPickerTarget.value;
+    fill(selectedColor);
     // mouse_x = parseInt(mouse_x, 10);
     // mouse_y = parseInt(mouse_y, 10);
     if (this.userCanDraw) {
-
-      const selectedColor = this.colorPickerTarget.value;
       if (this.shape === "triangle") {
-        console.log("this is a triangle")
-        fill(selectedColor);
         triangle(mouse_x, mouse_y - 50, newMouse_x + 100, newMouse_y, mouse_x + 200, mouse_y);
-        // trigger save/update method
         name = 'triangle'
+        // trigger save/update method
+        const shapeData =  JSON.stringify({
+          name: name, start_x: mouse_x, start_y: mouse_y,
+          width: newMouse_x.toString(), height: newMouse_y.toString(),
+          project_id: this.projectIdTarget.value, color: selectedColor
+        });
+        this.saveShape(shapeData)
       }
       else if (this.shape === "circle") {
-        console.log("Circle");
-        fill(selectedColor);
         circle(mouse_x, mouse_y - 50, 55)
-        // trigger save/update method
         name = 'circle'
+        // trigger save/update method
+        const shapeData =  JSON.stringify({
+          name: name, start_x: mouse_x, start_y: mouse_y,
+          width: newMouse_x.toString(), height: newMouse_y.toString(),
+          project_id: this.projectIdTarget.value, color: selectedColor
+        });
+        this.saveShape(shapeData)
       }
       else if (this.shape === "square") {
-        fill(selectedColor);
         square(mouse_x, mouse_y - 50, newMouse_x);
-        // trigger save/update method
         name = 'square'
+        // trigger save/update method
+        const shapeData =  JSON.stringify({
+          name: name, start_x: mouse_x, start_y: mouse_y,
+          width: newMouse_x.toString(), height: newMouse_y.toString(),
+          project_id: this.projectIdTarget.value, color: selectedColor
+        });
+        this.saveShape(shapeData)
 
       }
       else if (this.shape === "oval") {
-        fill(selectedColor);
         ellipse(mouse_x, mouse_y - 50, newMouse_x - mouse_x);
-        // trigger save/update method
         name = 'oval'
+        // trigger save/update method
+        const shapeData =  JSON.stringify({
+          name: name, start_x: mouse_x, start_y: mouse_y,
+          width: newMouse_x.toString(), height: newMouse_y.toString(),
+          project_id: this.projectIdTarget.value, color: selectedColor
+        });
+        this.saveShape(shapeData)
       }
       else if (this.shape === "rectangle") {
-        fill(selectedColor);
         rect(mouse_x, mouse_y - 50, newMouse_x - mouse_x, newMouse_y - mouse_y);
-        // trigger save/update method
         name = 'rectangle'
+        // trigger save/update method
         const shapeData =  JSON.stringify({
-          name: name, start_x: mouse_x, start_y: mouse_y, width: newMouse_x.toString(), height: newMouse_y.toString(), project_id: this.projectIdTarget.value
+          name: name, start_x: mouse_x, start_y: mouse_y,
+          width: newMouse_x.toString(), height: newMouse_y.toString(),
+          project_id: this.projectIdTarget.value, color: selectedColor
         });
         this.saveShape(shapeData)
       }
