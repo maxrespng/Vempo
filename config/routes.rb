@@ -17,6 +17,4 @@ Rails.application.routes.draw do
       get 'music'
     end
   end
-  resources :shapes, only: [:index, :create]
-
 end
