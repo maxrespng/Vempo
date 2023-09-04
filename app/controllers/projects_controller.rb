@@ -7,6 +7,7 @@ class ProjectsController < ApplicationController
   def show
     @projects = Project.all
     @project = Project.find(params[:id])
+    @shape = Shape.new
   end
 
   def create
@@ -18,7 +19,6 @@ class ProjectsController < ApplicationController
     else
       render 'pages/home'
     end
-  end
 
   def project_params
     params.require(:project).permit(:name, :description, :has_mic, :music_file, :other_attributes)
@@ -27,19 +27,6 @@ class ProjectsController < ApplicationController
   def music
     @project = Project.find(params[:id])
     send_file @project.music_file.current_path
-  end
-
-
-  # def upload_music
-  #   #@project = Project.new(project_params)
-
-  #   if @project.save
-  #     @project.process_music_file(params[:project][:music_file])
-  #     redirect_to project_path
-  #   else
-  #     render :new
-  #   end
-  # end
-
+  end  
 
 end
