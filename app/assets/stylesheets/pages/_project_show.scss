@@ -24,16 +24,19 @@ audio {
 }
 
 
+
 .side-bar {
   background-color: $v-dark-gray;
   width: 150px;
   height: 300px;
   position: absolute;
   right: 0px;
-  top: 30%;
+  top: 50px;
   border-radius: 6px;
   padding: 15px;
+
 }
+
 
 .parent {
   // display: flex;

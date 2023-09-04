@@ -11,9 +11,18 @@ class ProjectsController < ApplicationController
   end
 
   def create
-    @project = Project.new
+    @project = Project.new(project_params)
     @project.user = current_user
-    @project.save!
-    redirect_to project_path(@project)
+    if @project.save
+      redirect_to project_path(@project), notice: 'Project was successfully created.'
+    else
+      
+    end
+  end
+
+  private
+
+  def project_params
+    params.require(:project).permit(:name, :audio_file)
   end
 end
