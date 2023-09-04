@@ -1,64 +1,38 @@
-      <!-- START Modal to disp MOVE TO A PARTIAL-->
-      <!-- Modal to disp -->
-          <div class="buttons">
-            <div class="modal fade" id="exampleModalToggle" aria-hidden="true" aria-
-      labelledby="exampleModalToggleLabel" tabindex="-1">
-        <div class="modal-dialog modal-dialog-centered">
-          <div class="modal-content align-items-center">
-            <div class="modal-header">
-              <h1 class="modal-title fs-5" id="exampleModalToggleLabel">Choose a sound
-      to play with:
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body d-flex flex-column w-30">
-
-
-            <h2>Start by creating a project with a music file</h2>
-
-            <%= simple_form_for @project do |f| %>
-
-              <%= f.input :name %>
-              <%= f.input :audio_file, as: :file %>
-
-              <div class"form-actions">
-              <%= f.submit  class: 'btn btn-primary mb-3 ' %>
-              </div>
-            <% end %>
-      <br>
-
-
-              <a href="/testpfive"  data-action="click->new-shape#requestMicrophoneAccess" class="btn" id="btn-mic" >
-              Use microphone <svg   xmlns="http://www.w3.org/2000/svg" width="35" height="26" fill="currentColor" class="bi bi-arrow-right-circle-fill" viewBox="0 0 16 16">
-        <path d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0zM4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H4.5z"/>
-
-      </svg></a>
-              <br>
-
-              <a href="/testpfive" class="btn" id="btn-upload" data-bs-target="#exampleModalToggle2" data-bs-
-      toggle="modal">Upload a sound
-      <svg xmlns="http://www.w3.org/2000/svg" width="35" height="26" fill="currentColor" class="bi bi-arrow-right-circle-fill" viewBox="0 0 16 16">
-        <path d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0zM4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H4.5z"/>
-      </svg></a>
-
-
-
-              <br>
-              <a class="btn" id="btn-choose" data-bs-target="#exampleModalToggle2" data-bs-
-      toggle="modal">Choose a sound from library
-              <svg xmlns="http://www.w3.org/2000/svg" width="35" height="26" fill="currentColor" class="bi bi-arrow-right-circle-fill" viewBox="0 0 16 16">
-        <path d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0zM4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H4.5z"/>
-      </svg>
-              </a>
-            </div>
-            <div class="modal-footer">
-            </div>
-          </div>
-        </div>
+<!-- START Modal to disp MOVE TO A PARTIAL-->
+ <!-- Modal to disp -->
+    <div class="buttons">
+      <div class="modal fade" id="exampleModalToggle" aria-hidden="true" aria-
+labelledby="exampleModalToggleLabel" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content align-items-center">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalToggleLabel">Choose a sound
+to play with:
+      <button type="button" type ="submit" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <div class="modal fade" id="exampleModalToggle2" aria-hidden="true" aria-
-      labelledby="exampleModalToggleLabel2" tabindex="-1">
-            </div>
-          </div>
-        </div>
+      <div class="modal-body d-flex flex-column w-30">
+
+    <%= link_to projects_path, data: {turbo_method: "POST"}, class: "btn", id: "btn-mic" do %>
+      Use microphone <svg xmlns="http://www.w3.org/2000/svg" width="35" height="26" fill="currentColor" class="bi bi-arrow-right-circle-fill" viewBox="0 0 16 16">
+        <path d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0zM4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H4.5z"/>
+        </svg>
+    <% end %>
+        <br>
+
+     <label class="btn" id="btn-upload" for="file-upload">
+      Upload a sound <svg xmlns="http://www.w3.org/2000/svg" width="35" height="26" fill="currentColor"
+            class="bi bi-arrow-right-circle-fill" viewBox="0 0 16 16">
+            <path
+                d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0zM4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H4.5z" />
+        </svg>
+        <input type="file" id="file-upload" style="display: none;" accept="audio/*">
+    </label>
+
+        <br>
+        <a class="btn" id="btn-choose" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal">Choose a sound from library
+        <svg xmlns="http://www.w3.org/2000/svg" width="35" height="26" fill="currentColor" class="bi bi-arrow-right-circle-fill" viewBox="0 0 16 16">
+      <path d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0zM4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H4.5z"/>
+      </svg>
+        </a>
       </div>
     <!-- END Modal to disp MOVE TO A PARTIAL-->

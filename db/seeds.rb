@@ -22,7 +22,7 @@ helder = User.create!(email: "helder@lewagon.com", password: "123456")
 pinar = User.create!(email: "pinar@lewagon.com", password: "123456")
 david = User.create!(email: "david@lewagon.com", password: "123456")
 
-puts "5 Users Created"
+url = "/Users/maximilianlana/code/maxrespng/Vempo/app/assets/images/test-template-project.png"
 
 project1 = Project.new(
   name: "Project 1",
@@ -31,7 +31,7 @@ project1 = Project.new(
   music_file: "Nightfall"
 )
 project1.user = max
-file = URI.open("https://ukclippingpath.com/wp-content/uploads/2021/10/Slight-Angling.jpg")
+file = URI.open(url)
 project1.photo.attach(io: file, filename: "nes.png", content_type: "image/png")
 project1.save!
 
@@ -42,7 +42,7 @@ project2 = Project.new(
   music_file: "She Wolf"
 )
 project2.user = bruno
-file = URI.open("https://svgshare.com/i/U7z.svg")
+file = URI.open(url)
 project2.photo.attach(io: file, filename: "computer.svg", content_type: "image/svg")
 project2.save!
 
@@ -53,8 +53,111 @@ project3 = Project.new(
   music_file: "Panic Attack"
 )
 project3.user = helder
-file = URI.open("/Users/pinarboztepe/code/maxrespng/Vempo/app/assets/images/cybercat.jpg")
+file = URI.open(url)
 project3.photo.attach(io: file, filename: "nes.png", content_type: "image/png")
 project3.save!
 
-puts "3 Projects Created"
+project4 = Project.new(
+  name: "Project 4",
+  description: "Progressive Metal",
+  has_mic: false,
+  music_file: "Panic Attack"
+)
+project4.user = helder
+file = URI.open(url)
+project4.photo.attach(io: file, filename: "nes.png", content_type: "image/png")
+project4.save!
+
+project5 = Project.new(
+  name: "Project 5",
+  description: "Progressive Metal",
+  has_mic: false,
+  music_file: "Panic Attack"
+)
+project5.user = helder
+file = URI.open(url)
+project5.photo.attach(io: file, filename: "nes.png", content_type: "image/png")
+project5.save!
+
+project6 = Project.new(
+  name: "Project 6",
+  description: "Progressive Metal",
+  has_mic: false,
+  music_file: "Panic Attack"
+)
+project6.user = helder
+file = URI.open(url)
+project6.photo.attach(io: file, filename: "nes.png", content_type: "image/png")
+project6.save!
+
+# DEMO_PROJECTS_BELOW:
+
+demo_project_1 = Project.new(
+  name: "Electronic",
+  description: "Power Metal",
+  has_mic: false,
+  music_file: "Nightfall"
+)
+project1.user = pinar
+file = URI.open("app/assets/images/Screenshot 2023-09-01 at 14.12.29.png")
+project1.photo.attach(io: file, filename: "template.png", content_type: "image/png")
+project1.save!
+
+demo_project_2 = Project.new(
+  name: "Rock",
+  description: "Power Metal",
+  has_mic: false,
+  music_file: "Nightfall"
+)
+project1.user = pinar
+file = URI.open("app/assets/images/Screenshot 2023-09-01 at 14.12.29.png")
+project1.photo.attach(io: file, filename: "template.png", content_type: "image/png")
+project1.save!
+
+demo_project_3 = Project.new(
+  name: "Techno",
+  description: "Power Metal",
+  has_mic: false,
+  music_file: "Nightfall"
+)
+project1.user = pinar
+file = URI.open("app/assets/images/Screenshot 2023-09-01 at 14.12.29.png")
+project1.photo.attach(io: file, filename: "template.png", content_type: "image/png")
+project1.save!
+
+demo_project_4 = Project.new(
+  name: "Bass",
+  description: "Power Metal",
+  has_mic: false,
+  music_file: "Nightfall"
+)
+project1.user = pinar
+file = URI.open("app/assets/images/Screenshot 2023-09-01 at 14.12.29.png")
+project1.photo.attach(io: file, filename: "template.png", content_type: "image/png")
+project1.save!
+
+demo_project_5 = Project.new(
+  name: "Classical",
+  description: "Power Metal",
+  has_mic: false,
+  music_file: "Nightfall"
+)
+project1.user = pinar
+file = URI.open("app/assets/images/Screenshot 2023-09-01 at 14.12.29.png")
+project1.photo.attach(io: file, filename: "template.png", content_type: "image/png")
+project1.save!
+
+demo_project_6 = Project.new(
+  name: "Reggae",
+  description: "Power Metal",
+  has_mic: false,
+  music_file: "Nightfall"
+)
+project1.user = pinar
+file = URI.open("app/assets/images/Screenshot 2023-09-01 at 14.12.29.png")
+project1.photo.attach(io: file, filename: "template.png", content_type: "image/png")
+project1.save!
+
+puts "#{User.count} Users Created"
+
+puts "#{Project.count} Projects Created"

@@ -1,4 +1,4 @@
-.navbar-lewagon {
+.navbar {
   justify-content: space-between;
   // background: white;
   background-color: rgba(0, 0, 0, 0);
@@ -13,10 +13,12 @@
 }
 
 .navbar {
-  z-index: 99;
   background-color: rgba(0, 0, 0, 0);
   height: 50px;
 }
+
+
 .modal-backdrop {
-    background-color: transparent;
+  background-color: transparent;
+
 }

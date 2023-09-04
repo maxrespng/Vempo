@@ -11,6 +11,8 @@ class PagesController < ApplicationController
 
   def testpfive
     @projects = Project.all
+    @project = Project.find(params[:id])
+    @shape = Shape.new
   end
 
   def testproject
