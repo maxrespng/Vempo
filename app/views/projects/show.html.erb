@@ -47,6 +47,23 @@
       </label>
     </div>
 
+          <% if @project.music_file == nil %>
+        <div class="bottom-microphone" >
+            <button
+            data-controller="microphone"
+                    data-action="click->new-shape#requestMicrophoneAccess">
+
+              <i class="fa-solid fa-microphone"></i>
+            </button>
+
+            <button data-action="click->new-shape#stopRecording">
+              <i class="fa-solid fa-microphone-slash"></i>
+            </button>
+           </div>
+
+          <% end %>
+
+
       <%# START OF FORM %>
 
     <div class="hidden-form">
@@ -62,15 +79,15 @@
 
     <%# END OF FORM %>
     <div>
-      <input type="color" data-new-shape-target="colorPicker">
+      <input class="colorPicker" type="color" data-new-shape-target="colorPicker">
     </div>
 
   </div>
-  <button  class="bottom-d" data-action="click->new-shape#toggle">
+      <button  class="bottom-d"   data-invert-button-target="button" data-action="click->new-shape#toggle" data-new-shape-target="bottomD">
 
-         <i class="fa-solid fa-arrow-right"></i>
-         </button>
-</div>
+            <i class="fa-solid fa-arrow-right" data-new-shape-target="arrow"></i>
+            </button>
+        </div>
 
 
 
