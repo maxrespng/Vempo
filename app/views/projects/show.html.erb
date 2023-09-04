@@ -1,7 +1,6 @@
-<div data-controller="new-shape" data-new-shape-url-value="<%= shapes_url %>">
+<div data-controller="new-shape load-shapes" data-new-shape-url-value="<%= shapes_url %>" data-load-shapes-shape-info-value="<%= @shapes.to_json() %>">
 
-
-  <div class="parent">
+  <div class="parent"  data-load-shapes-project-id-value="<%= @project.id %>">
     <div class="" id="myCanvas" data-action="mousedown->new-shape#mouseDown mouseup->new-shape#mouseUp" data-new-shape-target="p5Canvas">
   </div>
   <script> function setup() {

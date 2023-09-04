@@ -10,6 +10,6 @@ class ShapesController < ApplicationController
   private
 
   def shape_params
-    params.require(:shape).permit(:name, :start_x, :start_y, :width, :height, :project_id)
+    params.require(:shape).permit(:name, :start_x, :start_y, :width, :height, :project_id, :color)
   end
 end

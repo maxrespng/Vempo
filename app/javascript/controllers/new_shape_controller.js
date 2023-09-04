@@ -159,17 +159,7 @@ export default class extends Controller {
     this.input2Target.value = mouse_y;
     console.log(`input2Target.value - ${mouse_y}`);
     console.log(`--------------------------------`);
-    // this.p5CanvasTarget.addEventListener('mouseup', (event1) => {
-    //   console.log('Mouse up!')
-    //   const newMouse_x = event1.clientX;
-    //   const newMouse_y = event1.clientY;
-    //   this.input3Target.value = newMouse_x;
-    //   console.log(`input3Target.value - ${newMouse_x}`);
-    //   this.input4Target.value = newMouse_y;
-    //   console.log(`input4Target.value - ${newMouse_y}`);
-    //   console.log(`--------------------------------`);
-    //   this.draw(mouse_x, mouse_y, newMouse_x, newMouse_y);
-    // })
+
   }
 
   mouseUp(event) {
@@ -182,22 +172,28 @@ export default class extends Controller {
     console.log(`input4Target.value - ${newMouse_y}`);
     console.log(`--------------------------------`);
     console.log(this.input1Target.value, this.input2Target.value, newMouse_x, newMouse_y);
-    this.draw(this.input1Target.value, this.input2Target.value, newMouse_x, newMouse_y);
+    this.draw(this.input1Target.value, this.input2Target.value, newMouse_x, newMouse_y,);
   }
 
-
-
-  draw(mouse_x, mouse_y, newMouse_x, newMouse_y) {
-    console.log('firing draw')
-    let name = ''
-    const selectedColor = this.colorPickerTarget.value;
-    fill(selectedColor);
+  draw(mouseP_x, mouse_y, newMouse_x, newMouse_y, color) {
     mouse_x = parseInt(mouse_x, 10);
     mouse_y = parseInt(mouse_y, 10);
+    console.log(this.colorPickerTarget.value)
+    console.log(typeof this.colorPickerTarget.value)
+    let selectedColor = ''
+    let name = ''
+    if (this.colorPickerTarget.value === null) {
+      selectedColor = "#000000"
+    } else {
+      selectedColor = this.colorPickerTarget.value;
+    }
+      fill(selectedColor);
+    // mouse_x = parseInt(mouse_x, 10);
+    // mouse_y = parseInt(mouse_y, 10);
     if (this.userCanDraw) {
       if (this.shape === "triangle") {
+        // triangle(mouse_x, mouse_y - 50, newMouse_x - 100, newMouse_y + 100, mouse_x + 200, mouse_y + 200);
         triangle(mouse_x, mouse_y - 50, newMouse_x + 100, newMouse_y, mouse_x + 200, mouse_y);
-        fill(selectedColor);
         name = 'triangle'
 
         // trigger save/update method
@@ -209,9 +205,9 @@ export default class extends Controller {
         this.saveShape(shapeData)
       }
 
-      
+
       else if (this.shape === "circle") {
-        circle(mouse_x, mouse_y - 50, 55)
+        circle(mouse_x, mouse_y - 50, newMouse_x);
         name = 'circle'
         // trigger save/update method
         const shapeData =  JSON.stringify({
@@ -222,7 +218,7 @@ export default class extends Controller {
         this.saveShape(shapeData)
       }
       else if (this.shape === "square") {
-        square(mouse_x, mouse_y - 50, newMouse_x);
+        square(mouse_x, mouse_y - 50, newMouse_x - mouse_x);
         name = 'square'
         // trigger save/update method
         const shapeData =  JSON.stringify({

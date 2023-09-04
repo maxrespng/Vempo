@@ -15,11 +15,11 @@ class Project < ApplicationRecord
     self.svg = "<svg viewBox=\"0 0 300 500\">#{shapes_string}</svg>"
   end
 
-    def process_music_file(file)
-      if file.present?
-        self.music_file = file
-        save!
-      end
+  def process_music_file(file)
+    if file.present?
+      self.music_file = file
+      save!
     end
+  end
 
 end
