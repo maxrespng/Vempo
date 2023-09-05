@@ -1,4 +1,3 @@
-
 import { Controller } from "@hotwired/stimulus"
 // export { userCanDraw };
 
@@ -181,7 +180,7 @@ export default class extends Controller {
   }
 
   draw(mouse_x, mouse_y, newMouse_x, newMouse_y) {
-    console.log(this.projectIdTarget.value);
+    console.log(typeof this.projectIdTarget.value);
     mouse_x = parseInt(mouse_x, 10);
     mouse_y = parseInt(mouse_y, 10);
     console.log(this.colorPickerTarget.value)

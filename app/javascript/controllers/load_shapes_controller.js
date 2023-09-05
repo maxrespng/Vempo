@@ -25,6 +25,8 @@ export default class extends Controller {
     }
 
   draw(name, start_x, start_y, width, height, color) {
+    console.log(typeof color);
+    console.log(color);
     fill(color);
 
     if (name === "triangle") {
@@ -33,7 +35,7 @@ export default class extends Controller {
 
 
     if (name === "circle") {
-      
+
       circle(start_x, start_y - 50, width - start_x);
 
     }

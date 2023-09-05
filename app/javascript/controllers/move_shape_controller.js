@@ -6,13 +6,14 @@ export default class extends Controller {
     "element", "arrow", 'bottomD', "microphone", "animation"
   ];
   static values = {
-    canvas: Object
+    // canvas: Object,
+    // project: Object
   }
 
   connect() {
     console.log("MOVE-SHAPE CONTROLLER CONNECTED!")
-    console.log(this.canvasValue);
-    console.log(mic);
+    // console.log(this.canvasValue);
+    // console.log(this.projectValue);
   }
 
   requestMicrophoneAccess() {
@@ -38,7 +39,7 @@ export default class extends Controller {
           dataArray = new Uint8Array(bufferLength);
             // console.log( analyser.fftSize)
           // conect the audio
-        console.log(dataArray);
+          console.log(dataArray);
 
           const microphoneSource = this.audioContext.createMediaStreamSource(stream);
           microphoneSource.connect(analyser);
@@ -73,12 +74,9 @@ export default class extends Controller {
           }
           // getting the time
           this.soundData = getAmplitudeData();
-
-
         })
 
-
-        .catch(error => {
+      .catch(error => {
           console.error("Error accessing microphone:", error);
         });
 
@@ -93,4 +91,16 @@ export default class extends Controller {
     // this.MediaRecorder.stop()
   }
 
-      }
+  // insertSetup() {
+  //   const newScript = document.createElement("script");
+  //   newScript.innerHTML = `setup() {
+  //     const canvas = createCanvas(displayWidth,displayHeight);
+  //     let mic = new p5.AudioIn();
+  //     mic.start();
+  //     canvas.parent('myCanvas')
+  //     console.log('canvas');
+  //   }`
+
+  //   thisElement.appendChild(newScript);
+  // }
+}

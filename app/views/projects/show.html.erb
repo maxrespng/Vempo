@@ -1,32 +1,20 @@
 
-
-<div data-controller="new-shape load-shapes delete-shape" data-new-shape-url-value="<%= shapes_url %>" data-load-shapes-shape-info-value="<%= @shapes.to_json() %>" data-delete-shape-all-shapes-value="<%= @shapes.to_json() %>">
+<div data-controller="new-shape load-shapes delete-shape move-shape" data-new-shape-url-value="<%= shapes_url %>" data-load-shapes-shape-info-value="<%= @shapes.to_json() %>" data-delete-shape-all-shapes-value="<%= @shapes.to_json() %>">
 
 
   <div class="parent"  data-load-shapes-project-id-value="<%= @project.id %>">
     <div class="" id="myCanvas" data-action="mousedown->new-shape#mouseDown mouseup->new-shape#mouseUp click->delete-shape#deleteShape" data-new-shape-target="p5Canvas" data-delete-shape-target="canvas">
   </div>
 
-    <% if @project.music_file.attached? %>
   <script>
-  function setup() {
-    const canvas = createCanvas(displayWidth,displayHeight);
-
-    canvas.parent('myCanvas')
-    console.log('canvas');
-  }
+    function setup() {
+      const canvas = createCanvas(displayWidth,displayHeight);
+      // let mic = new p5.AudioIn();
+      // mic.start();
+      canvas.parent('myCanvas')
+      console.log('canvas');
+    }
   </script>
-  <% else %>
-  <script>
-  function setup() {
-    const canvas = createCanvas(displayWidth,displayHeight);
-    let mic = new p5.audioIn();
-    mic.start();
-    canvas.parent('myCanvas')
-    console.log('canvas');
-  }
-  </script>
-  <% end %>
 
   <div class="side-bar child" data-new-shape-target="checkboxes">
     <div class="form-check" data-new-shape-target="checkbox" data-action="click->new-shape#handleCheckboxClick" data-shape="triangle">
@@ -74,7 +62,7 @@
             </button>
           </div>
         <% end %>
-
+<%# <%= raise %>
 
       <button data-controller="last" data-action="click->delete-shape#canDelete click->new-shape#cannotDraw">Delete</button>
 
@@ -111,7 +99,7 @@
 
     <%# START OF ANIMATION SELECTOR FORM %>
     <div class="hidden-form">
-      <%= simple_form_for((@shape), data: { new_shape_target: "animation"}) do |f| %>
+      <%= simple_form_for((@shape), data: { move_shape_target: "animation"}) do |f| %>
       <%= f.input :start_x, input_html: { data: {move_shape_target: "transform"} } %>
       <%= f.input :start_y, input_html: { data: {move_shape_target: "rotate"} } %>
       <%= f.input :start_y, input_html: { data: {move_shape_target: "rotate"} } %>
@@ -132,85 +120,10 @@
       <% end %>
     </div>
 
-    <% if @project.music_file.attached? %>
-      <%= cl_video_tag @project.music_file.key,:source_types => [:mp3],:controls => true,:poster => false, class: "track-play play-track", id: "play-track"%>
-    <%end%>
+    <%# <% if @project.music_file.attached? %>
+      <%# <%= cl_video_tag @project.music_file.key,:source_types => [:mp3],:controls => true,:poster => false, class: "track-play play-track", id: "play-track"%> %>
+    <%# <%end%>
 
   </div>
 
 </div>
-
-
-
-
-<%# <div id="content">
-  <input type="file" id="thefile" accept="audio/*" />
-  <canvas id="canvas"></canvas>
-  <audio id="audio" controls></audio>
-</div>
-<script>
-window.onload = function() {
-
-  var file = document.getElementById("thefile");
-  var audio = document.getElementById("audio");
-
-  file.onchange = function() {
-    var files = this.files;
-    audio.src = URL.createObjectURL(files[0]);
-    audio.load();
-    audio.play();
-    var context = new AudioContext();
-    var src = context.createMediaElementSource(audio);
-    var analyser = context.createAnalyser();
-
-    var canvas = document.getElementById("canvas");
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-    var ctx = canvas.getContext("2d");
-
-    src.connect(analyser);
-    analyser.connect(context.destination);
-
-    analyser.fftSize = 256;
-
-    var bufferLength = analyser.frequencyBinCount;
-    console.log(bufferLength);
-
-    var dataArray = new Uint8Array(bufferLength);
-
-    var WIDTH = canvas.width;
-    var HEIGHT = canvas.height;
-
-    var barWidth = (WIDTH / bufferLength) * 2.5;
-    var barHeight;
-    var x = 0;
-
-    function renderFrame() {
-      requestAnimationFrame(renderFrame);
-
-      x = 0;
-
-      analyser.getByteFrequencyData(dataArray);
-
-      ctx.fillStyle = "#000";
-      ctx.fillRect(0, 0, WIDTH, HEIGHT);
-
-      for (var i = 0; i < bufferLength; i++) {
-        barHeight = dataArray[i];
-
-        var r = barHeight + (25 * (i/bufferLength));
-        var g = 250 * (i/bufferLength);
-        var b = 50;
-
-        ctx.fillStyle = "rgb(" + r + "," + g + "," + b + ")";
-        ctx.fillRect(x, HEIGHT - barHeight, barWidth, barHeight);
-
-        x += barWidth + 1;
-      }
-    }
-
-    audio.play();
-    renderFrame();
-  };
-};
-</script> %>
