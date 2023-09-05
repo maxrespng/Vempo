@@ -1,13 +1,13 @@
 
 import { Controller } from "@hotwired/stimulus"
+// export { userCanDraw };
 
 export default class extends Controller {
 
-
-  static targets = ["p5Canvas", "checkboxes", "checkbox", "input1", "input2", "input3", "input4", "colorPicker",  "container", "projectId", "formElement","bottom","close","element","arrow", 'bottomD',"microphone"]
+  static targets = ["p5Canvas", "checkboxes", "checkbox", "input1", "input2", "input3", "input4", "colorPicker",  "container", "projectId", "formElement","bottom","close","element","arrow", 'bottomD',"microphone","undoLastDrawing"]
   static values = {
     input: String,
-    url: String
+    url: String,
   }
 
 
@@ -58,6 +58,10 @@ export default class extends Controller {
 
   }
 
+  cannotDraw(event) {
+    this.userCanDraw = false;
+  }
+
 
   requestMicrophoneAccess() {
     let audioRecorder;
@@ -103,13 +107,14 @@ export default class extends Controller {
           // get nthe number
           function getAmplitudeData() {
             analyser.getByteFrequencyData(dataArray);
-            // console.log(dataArray); // this code we get the vipes
-            requestAnimationFrame(getAmplitudeData);
-
-          let averageAmplitude = dataArray.reduce((acc, value) => acc + value, 0) / dataArray.length;
-          console.log(averageAmplitude)
+            let averageAmplitude = dataArray.reduce((acc, value) => acc + value, 0) / dataArray.length;
+            averageAmplitude = averageAmplitude.toFixed(2);
+            console.log(averageAmplitude);
+            setTimeout(getAmplitudeData, 300); // here is to show the numer slowly
+            let mappedValue  = map(averageAmplitude, 0, 255, 0, 200)
+            console.log("averageAmplitude:", averageAmplitude);
+            console.log("mappedValue:", mappedValue);
           }
-
           // getting the time
           this.soundData = getAmplitudeData();
         })
@@ -175,7 +180,10 @@ export default class extends Controller {
     this.draw(this.input1Target.value, this.input2Target.value, newMouse_x, newMouse_y,);
   }
 
-  draw(mouse_x, mouse_y, newMouse_x, newMouse_y, color) {
+  draw(mouse_x, mouse_y, newMouse_x, newMouse_y) {
+    console.log(this.projectIdTarget.value);
+    mouse_x = parseInt(mouse_x, 10);
+    mouse_y = parseInt(mouse_y, 10);
     console.log(this.colorPickerTarget.value)
     console.log(typeof this.colorPickerTarget.value)
     let selectedColor = ''
@@ -191,8 +199,18 @@ export default class extends Controller {
     if (this.userCanDraw) {
       if (this.shape === "triangle") {
         // triangle(mouse_x, mouse_y - 50, newMouse_x - 100, newMouse_y + 100, mouse_x + 200, mouse_y + 200);
-        triangle(100, 250, 250, 170, mouse_x, mouse_y);
-        name = 'triangle'
+
+        triangle(
+          mouse_x ,
+           mouse_y - 50,
+            newMouse_x + 100,
+             newMouse_y,
+             mouse_x + 200,
+              mouse_y,
+              );
+
+              name = 'triangle'
+
         // trigger save/update method
         const shapeData =  JSON.stringify({
           name: name, start_x: mouse_x, start_y: mouse_y,
@@ -201,8 +219,10 @@ export default class extends Controller {
         });
         this.saveShape(shapeData)
       }
+
+
       else if (this.shape === "circle") {
-        circle(mouse_x, mouse_y - 50, newMouse_x);
+        circle(mouse_x, mouse_y - 50, newMouse_x - mouse_x);
         name = 'circle'
         // trigger save/update method
         const shapeData =  JSON.stringify({
@@ -218,14 +238,14 @@ export default class extends Controller {
         // trigger save/update method
         const shapeData =  JSON.stringify({
           name: name, start_x: mouse_x, start_y: mouse_y,
-          width: newMouse_x.toString(), height: newMouse_y.toString(),
+          width: newMouse_x.toString(),
           project_id: this.projectIdTarget.value, color: selectedColor
         });
         this.saveShape(shapeData)
 
       }
       else if (this.shape === "oval") {
-        ellipse(mouse_x, mouse_y - 50, newMouse_x - mouse_x);
+        ellipse(mouse_x, mouse_y - 50, newMouse_x - mouse_x, newMouse_y - mouse_y);
         name = 'oval'
         // trigger save/update method
         const shapeData =  JSON.stringify({

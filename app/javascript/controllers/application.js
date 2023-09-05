@@ -7,3 +7,8 @@ application.debug = false
 window.Stimulus   = application
 
 export { application }
+
+// Screenshot Controller
+
+import ScreenshotController from "./screenshot_controller"
+Stimulus.register("screenshot", ScreenshotController)
