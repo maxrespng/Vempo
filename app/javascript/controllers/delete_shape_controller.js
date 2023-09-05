@@ -3,7 +3,7 @@ import { Controller } from "@hotwired/stimulus"
 // Connects to data-controller="delete-shape"
 export default class extends Controller {
 
-  static targets = ["p5Canvas"]
+  static targets = ["canvas"]
   static values = {
     allShapes: Array
   }
