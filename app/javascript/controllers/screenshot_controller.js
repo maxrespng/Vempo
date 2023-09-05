@@ -36,6 +36,7 @@ export default class extends Controller {
     this.photoTarget.value = imageString
 
     console.log(this.photoTarget.value)
+    console.log(this.formTarget)
 
     fetch(this.formTarget.action, {
       method: "PATCH", // Could be dynamic with Stimulus values
@@ -44,11 +45,12 @@ export default class extends Controller {
     })
     .then(response => response.json())
     .then((data) => {
-      // if (data.inserted_item) {
-        //   // beforeend could also be dynamic with Stimulus values
-        //   this.containerTarget.insertAdjacentHTML("beforeend", data.inserted_item)
-        // }
-        alert("Screenshot taken!")
+      if (data.inserted_item) {
+          // beforeend could also be dynamic with Stimulus values
+
+          // this.containerTarget.insertAdjacentHTML("beforeend", data.inserted_item)
+        }
+        alert("Screenshot Taken")
       })
 
   }
