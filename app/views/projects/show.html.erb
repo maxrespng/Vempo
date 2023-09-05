@@ -47,8 +47,7 @@
       </label>
     </div>
 
-          <%# <% if @project.music_file == nil %>
-        <div class="bottom-microphone" >
+          <div class="bottom-microphone" >
             <button
             data-controller="microphone"
                     data-action="click->new-shape#requestMicrophoneAccess">
@@ -62,7 +61,6 @@
         </div>
 
           <%# <% end %>
-
 
       <button data-controller="last" data-action="click->delete-shape#undoLastDrawing">Delete</button>
 
