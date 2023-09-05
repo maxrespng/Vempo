@@ -97,14 +97,14 @@
   top: 100px;
   border: 1px solid #000000;
   border-radius: 42.67px;
+  .bi {
+    border-radius: 50px;
+    fill: rgba(159, 232, 0, 1);
+    color:white;
+    cursor: pointer;
+  }
 }
 
-.bi {
-  border-radius: 50px;
-  fill: rgba(159, 232, 0, 1);
-  color:white;
-  cursor: pointer;
-}
 
 #btn-choose {
   box-sizing: border-box;
