@@ -186,3 +186,34 @@
 #exampleModalToggle {
   background-color: rgba(0,0,0,0.7);
 }
+
+.container-btn-upload {
+  text-align: center;
+}
+
+.button-cont {
+  width: 108%;
+  margin-left: -4%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  > label, .form-label {
+    border: 1px solid black;
+    height: 42px;
+    padding: 0px 10px;
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+  }
+  .project_music_file, .form-label {
+    margin: 0px !important;
+  }
+  .form-label {
+    cursor: pointer;
+  }
+}
+
+.bi {
+  color:rgba(159, 232, 0, 1);
+  cursor: pointer;
+}
