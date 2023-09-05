@@ -31,7 +31,7 @@ export default class extends Controller {
       triangle(start_x, start_y - 50, width + 100, height, start_x + 200, start_y);
     }
     if (name === "circle") {
-      circle(start_x, start_y - 50, width);
+      circle(start_x, start_y - 50, width - start_x);
     }
     if (name === "square") {
       square(start_x, start_y - 50, width - start_x);
