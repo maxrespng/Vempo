@@ -10,7 +10,7 @@
       console.log('canvas');
   }
   </script>
-    
+
   <div class="side-bar child" data-new-shape-target="checkboxes">
     <div class="form-check" data-new-shape-target="checkbox" data-action="click->new-shape#handleCheckboxClick" data-shape="triangle">
       <input class="form-check-input" type="checkbox" value="" id="triangle" >
@@ -91,6 +91,10 @@
         <%# <%= f.submit, input_html: { data: { screenshot_target: "submit" }, style: "display:none;" } %>
       <% end %>
     </div>
+
+    <% if @project.music_file.attached? %>
+      <%= cl_video_tag @project.music_file.key,:source_types => [:mp3],:controls => true,:poster => false, class: "track-play play-track", id: "play-track"%>
+    <%end%>
 
   </div>
 
