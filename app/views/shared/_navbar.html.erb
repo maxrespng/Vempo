@@ -33,9 +33,14 @@
 <!------------------START THE CARD------------------------------------------->
                         <% @projects.each do |project| %>
                           <div class="project-card">
-                            <div class="image-placeholder" style="background-image:url('<%= cl_image_path project.photo.key if project.photo.attached? %>');">
-                            </div>
-                            <div class="image" style="background-image"></div>
+                            <% if project.screenshot %>
+                              <div class="image-placeholder" style="background-image:url('<%= image_path project.screenshot %>');">
+                              </div>
+                            <% else %>
+                              <div class="image-placeholder" style="background-image:url('<%= cl_image_path project.photo.key if project.photo.attached? %>');">
+                              </div>
+                            <% end %>
+
                             <div class="title">
                               <div class="left-box">
                                 <h5><strong><%= project.name %></strong></h5>

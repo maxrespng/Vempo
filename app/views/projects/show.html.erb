@@ -46,8 +46,7 @@
         Rectangle
       </label>
     </div>
-    
-          <%# <% if @project.music_file == nil %> %>
+
         <div class="bottom-microphone" >
             <button
             data-controller="microphone"
@@ -61,7 +60,6 @@
             </button>
            </div>
 
-          <%# <% end %> %>
 
 
       <button   data-controller="last"
@@ -83,11 +81,11 @@
       <input type="color" data-new-shape-target="colorPicker">
     </div>
 
-    <div class="screenshot" data-controller="screenshot">
-    <button class="btn btn-primary btn-lg" data-action="click->screenshot#screenshot">Screenshot</button>
-      <%= simple_form_for(@project, data: { screenshot_target: "submit" }) do |f| %>
-      <%= f.input :svg, input_html: { data: { screenshot_target: "photo" }, style: "display:none;"   } %>
-        <%# <%= f.submit, input_html: { data: { screenshot_target: "submit" }, style: "display:none;" } %>
+    <div class="screenshot" data-controller="screenshot" data-screenshot-target="container">
+    <%# <button class="btn btn-primary btn-lg" data-action="click->screenshot#screenshot">Screenshot</button> %>
+      <%= simple_form_for(@project, data: { screenshot_target: "form", action: "submit->screenshot#screenshot" }) do |f| %>
+        <%= f.input :screenshot, label: false, input_html: { data: { screenshot_target: "photo" }, style: "display:none;"   } %>
+        <%= f.submit "Screenshot", class: "btn btn-primary btn-lg", data: { screenshot_target: "input" }  %>
       <% end %>
     </div>
 
