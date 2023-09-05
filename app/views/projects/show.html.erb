@@ -107,13 +107,10 @@
         <%= f.submit "Screenshot", class: "btn btn-primary btn-lg", data: { screenshot_target: "input" }  %>
       <% end %>
     </div>
-
     <% if @project.music_file.attached? %>
       <%= cl_video_tag @project.music_file.key,:source_types => [:mp3],:controls => true,:poster => false, class: "track-play play-track", id: "play-track"%>
     <%end%>
-
-  </div>
-
+    </div>
 </div>
 
 

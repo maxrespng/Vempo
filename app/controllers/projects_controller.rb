@@ -27,7 +27,7 @@ class ProjectsController < ApplicationController
 
   def update
     @project = Project.find(params[:id])
-    @project.update!(project_params)
+    @project.update(project_params)
     # @project.update(svg: params[:project][:svg])
 
     respond_to do |format|
@@ -58,10 +58,10 @@ class ProjectsController < ApplicationController
   #   send_file @project.music_file.current_path
   # end
 
-  def update
-    @project = Project.find(params[:id])
-    @project.update(project_params)
-    redirect_to project_path(@project)
-  end
+  # def update
+  #   @project = Project.find(params[:id])
+  #   @project.update(project_params)
+  #   redirect_to project_path(@project)
+  # end
 
 end
