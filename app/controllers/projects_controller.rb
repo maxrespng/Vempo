@@ -25,10 +25,32 @@ class ProjectsController < ApplicationController
     end
   end
 
+  def update
+    @project = Project.find(params[:id])
+    @project.update(project_params)
+    # @project.update(svg: params[:project][:svg])
+
+    respond_to do |format|
+      format.html { redirect_to project_path(@project) }
+      format.json # Follows the classic Rails flow and look for a create.json view
+    end
+  end
+
+  def destroy
+    @project = Project.find(params[:id])
+
+    if @project.destroy
+      flash[:success] = "Project deleted successfully."
+    else
+      flash[:error] = "Failed to delete project."
+    end
+    redirect_to root_path
+  end
+
   private
 
   def project_params
-    params.require(:project).permit(:name, :description, :has_mic, :music_file, :svg)
+    params.require(:project).permit(:name, :description, :has_mic, :music_file, :svg, :other_attributes, :screenshot)
   end
 
   # def music
@@ -36,9 +58,10 @@ class ProjectsController < ApplicationController
   #   send_file @project.music_file.current_path
   # end
 
-  def update
-    @project = Project.find(params[:id])
-    @project.update(project_params)
-    redirect_to project_path(@project)
-  end
+  # def update
+  #   @project = Project.find(params[:id])
+  #   @project.update(project_params)
+  #   redirect_to project_path(@project)
+  # end
+
 end

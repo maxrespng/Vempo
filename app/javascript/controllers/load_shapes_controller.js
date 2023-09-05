@@ -15,7 +15,7 @@ export default class extends Controller {
     // 3.2 repeat above for other shapes...
     console.log("load-shapes controller connected!");
     const shapeData = this.shapeInfoValue;
-    console.log(shapeData);
+    // console.log(shapeData);
 
     if (shapeData) {
     shapeData.forEach((shape) => {
@@ -30,8 +30,10 @@ export default class extends Controller {
     if (name === "triangle") {
       triangle(start_x, start_y - 50, width + 100, height, start_x + 200, start_y);
     }
+
     if (name === "circle") {
-      circle(start_x, start_y - 50, width);
+      circle(start_x, start_y - 50, width - start_x);
+
     }
     if (name === "square") {
       square(start_x, start_y - 50, width - start_x);
@@ -42,5 +44,10 @@ export default class extends Controller {
     if (name === "rectangle") {
       rect(start_x, start_y - 50, width - start_x, height - start_y);
     }
+
+
   }
+
+
+
 }
