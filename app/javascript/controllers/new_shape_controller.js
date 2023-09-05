@@ -1,8 +1,8 @@
 
 import { Controller } from "@hotwired/stimulus"
+// export { userCanDraw };
 
 export default class extends Controller {
-
 
   static targets = ["p5Canvas", "checkboxes", "checkbox", "input1", "input2", "input3", "input4", "colorPicker",  "container", "projectId", "formElement","bottom","close","element","arrow", 'bottomD',"microphone","undoLastDrawing"]
   static values = {
@@ -56,6 +56,10 @@ export default class extends Controller {
     //   this.microphoneInput = this.audioContext.createMediaStreamSource(stream);
     // });
 
+  }
+
+  cannotDraw(event) {
+    this.userCanDraw = false;
   }
 
 
@@ -224,7 +228,7 @@ export default class extends Controller {
         // trigger save/update method
         const shapeData =  JSON.stringify({
           name: name, start_x: mouse_x, start_y: mouse_y,
-          width: newMouse_x.toString(), height: newMouse_y.toString(),
+          width: newMouse_x.toString(),
           project_id: this.projectIdTarget.value, color: selectedColor
         });
         this.saveShape(shapeData)

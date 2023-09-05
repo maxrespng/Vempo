@@ -1,7 +1,7 @@
 <div data-controller="new-shape load-shapes delete-shape" data-new-shape-url-value="<%= shapes_url %>" data-load-shapes-shape-info-value="<%= @shapes.to_json() %>" data-delete-shape-all-shapes-value="<%= @shapes.to_json() %>">
 
   <div class="parent"  data-load-shapes-project-id-value="<%= @project.id %>">
-    <div class="" id="myCanvas" data-action="mousedown->new-shape#mouseDown mouseup->new-shape#mouseUp" data-new-shape-target="p5Canvas" data-delete-shape-target="canvas">
+    <div class="" id="myCanvas" data-action="mousedown->new-shape#mouseDown mouseup->new-shape#mouseUp click->delete-shape#deleteShape" data-new-shape-target="p5Canvas" data-delete-shape-target="canvas">
   </div>
   <script> function setup() {
     const canvas = createCanvas(displayWidth,displayHeight);
@@ -10,7 +10,7 @@
       console.log('canvas');
   }
   </script>
-    
+
   <div class="side-bar child" data-new-shape-target="checkboxes">
     <div class="form-check" data-new-shape-target="checkbox" data-action="click->new-shape#handleCheckboxClick" data-shape="triangle">
       <input class="form-check-input" type="checkbox" value="" id="triangle" >
@@ -64,7 +64,7 @@
           <%# <% end %>
 
 
-      <button data-controller="last" data-action="click->delete-shape#undoLastDrawing">Delete</button>
+      <button data-controller="last" data-action="click->delete-shape#canDelete click->new-shape#cannotDraw">Delete</button>
 
       <%# START OF FORM %>
 

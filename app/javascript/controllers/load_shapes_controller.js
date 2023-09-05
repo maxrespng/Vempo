@@ -15,7 +15,7 @@ export default class extends Controller {
     // 3.2 repeat above for other shapes...
     console.log("load-shapes controller connected!");
     const shapeData = this.shapeInfoValue;
-    console.log(shapeData);
+    // console.log(shapeData);
 
     if (shapeData) {
     shapeData.forEach((shape) => {
