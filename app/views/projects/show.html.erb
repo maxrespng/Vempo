@@ -96,8 +96,7 @@
             </div>
             </div>
 
-      <%# START OF FORM %>
-
+      <%# START OF SHAPE SELECTOR FORM %>
     <div class="hidden-form">
       <%= simple_form_for((@shape), data: { new_shape_target: "formElement"}) do |f| %>
       <%= f.input :start_x, input_html: { data: {new_shape_target: "input1"} } %>
@@ -108,8 +107,19 @@
       <div><%= f.submit %></div>
       <% end %>
     </div>
+    <%# END OF SHAPE SELECTOR FORM %>
 
-    <%# END OF FORM %>
+    <%# START OF ANIMATION SELECTOR FORM %>
+    <div class="hidden-form">
+      <%= simple_form_for((@shape), data: { new_shape_target: "animation"}) do |f| %>
+      <%= f.input :start_x, input_html: { data: {move_shape_target: "transform"} } %>
+      <%= f.input :start_y, input_html: { data: {move_shape_target: "rotate"} } %>
+      <%= f.input :start_y, input_html: { data: {move_shape_target: "rotate"} } %>
+      <%= f.input :project_id, input_html: { data: {move_shape_target: "projectId"}, value: @project.id } %>
+      <div><%= f.submit %></div>
+      <% end %>
+    </div>
+    <%# END OF ANIMATION SELECTOR FORM %>
     <div>
       <input type="color" data-new-shape-target="colorPicker">
     </div>
