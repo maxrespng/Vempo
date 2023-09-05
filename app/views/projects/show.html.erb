@@ -1,4 +1,4 @@
-<div data-controller="new-shape load-shapes delete-shape" data-new-shape-url-value="<%= shapes_url %>" data-load-shapes-shape-info-value="<%= @shapes.to_json() %>">
+<div data-controller="new-shape load-shapes delete-shape  move_shape" data-new-shape-url-value="<%= shapes_url %>" data-load-shapes-shape-info-value="<%= @shapes.to_json() %>">
 
   <div class="parent"  data-load-shapes-project-id-value="<%= @project.id %>">
     <div class="" id="myCanvas" data-action="mousedown->new-shape#mouseDown mouseup->new-shape#mouseUp" data-new-shape-target="p5Canvas">
@@ -49,7 +49,7 @@
           <%# <% if @project.music_file == nil %> %>
         <div class="bottom-microphone" >
             <button
-            data-controller="microphone"
+                       data-controller="microphone"
                     data-action="click->new-shape#requestMicrophoneAccess">
 
               <i class="fa-solid fa-microphone"></i>
@@ -63,9 +63,29 @@
           <%# <% end %> %>
 
 
+
+
       <button   data-controller="delete-shape"
        data-action="click->delete-shape#undoLastDrawing">Delete</button>
 
+
+            <div class="music-controle">
+            <div class="play">
+                  <button
+                    data-controller="play"
+                   data-action="click->play#play">
+                    <i class="fa-solid fa-play"></i>
+                  </button>
+            </div>
+
+            <div class="pause">
+                  <button
+                    data-controller="play"
+                   data-action="click->play#pause">
+                   <i class="fa-solid fa-pause"></i>
+                  </button>
+            </div>
+            </div>
 
       <%# START OF FORM %>
 

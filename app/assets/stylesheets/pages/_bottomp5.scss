@@ -26,8 +26,15 @@
   padding: 3px;
 }
 
+.music-controle{
+  display: flex;
+  justify-content: space-between;
+  padding: 3px;
+}
+
 .colorPicker{
-  width: 110px; /* Ajusta el ancho según lo deseado */
-  height: 70px; /* Ajusta la altura según lo deseado */
+  width: 110px;
+  height: 60px;
   margin-left: 3px;
+  margin-bottom: 3px;
 }
