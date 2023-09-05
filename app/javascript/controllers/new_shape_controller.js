@@ -107,13 +107,14 @@ export default class extends Controller {
           // get nthe number
           function getAmplitudeData() {
             analyser.getByteFrequencyData(dataArray);
-            // console.log(dataArray); // this code we get the vipes
-            requestAnimationFrame(getAmplitudeData);
-
-          let averageAmplitude = dataArray.reduce((acc, value) => acc + value, 0) / dataArray.length;
-          console.log(averageAmplitude)
+            let averageAmplitude = dataArray.reduce((acc, value) => acc + value, 0) / dataArray.length;
+            averageAmplitude = averageAmplitude.toFixed(2);
+            console.log(averageAmplitude);
+            setTimeout(getAmplitudeData, 300); // here is to show the numer slowly
+            let mappedValue  = map(averageAmplitude, 0, 255, 0, 200)
+            console.log("averageAmplitude:", averageAmplitude);
+            console.log("mappedValue:", mappedValue);
           }
-
           // getting the time
           this.soundData = getAmplitudeData();
         })
@@ -198,8 +199,17 @@ export default class extends Controller {
     if (this.userCanDraw) {
       if (this.shape === "triangle") {
         // triangle(mouse_x, mouse_y - 50, newMouse_x - 100, newMouse_y + 100, mouse_x + 200, mouse_y + 200);
-        triangle(mouse_x, mouse_y - 50, newMouse_x + 100, newMouse_y, mouse_x + 200, mouse_y);
-        name = 'triangle'
+
+        triangle(
+          mouse_x ,
+           mouse_y - 50,
+            newMouse_x + 100,
+             newMouse_y,
+             mouse_x + 200,
+              mouse_y,
+              );
+
+              name = 'triangle'
 
         // trigger save/update method
         const shapeData =  JSON.stringify({

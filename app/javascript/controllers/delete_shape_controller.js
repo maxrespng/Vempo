@@ -1,8 +1,10 @@
-import { Controller } from "@hotwired/stimulus"
+import { Controller } from "@hotwired/stimulus";
 // import { userCanDraw } from "./new_shape_controller.js"
 
-// Connects to data-controller="delete-shape"
 export default class extends Controller {
+
+
+
 
   static targets = ["canvas"]
   static values = {
@@ -91,4 +93,5 @@ export default class extends Controller {
     console.log(area);
     return area;
   }
+
 }
