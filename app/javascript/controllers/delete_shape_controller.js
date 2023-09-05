@@ -1,5 +1,5 @@
-// En tu controlador Stimulus
 import { Controller } from "@hotwired/stimulus";
+// import { userCanDraw } from "./new_shape_controller.js"
 
 export default class extends Controller {
 
@@ -13,30 +13,36 @@ export default class extends Controller {
 
   connect() {
     this.userCanDelete = false;
+    this.deleteArray = [];
   }
 
   canDelete() {
     this.userCanDelete = !this.userCanDelete;
-    console.log(this.userCanDelete);
+    console.log(`user can delete = ${this.userCanDelete}`);
   }
 
   deleteShape(event) {
-    let deleteArray = [];
+    // window.location.reload();
     if (this.userCanDelete) {
       console.log("triggered delete shape");
       const mouse_x = event.clientX;
       const mouse_y = event.clientY;
       console.log(this.allShapesValue);
+      console.log(`x mouse - ${mouse_x}`)
+      console.log(`y mouse - ${mouse_y}`)
+      let range_x = this.range(mouse_x - 50, mouse_x +50);
+      console.log(range_x);
+      let range_y = this.range(mouse_y - 50, mouse_y + 50);
+      console.log(range_y);
       this.allShapesValue.forEach((shape) => {
-        if (mouse_x >= shape.start_x && mouse_x <= shape.width) {
-          if (mouse_y >= shape.start_y && mouse_y <= shape.height) {
-            deleteArray.push(shape);
-            console.log(deleteArray);
-            // delete the item in the deleteArray that has the highest id (in front) & delete from DB!
-            deleteArray.sort((a, b) => a.id - b.id);
-            deleteArray.splice(-1, 1);
-            // refresh page
-          }
+        if (range_x.includes(parseInt(shape.start_x, 10)) && range_y.includes(parseInt(shape.start_y, 10))) {
+          console.log("within range")
+          this.deleteArray.push(shape);
+          console.log(this.deleteArray);
+          // sort array by ascending shape.id value
+          this.deleteArray.sort((a, b) => a.id - b.id);
+          console.log(this.deleteArray);
+          // delete .last shape
         }
       });
 
@@ -51,6 +57,14 @@ export default class extends Controller {
 
       // findArea(shapeData);
     }
+  }
+
+  range(start, end) {
+    let ans = [];
+    for (let i = start; i <= end; i++) {
+        ans.push(i);
+    }
+    return ans;
   }
 
   findArea(shapeData) {
