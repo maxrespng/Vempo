@@ -33,4 +33,14 @@ class ProjectsController < ApplicationController
     @project = Project.find(params[:id])
     send_file @project.music_file.current_path
   end
+
+  def update
+    @project = Project.find(params[:id])
+    @project.update(project_params)
+    redirect_to project_path(@project)
+  end
+
+  def project_params
+    params.require(:project).permit(:photo)
+  end
 end
