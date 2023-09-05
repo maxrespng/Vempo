@@ -2,6 +2,8 @@ class ProjectsController < ApplicationController
   before_action :authenticate_user!, except: [:index]
   def index
     @projects = Project.all
+    # added new project for our project forms
+    @project = Project.new
   end
 
   def show
@@ -16,7 +18,7 @@ class ProjectsController < ApplicationController
     @project = Project.new(project_params)
     @project.user = current_user
     if @project.save
-      @project.process_music_file(params[:project][:music_file])
+      # @project.process_music_file(params[:project][:music_file])
       redirect_to project_path(@project)
     else
       render 'pages/home'
@@ -37,21 +39,18 @@ class ProjectsController < ApplicationController
   private
 
   def project_params
-    params.require(:project).permit(:name, :description, :has_mic, :music_file, :other_attributes, :screenshot)
+    params.require(:project).permit(:name, :description, :has_mic, :music_file, :svg, :other_attributes, :screenshot)
   end
 
-  def music
-    @project = Project.find(params[:id])
-    send_file @project.music_file.current_path
-  end
-
-  # def update
+  # def music
   #   @project = Project.find(params[:id])
-  #   @project.update(project_params)
-  #   redirect_to project_path(@project)
+  #   send_file @project.music_file.current_path
   # end
 
-  # def project_params
-  #   params.require(:project).permit(:photo)
-  # end
+  def update
+    @project = Project.find(params[:id])
+    @project.update(project_params)
+    redirect_to project_path(@project)
+  end
+
 end

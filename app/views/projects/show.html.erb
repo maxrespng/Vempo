@@ -108,6 +108,10 @@
       <% end %>
     </div>
 
+    <% if @project.music_file.attached? %>
+      <%= cl_video_tag @project.music_file.key,:source_types => [:mp3],:controls => true,:poster => false, class: "track-play play-track", id: "play-track"%>
+    <%end%>
+
   </div>
 
 </div>
