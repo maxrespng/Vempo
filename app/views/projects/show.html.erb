@@ -1,7 +1,10 @@
-<div data-controller="new-shape load-shapes delete-shape" data-new-shape-url-value="<%= shapes_url %>" data-load-shapes-shape-info-value="<%= @shapes.to_json() %>">
+
+
+<div data-controller="new-shape load-shapes delete-shape" data-new-shape-url-value="<%= shapes_url %>" data-load-shapes-shape-info-value="<%= @shapes.to_json() %>" data-delete-shape-all-shapes-value="<%= @shapes.to_json() %>">
+
 
   <div class="parent"  data-load-shapes-project-id-value="<%= @project.id %>">
-    <div class="" id="myCanvas" data-action="mousedown->new-shape#mouseDown mouseup->new-shape#mouseUp" data-new-shape-target="p5Canvas">
+    <div class="" id="myCanvas" data-action="mousedown->new-shape#mouseDown mouseup->new-shape#mouseUp click->delete-shape#deleteShape" data-new-shape-target="p5Canvas" data-delete-shape-target="canvas">
   </div>
   <script> function setup() {
     const canvas = createCanvas(displayWidth,displayHeight);
@@ -10,7 +13,7 @@
       console.log('canvas');
   }
   </script>
-    
+
   <div class="side-bar child" data-new-shape-target="checkboxes">
     <div class="form-check" data-new-shape-target="checkbox" data-action="click->new-shape#handleCheckboxClick" data-shape="triangle">
       <input class="form-check-input" type="checkbox" value="" id="triangle" >
@@ -47,24 +50,37 @@
       </label>
     </div>
 
-          <%# <% if @project.music_file == nil %>
-        <div class="bottom-microphone" >
-            <button
-            data-controller="microphone"
-                    data-action="click->new-shape#requestMicrophoneAccess">
-
+        <% if @project.music_file == nil %>
+          <div class="bottom-microphone" >
+            <button data-controller="microphone" data-action="click->new-shape#requestMicrophoneAccess">
               <i class="fa-solid fa-microphone"></i>
             </button>
-
             <button data-action="click->new-shape#stopRecording">
               <i class="fa-solid fa-microphone-slash"></i>
             </button>
-        </div>
+          </div>
+        <% end %>
 
-          <%# <% end %>
 
+      <button data-controller="last" data-action="click->delete-shape#canDelete click->new-shape#cannotDraw">Delete</button>
 
-      <button data-controller="last" data-action="click->delete-shape#undoLastDrawing">Delete</button>
+            <div class="music-controle">
+            <div class="play">
+                  <button
+                    data-controller="play"
+                   data-action="click->play#play">
+                    <i class="fa-solid fa-play"></i>
+                  </button>
+            </div>
+
+            <div class="pause">
+                  <button
+                    data-controller="play"
+                   data-action="click->play#pause">
+                   <i class="fa-solid fa-pause"></i>
+                  </button>
+            </div>
+            </div>
 
       <%# START OF FORM %>
 
@@ -84,13 +100,17 @@
       <input type="color" data-new-shape-target="colorPicker">
     </div>
 
-    <div class="screenshot" data-controller="screenshot">
-    <button class="btn btn-primary btn-lg" data-action="click->screenshot#screenshot">Screenshot</button>
-      <%= simple_form_for(@project, data: { screenshot_target: "submit" }) do |f| %>
-      <%= f.input :svg, input_html: { data: { screenshot_target: "photo" }, style: "display:none;"   } %>
-        <%# <%= f.submit, input_html: { data: { screenshot_target: "submit" }, style: "display:none;" } %>
+    <div class="screenshot" data-controller="screenshot" data-screenshot-target="container">
+    <%# <button class="btn btn-primary btn-lg" data-action="click->screenshot#screenshot">Screenshot</button> %>
+      <%= simple_form_for(@project, data: { screenshot_target: "form", action: "submit->screenshot#screenshot" }) do |f| %>
+        <%= f.input :screenshot, label: false, input_html: { data: { screenshot_target: "photo" }, style: "display:none;"   } %>
+        <%= f.submit "Screenshot", class: "btn btn-primary btn-lg", data: { screenshot_target: "input" }  %>
       <% end %>
     </div>
+
+    <% if @project.music_file.attached? %>
+      <%= cl_video_tag @project.music_file.key,:source_types => [:mp3],:controls => true,:poster => false, class: "track-play play-track", id: "play-track"%>
+    <%end%>
 
   </div>
 

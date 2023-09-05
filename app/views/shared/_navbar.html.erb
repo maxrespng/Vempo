@@ -16,7 +16,7 @@
 <!------------------START THE MODAL------------------------------------------->
           <div class="nav-item active" type="button" data-bs-toggle="modal" data-bs-target="#myModal">
             <button type="button" class="nav-link">
-                My Creations
+                My creations
             </button>
           </div>
           <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -36,9 +36,13 @@
 <!------------------START THE CARD------------------------------------------->
                         <% @projects.each do |project| %>
                           <div class="project-card">
-                            <div class="image-placeholder" style="background-image:url('<%= cl_image_path project.photo.key if project.photo.attached? %>');">
-                            </div>
-                            <div class="image" style="background-image"></div>
+                            <% if project.screenshot %>
+                              <div class="image-placeholder" style="background-image:url('<%= image_path project.screenshot %>');">
+                              </div>
+                            <% else %>
+                              <div class="image-placeholder" style="background-image:url('<%= cl_image_path project.photo.key if project.photo.attached? %>');">
+                              </div>
+                            <% end %>
                             <div class="title">
                               <div class="left-box">
                                 <h5><strong><%= project.name %></strong></h5>
