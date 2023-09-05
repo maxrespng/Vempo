@@ -3,22 +3,51 @@ import { Controller } from "@hotwired/stimulus"
 // Connects to data-controller="delete-shape"
 export default class extends Controller {
 
-  static targets = ["last"]
+  static targets = ["p5Canvas"]
+  static values = {
+    allShapes: Array
+  }
+
   connect() {
-    this.drawShape(shape);
+    this.userCanDelete = false;
   }
 
-  undoLastDrawing() {
-
-    console.log('Undo last drawing');
-    // Verifica si hay formas en el historial para deshacer
-
+  canDelete() {
+    this.userCanDelete = !this.userCanDelete;
+    console.log(this.userCanDelete);
   }
 
-  deleteShape() {
-    console.log("triggered delete shape")
-    const shapeData = Shape.where()
-    findArea(shapeData);
+  deleteShape(event) {
+    let deleteArray = [];
+    if (this.userCanDelete) {
+      console.log("triggered delete shape");
+      const mouse_x = event.clientX;
+      const mouse_y = event.clientY;
+      console.log(this.allShapesValue);
+      this.allShapesValue.forEach((shape) => {
+        if (mouse_x >= shape.start_x && mouse_x <= shape.width) {
+          if (mouse_y >= shape.start_y && mouse_y <= shape.height) {
+            deleteArray.push(shape);
+            console.log(deleteArray);
+            // delete the item in the deleteArray that has the highest id (in front) & delete from DB!
+            deleteArray.sort((a, b) => a.id - b.id);
+            deleteArray.splice(-1, 1);
+            // refresh page
+          }
+        }
+      });
+
+      //0.5 use client_x, client_y to work out where the click happened
+      //1 find the area of the shape that was clicked on
+      //1.5 iterate through all the shapes
+      //1.6 push all shapes that fit between the x and the y co-ords into an array
+      //1.7 order by id
+      //1.75 remove the .last item in the array (will be the top shape within the clicked area)
+      //2 implement a delete request to the DB
+      //3 refresh the page
+
+      // findArea(shapeData);
+    }
   }
 
   findArea(shapeData) {
