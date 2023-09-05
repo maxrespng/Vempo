@@ -25,10 +25,21 @@ class ProjectsController < ApplicationController
     end
   end
 
+  def update
+    @project = Project.find(params[:id])
+    @project.update!(project_params)
+    # @project.update(svg: params[:project][:svg])
+
+    respond_to do |format|
+      format.html { redirect_to project_path(@project) }
+      format.json # Follows the classic Rails flow and look for a create.json view
+    end
+  end
+
   private
 
   def project_params
-    params.require(:project).permit(:name, :description, :has_mic, :music_file, :svg)
+    params.require(:project).permit(:name, :description, :has_mic, :music_file, :svg, :other_attributes, :screenshot)
   end
 
   # def music
@@ -41,4 +52,5 @@ class ProjectsController < ApplicationController
     @project.update(project_params)
     redirect_to project_path(@project)
   end
+
 end
