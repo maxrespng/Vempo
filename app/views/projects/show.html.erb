@@ -6,13 +6,27 @@
   <div class="parent"  data-load-shapes-project-id-value="<%= @project.id %>">
     <div class="" id="myCanvas" data-action="mousedown->new-shape#mouseDown mouseup->new-shape#mouseUp click->delete-shape#deleteShape" data-new-shape-target="p5Canvas" data-delete-shape-target="canvas">
   </div>
-  <script> function setup() {
+
+    <% if @project.music_file.attached? %>
+  <script>
+  function setup() {
     const canvas = createCanvas(displayWidth,displayHeight);
 
-      canvas.parent('myCanvas')
-      console.log('canvas');
+    canvas.parent('myCanvas')
+    console.log('canvas');
   }
   </script>
+  <% else %>
+  <script>
+  function setup() {
+    const canvas = createCanvas(displayWidth,displayHeight);
+    let mic = new p5.audioIn();
+    mic.start();
+    canvas.parent('myCanvas')
+    console.log('canvas');
+  }
+  </script>
+  <% end %>
 
   <div class="side-bar child" data-new-shape-target="checkboxes">
     <div class="form-check" data-new-shape-target="checkbox" data-action="click->new-shape#handleCheckboxClick" data-shape="triangle">
