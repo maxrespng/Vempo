@@ -32,18 +32,16 @@ export default class extends Controller {
     }
 
 
-
-
     if (name === "circle") {
-      circle(start_x, start_y - 50, width);
-
       
+      circle(start_x, start_y - 50, width - start_x);
+
     }
     if (name === "square") {
       square(start_x, start_y - 50, width - start_x);
     }
     if (name === "oval") {
-      ellipse(start_x, start_y - 50, width - start_x);
+      ellipse(start_x, start_y - 50, width - start_x, height - start_y);
     }
     if (name === "rectangle") {
       rect(start_x, start_y - 50, width - start_x, height - start_y);
