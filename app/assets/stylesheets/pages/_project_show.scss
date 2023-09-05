@@ -23,17 +23,24 @@ audio {
   width: calc(100% - 20px);
 }
 
-
 .side-bar {
   background-color: $v-dark-gray;
   width: 150px;
   height: 300px;
   position: absolute;
-  right: 0px;
-  top: 30%;
+  right: -13px;
+  top: 180px;
   border-radius: 6px;
   padding: 15px;
+  transition: right 0.5s ease;
+  border-bottom-left-radius: 0; // remove the borde or the corne
 }
+
+.push-right {
+  right: -150px !important;
+  transition: right 0.5s ease;
+}
+
 
 .parent {
   // display: flex;

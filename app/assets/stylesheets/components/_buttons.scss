@@ -88,7 +88,8 @@
     }
 }
 
-#btn-upload {
+.container-btn-upload {
+  text-align: center;
   box-sizing: border-box;
   width: 280px;
   height: 40px;
@@ -96,11 +97,13 @@
   top: 100px;
   border: 1px solid #000000;
   border-radius: 42.67px;
-  .bi {
-    border-radius: 50px;
-    fill: rgba(159, 232, 0, 1);
-    color:white;
-  }
+}
+
+.bi {
+  border-radius: 50px;
+  fill: rgba(159, 232, 0, 1);
+  color:white;
+  cursor: pointer;
 }
 
 #btn-choose {
@@ -118,6 +121,23 @@
   }
 }
 
+#form-btn-upload:focus-within {
+    display: block;
+}
+
+.btn-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  color: #000000;
+  border: none;
+  opacity: .8;
+}
+
+
+.btn-close:hover {
+  opacity: 1;
+}
 // SOME BUTTON EXAMPLES:
 
 // <a class="green-btn">start from blank <i class="fa-solid fa-arrow-right" style="color: #000000;"></i></a>

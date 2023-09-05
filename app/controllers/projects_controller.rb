@@ -8,13 +8,30 @@ class ProjectsController < ApplicationController
     @projects = Project.all
     @project = Project.find(params[:id])
     @shape = Shape.new
+    @shapes = Shape.where(params[:project_id])
+    # raise
   end
 
   def create
-    @project = Project.new
+    @project = Project.new(project_params)
     @project.user = current_user
-    @project.save!
-    redirect_to project_path(@project)
+    if @project.save
+      @project.process_music_file(params[:project][:music_file])
+      redirect_to project_path(@project)
+    else
+      render 'pages/home'
+    end
+  end
+
+  private
+
+  def project_params
+    params.require(:project).permit(:name, :description, :has_mic, :music_file, :other_attributes)
+  end
+
+  def music
+    @project = Project.find(params[:id])
+    send_file @project.music_file.current_path
   end
 
   def update

@@ -60,17 +60,23 @@
         <div><%= f.submit %></div>
         <% end %>
       </div>
+
       <%# END OF FORM %>
-      Colour:
-        <input class="color-picker" type="color" data-new-shape-target="colorPicker">
-        </div>
-    </div>
-  <!--MOVE ABOVE INTO PROJECT/SHOW -->
+      <input type="color" data-new-shape-target="colorPicker">
+         </div>
+      </div>
+      <button  class="bottom-d" data-action="click->new-shape#toggle">
+
+         <i class="fa-solid fa-arrow-right"></i>
+         </button>
+
+
 </div>
 
 
 
 <%# <div id="content">
+      </div>
   <input type="file" id="thefile" accept="audio/*" />
   <canvas id="canvas"></canvas>
   <audio id="audio" controls></audio>

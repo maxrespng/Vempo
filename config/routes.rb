@@ -7,8 +7,17 @@ Rails.application.routes.draw do
   get 'testhome', to: 'pages#testhome', as: :testhome
   get 'testproject', to: 'pages#testproject', as: :testproject
   get 'testpfive/:id', to: 'pages#testpfive'
+
+  # get "projects/:id/shapes", to: "projects#get_shapes"
+
   # Defines the root path route ("/")
   # root "articles#index"
-  resources :projects, only: [:index, :show, :create, :update]
-  resources :shapes, only: [:index, :create]
+  resources :projects, only: [:index, :show, :create]
+  resources :shapes, only: [:create]
+
+  resources :projects do
+    member do
+      get 'music'
+    end
+  end
 end
