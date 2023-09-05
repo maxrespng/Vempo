@@ -10,7 +10,7 @@
       console.log('canvas');
   }
   </script>
-
+    
   <div class="side-bar child" data-new-shape-target="checkboxes">
     <div class="form-check" data-new-shape-target="checkbox" data-action="click->new-shape#handleCheckboxClick" data-shape="triangle">
       <input class="form-check-input" type="checkbox" value="" id="triangle" >
@@ -46,8 +46,8 @@
         Rectangle
       </label>
     </div>
-    
-          <%# <% if @project.music_file == nil %> %>
+
+          <%# <% if @project.music_file == nil %>
         <div class="bottom-microphone" >
             <button
             data-controller="microphone"
@@ -59,25 +59,26 @@
             <button data-action="click->new-shape#stopRecording">
               <i class="fa-solid fa-microphone-slash"></i>
             </button>
-           </div>
+        </div>
 
-          <%# <% end %> %>
+          <%# <% end %>
 
 
-      <button   data-controller="last"
-       data-action="click->delete-shape#undoLastDrawing">Delete</button>
+      <button data-controller="last" data-action="click->delete-shape#undoLastDrawing">Delete</button>
 
       <%# START OF FORM %>
 
     <div class="hidden-form">
-      <%= simple_form_for(Shape.new) do |f| %>
+      <%= simple_form_for((@shape), data: { new_shape_target: "formElement"}) do |f| %>
       <%= f.input :start_x, input_html: { data: {new_shape_target: "input1"} } %>
       <%= f.input :start_y, input_html: { data: {new_shape_target: "input2"} } %>
       <%= f.input :width, input_html: { data: {new_shape_target: "input3"} } %>
       <%= f.input :height, input_html: { data: {new_shape_target: "input4"} } %>
+      <%= f.input :project_id, input_html: { data: {new_shape_target: "projectId"}, value: @project.id } %>
       <div><%= f.submit %></div>
       <% end %>
     </div>
+
     <%# END OF FORM %>
     <div>
       <input type="color" data-new-shape-target="colorPicker">

@@ -7,7 +7,7 @@ export default class extends Controller {
   static targets = ["p5Canvas", "checkboxes", "checkbox", "input1", "input2", "input3", "input4", "colorPicker",  "container", "projectId", "formElement","bottom","close","element","arrow", 'bottomD',"microphone","undoLastDrawing"]
   static values = {
     input: String,
-    url: String
+    url: String,
   }
 
 
@@ -175,7 +175,8 @@ export default class extends Controller {
     this.draw(this.input1Target.value, this.input2Target.value, newMouse_x, newMouse_y,);
   }
 
-  draw(mouse_x, mouse_y, newMouse_x, newMouse_y, color) {
+  draw(mouse_x, mouse_y, newMouse_x, newMouse_y) {
+    console.log(this.projectIdTarget.value);
     mouse_x = parseInt(mouse_x, 10);
     mouse_y = parseInt(mouse_y, 10);
     console.log(this.colorPickerTarget.value)
