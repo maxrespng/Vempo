@@ -9,6 +9,6 @@ Rails.application.routes.draw do
   get 'testpfive/:id', to: 'pages#testpfive'
   # Defines the root path route ("/")
   # root "articles#index"
-  resources :projects, only: [:index, :show, :create]
+  resources :projects, only: [:index, :show, :create, :update]
   resources :shapes, only: [:index, :create]
 end
