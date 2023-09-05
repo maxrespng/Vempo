@@ -1,6 +1,6 @@
 class Project < ApplicationRecord
   belongs_to :user
-  has_many :shapes
+  has_many :shapes, dependent: :delete_all
   has_one_attached :photo
   has_one_attached :music_file
 
