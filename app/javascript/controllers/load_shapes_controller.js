@@ -30,8 +30,12 @@ export default class extends Controller {
     if (name === "triangle") {
       triangle(start_x, start_y - 50, width + 100, height, start_x + 200, start_y);
     }
+
+
     if (name === "circle") {
+      
       circle(start_x, start_y - 50, width - start_x);
+
     }
     if (name === "square") {
       square(start_x, start_y - 50, width - start_x);
@@ -42,5 +46,10 @@ export default class extends Controller {
     if (name === "rectangle") {
       rect(start_x, start_y - 50, width - start_x, height - start_y);
     }
+
+
   }
+
+
+
 }
