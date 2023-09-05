@@ -3,8 +3,17 @@ import { Controller } from "@hotwired/stimulus";
 export default class extends Controller {
   static targets = [
     "p5Canvas", "container", "projectId", "formElement", "bottom", "close",
-    "element", "arrow", 'bottomD', "microphone"
+    "element", "arrow", 'bottomD', "microphone", "animation"
   ];
+  static values = {
+    canvas: Object
+  }
+
+  connect() {
+    console.log("MOVE-SHAPE CONTROLLER CONNECTED!")
+    console.log(this.canvasValue);
+    console.log(mic);
+  }
 
   requestMicrophoneAccess() {
     let audioRecorder;
