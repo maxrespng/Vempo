@@ -8,55 +8,29 @@ labelledby="exampleModalToggleLabel" tabindex="-1">
 
   <div class="modal-content align-items-center custom-modal-bg">
       <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalToggleLabel">Choose a sound
-to play with:</h1>
+        <h1 class="modal-title fs-5" id="exampleModalToggleLabel">Choose a sound to play with:</h1>
       <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-    <%= link_to projects_path, data: {turbo_method: "POST"}, class: "btn", id: "btn-mic" do %>
-      Use microphone <svg xmlns="http://www.w3.org/2000/svg" width="35" height="26" fill="currentColor" class="bi bi-arrow-right-circle-fill" viewBox="0 0 16 16">
-        <path d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0zM4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H4.5z"/>
-        </svg>
-    <% end %>
+
         <br>
 
-        <div class="container-btn-upload">
-
-          <%= simple_form_for(@project, input_html: { data: { data_controller: "upload" }, class: "btn", id: "btn-upload"}) do |f| %>
-            <%= f.input :music_file, label: "Upload a sound", as: :file, input_html: {style: "display:none;", data: { data_action: "change->upload#uploadFeedback"}} %>
-            <%= f.label(:submit) do %>
-            <%= f.button :submit, input_html: { style: "display:none;"} %>
-                <svg data-upload-target="svg" xmlns='http://www.w3.org/2000/svg' width='35' height='26' fill='currentColor'
-                  class='bi bi-arrow-right-circle-fill' viewBox='0 0 16 16'>
-                <path
-                  d='M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0zM4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H4.5z' />
-                </svg>
-
-            <% end %>
-          <% end %>
-
-
-        <%# <form action="/projects" method="post" enctype="multipart/form-data" id='form-btn-upload' data-controller="upload"> %>
-          <%# <label class="btn" id="btn-upload">
-                  Upload a sound
-            <input type="file" name="project[music_file]" style="display: none;" data-action="change->upload#uploadFeedback">
-          </label>
-          <label>
-            <input type="submit" style='display:none;' />
+  <%= simple_form_for(@project, input_html: { data: { data_controller: "upload" }, class: "btn", id: "btn-upload"}) do |f| %>
+    <div class="button-cont">
+      <i class="bi bi-cloud-arrow-up-fill"></i>
+        <%= f.input :music_file,  label: "Upload a Sound", as: :file, input_html: {style: "display:none;", class: 'mini-btn', data: { data_action: "change->upload#uploadFeedback"}} %>
+          <%= f.label(:submit) do %>
+          <%= f.button :submit, 'Create', input_html: { style: "display:none;"} %>
             <svg data-upload-target="svg" xmlns='http://www.w3.org/2000/svg' width='35' height='26' fill='currentColor'
-              class='bi bi-arrow-right-circle-fill' viewBox='0 0 16 16'>
+                  class='bi bi-arrow-right-circle-fill' viewBox='0 0 16 16'>
             <path
-              d='M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0zM4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H4.5z' />
+            d='M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0zM4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H4.5z' />
             </svg>
-          </label>
-        </form> %>
-        </div>
+            </div>
+          <% end %>
+      <% end %>
 
         <br>
-        <a class="btn" id="btn-choose" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal">Choose a sound from library
-        <svg xmlns="http://www.w3.org/2000/svg" width="35" height="26" fill="blue" class="bi bi-arrow-right-circle-fill" viewBox="0 0 16 16">
-      <path d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0zM4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H4.5z"/>
-      </svg>
-        </a>
+
     </div>
 
     <!-- END Modal to disp MOVE TO A PARTIAL-->
