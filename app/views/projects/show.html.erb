@@ -1,5 +1,9 @@
 
-<div data-controller="new-shape load-shapes delete-shape move-shape" data-new-shape-url-value="<%= shapes_url %>" data-load-shapes-shape-info-value="<%= @shapes.to_json() %>" data-delete-shape-all-shapes-value="<%= @shapes.to_json() %>">
+<div data-controller="new-shape load-shapes delete-shape move-shape"
+      data-new-shape-url-value="<%= shapes_url %>"
+      data-load-shapes-shape-info-value="<%= @shapes.to_json() %>"
+      data-delete-shape-all-shapes-value="<%= @shapes.to_json() %>"
+      data-load-shapes-music-file-value="<%= @project.music_file.url %>">
 
 
   <div class="parent"  data-load-shapes-project-id-value="<%= @project.id %>">
@@ -8,11 +12,11 @@
 
   <script>
     function setup() {
+      setTimeout(() => {
       const canvas = createCanvas(windowWidth, windowHeight - 45);
-      // let mic = new p5.AudioIn();
-      // mic.start();
       canvas.parent('myCanvas')
       console.log('canvas');
+      }, 500);
     }
   </script>
 
@@ -83,6 +87,8 @@
           <button data-controller="play" data-action="click->play#pause"><i class="fa-solid fa-pause"></i></button>
         </div>
       </div>
+
+      <button data-action="click->load-shapes#playMusic">Start animate</button>
 
     <% if @project.music_file.attached? %>
       <%= cl_video_tag @project.music_file.key,:source_types => [:mp3],:controls => true,:poster => false, class: "track-play play-track", id: "play-track", style: "width: 100%; height: auto;"%>
