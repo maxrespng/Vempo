@@ -10,6 +10,8 @@ class ShapesController < ApplicationController
   def destroy
     @shape = Shape.find(params[:id])
     @shape.destroy
+
+    head :ok
   end
 
   private

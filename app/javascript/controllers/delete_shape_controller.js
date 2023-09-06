@@ -27,8 +27,9 @@ export default class extends Controller {
       console.log(this.allShapesValue);
       console.log(`x mouse - ${mouse_x}`)
       console.log(`y mouse - ${mouse_y}`)
-      let range_x = this.range(mouse_x - 50, mouse_x +50);
+      let range_x = this.range(mouse_x - 50, mouse_x + 50);
       let range_y = this.range(mouse_y - 50, mouse_y + 50);
+      console.log({allshapes: this.allShapesValue})
       this.allShapesValue.forEach((shape) => {
         if (range_x.includes(parseInt(shape.start_x, 10)) && range_y.includes(parseInt(shape.start_y, 10))) {
           console.log("within range")
@@ -42,6 +43,8 @@ export default class extends Controller {
         this.removeFromDatabase(this.shapeToDelete[0])
       }
     }
+
+    // shapeData = {"name":"circle","start_x":84,"start_y":111,"width":223,"project_id":"55","color":"#000000"}
 
       //0.5 use client_x, client_y to work out where the click happened
 
@@ -71,10 +74,17 @@ export default class extends Controller {
           'Accept': 'application/json'
         },
       })
+        .then(() => {
+            window.location.reload();
+        })
 
-      if (this.deleteShape) {
-        window.location.reload();
-      }
+      // if (this.deleteShape) {
+      //   window.location.reload();
+      // }
+      this.sortedArray = []
+      this.deleteArray = []
+      this.shapeToDelete = null
+
 
 
 
