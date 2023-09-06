@@ -40,8 +40,7 @@ project1.save!
 project2 = Project.new(
   name: "Project 2",
   description: "Thrash Metal",
-  has_mic: false,
-  music_file: "She Wolf"
+  has_mic: false
 )
 project2.user = bruno
 # file = URI.open(url)
@@ -53,8 +52,7 @@ project2.save!
 project3 = Project.new(
   name: "Project 3",
   description: "Progressive Metal",
-  has_mic: false,
-  music_file: "Panic Attack"
+  has_mic: false
 )
 project3.user = helder
 # file = URI.open(url)
@@ -66,8 +64,7 @@ project3.save!
 project4 = Project.new(
   name: "Project 4",
   description: "Progressive Metal",
-  has_mic: false,
-  music_file: "Panic Attack"
+  has_mic: false
 )
 project4.user = helder
 # file = URI.open(url)
@@ -79,8 +76,7 @@ project4.save!
 project5 = Project.new(
   name: "Project 5",
   description: "Progressive Metal",
-  has_mic: false,
-  music_file: "Panic Attack"
+  has_mic: false
 )
 project5.user = helder
 # file = URI.open(url)
@@ -92,8 +88,7 @@ project5.save!
 project6 = Project.new(
   name: "Project 6",
   description: "Progressive Metal",
-  has_mic: false,
-  music_file: "Panic Attack"
+  has_mic: false
 )
 project6.user = helder
 # file = URI.open(url)
