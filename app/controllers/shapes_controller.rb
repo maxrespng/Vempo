@@ -7,6 +7,11 @@ class ShapesController < ApplicationController
     @shape.save
   end
 
+  def destroy
+    @shape = Shape.find(params[:id])
+    @shape.destroy
+  end
+
   private
 
   def shape_params
