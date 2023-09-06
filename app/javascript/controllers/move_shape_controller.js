@@ -3,8 +3,18 @@ import { Controller } from "@hotwired/stimulus";
 export default class extends Controller {
   static targets = [
     "p5Canvas", "container", "projectId", "formElement", "bottom", "close",
-    "element", "arrow", 'bottomD', "microphone"
+    "element", "arrow", 'bottomD', "microphone", "animation"
   ];
+  static values = {
+    // canvas: Object,
+    // project: Object
+  }
+
+  connect() {
+    console.log("move-shape controller connected!")
+    // console.log(this.canvasValue);
+    // console.log(this.projectValue);
+  }
 
   requestMicrophoneAccess() {
     let audioRecorder;
@@ -29,7 +39,7 @@ export default class extends Controller {
           dataArray = new Uint8Array(bufferLength);
             // console.log( analyser.fftSize)
           // conect the audio
-        console.log(dataArray);
+          console.log(dataArray);
 
           const microphoneSource = this.audioContext.createMediaStreamSource(stream);
           microphoneSource.connect(analyser);
@@ -64,12 +74,9 @@ export default class extends Controller {
           }
           // getting the time
           this.soundData = getAmplitudeData();
-
-
         })
 
-
-        .catch(error => {
+      .catch(error => {
           console.error("Error accessing microphone:", error);
         });
 
@@ -84,4 +91,16 @@ export default class extends Controller {
     // this.MediaRecorder.stop()
   }
 
-      }
+  // insertSetup() {
+  //   const newScript = document.createElement("script");
+  //   newScript.innerHTML = `setup() {
+  //     const canvas = createCanvas(displayWidth,displayHeight);
+  //     let mic = new p5.AudioIn();
+  //     mic.start();
+  //     canvas.parent('myCanvas')
+  //     console.log('canvas');
+  //   }`
+
+  //   thisElement.appendChild(newScript);
+  // }
+}

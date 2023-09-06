@@ -10,8 +10,7 @@ class ProjectsController < ApplicationController
     @projects = Project.all
     @project = Project.find(params[:id])
     @shape = Shape.new
-    @shapes = Shape.where(params[:project_id])
-    # raise
+    @shapes = Shape.where(project_id: @project)
   end
 
   def create
