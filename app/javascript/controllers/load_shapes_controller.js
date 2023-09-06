@@ -18,8 +18,8 @@ export default class extends Controller {
     // console.log(shapeData);
 
     if (shapeData) {
-    shapeData.forEach((shape) => {
-      this.draw(shape.name, shape.start_x, shape.start_y, shape.width, shape.height, shape.color)
+      shapeData.forEach((shape) => {
+        this.draw(shape.name, shape.start_x, shape.start_y, shape.width, shape.height, shape.color)
       });
     }
     }

@@ -74,7 +74,6 @@ export default class extends Controller {
 
       if (this.deleteShape) {
         window.location.reload();
-        window.location.reload();
       }
 
 
