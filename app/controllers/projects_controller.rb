@@ -15,7 +15,11 @@ class ProjectsController < ApplicationController
   end
 
   def create
-    @project = Project.new(project_params)
+    if params[:project]
+      @project = Project.new(project_params)
+    else
+      @project = Project.new(has_mic: true)
+    end
     @project.user = current_user
     if @project.save
       # @project.process_music_file(params[:project][:music_file])
