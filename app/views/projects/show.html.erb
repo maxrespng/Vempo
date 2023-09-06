@@ -15,72 +15,76 @@
   </script>
 
   <div class="side-bar child" data-new-shape-target="checkboxes">
-    <div class="form-check" data-new-shape-target="checkbox" data-action="click->new-shape#handleCheckboxClick" data-shape="triangle">
-      <input class="form-check-input" type="checkbox" value="" id="triangle" >
-      <label class="form-check-label" for="triangle">
-        Triangle
-      </label>
+    <div class="checkboxes">
+      <div class="form-check pos-relative" data-new-shape-target="checkbox" data-action="click->new-shape#handleCheckboxClick" data-shape="triangle">
+        <input class="form-check-input" type="checkbox" value="" id="triangle" >
+        <label class="form-check-label" for="triangle">
+          <p class="input-text">Triangle</p>
+          <%# <%= image_tag("Triangle.svg", alt: "Triangle", style: "width: 20%; height: 20%;") %>
+        </label>
+      </div>
+
+      <div class="form-check pos-relative" data-new-shape-target="checkbox" data-action="click->new-shape#handleCheckboxClick" data-shape="circle" >
+        <input class="form-check-input" type="checkbox" value="" id="circle">
+        <label class="form-check-label" for="circle">
+          <p class="input-text">Circle</p>
+          <%# <%= image_tag("Circle.svg", alt: "Circle", style: "width: 20%; height: 20%;") %>
+        </label>
+      </div>
+
+      <div class="form-check pos-relative" data-new-shape-target="checkbox" data-action="click->new-shape#handleCheckboxClick" data-shape="square">
+        <input class="form-check-input"  type="checkbox" value="" id="square">
+        <label class="form-check-label" for="square">
+          <p class="input-text">Square</p>
+          <%# <%= image_tag("Square.svg", alt: "Square", style: "width: 18%; height: 18%;") %>
+        </label>
+      </div>
+
+      <div class="form-check pos-relative" data-new-shape-target="checkbox" data-action="click->new-shape#handleCheckboxClick"  data-shape="oval">
+        <input class="form-check-input" type="checkbox" value="" id="oval">
+        <label class="form-check-label" for="oval">
+          <p class="input-text">Oval</p>
+          <%# <%= image_tag("Oval.svg", alt: "Oval", style: "width: 16%; height: 16%;") %>
+        </label>
+      </div>
+
+      <div class="form-check pos-relative" data-new-shape-target="checkbox" data-action="click->new-shape#handleCheckboxClick" data-shape="rectangle">
+        <input class="form-check-input"  type="checkbox" value="" id="rectangle">
+        <label class="form-check-label" for="rectangle">
+          <p class="input-text">Rectangle</p>
+          <%# <%= image_tag("Rectangle.svg", alt: "Rectangle", style: "width: 15%; height: 15%;") %>
+        </label>
+      </div>
+    </div>
+    <div class="color-picker-box white-btn">
+      Colour
+      <input class="color-picker" type="color" data-new-shape-target="colorPicker">
     </div>
 
-    <div class="form-check" data-new-shape-target="checkbox" data-action="click->new-shape#handleCheckboxClick" data-shape="circle" >
-      <input class="form-check-input" type="checkbox" value="" id="circle">
-      <label class="form-check-label" for="circle">
-        Circle
-      </label>
-    </div>
+    <% if @project.music_file == nil %>
+      <div class="bottom-microphone" >
+        <button data-controller="microphone" data-action="click->new-shape#requestMicrophoneAccess">
+          <i class="fa-solid fa-microphone"></i>
+        </button>
+        <button data-action="click->new-shape#stopRecording">
+          <i class="fa-solid fa-microphone-slash"></i>
+        </button>
+      </div>
+    <% end %>
 
-    <div class="form-check" data-new-shape-target="checkbox" data-action="click->new-shape#handleCheckboxClick" data-shape="square">
-      <input class="form-check-input"  type="checkbox" value="" id="square">
-      <label class="form-check-label" for="square">
-        Square
-      </label>
-    </div>
+    <button data-controller="last" class="delete-btn" data-action="click->delete-shape#canDelete click->new-shape#cannotDraw">Delete shape</button>
+      <div class="music-controle">
+        <div class="play">
+          <button data-controller="play" data-action="click->play#play"><i class="fa-solid fa-play"></i></button>
+        </div>
+        <div class="pause">
+          <button data-controller="play" data-action="click->play#pause"><i class="fa-solid fa-pause"></i></button>
+        </div>
+      </div>
 
-    <div class="form-check" data-new-shape-target="checkbox" data-action="click->new-shape#handleCheckboxClick"  data-shape="oval">
-      <input class="form-check-input" type="checkbox" value="" id="oval">
-      <label class="form-check-label" for="oval">
-        Oval
-      </label>
-    </div>
-
-    <div class="form-check" data-new-shape-target="checkbox" data-action="click->new-shape#handleCheckboxClick" data-shape="rectangle">
-      <input class="form-check-input"  type="checkbox" value="" id="rectangle">
-      <label class="form-check-label" for="rectangle">
-        Rectangle
-      </label>
-    </div>
-
-        <% if @project.music_file == nil %>
-          <div class="bottom-microphone" >
-            <button data-controller="microphone" data-action="click->new-shape#requestMicrophoneAccess">
-              <i class="fa-solid fa-microphone"></i>
-            </button>
-            <button data-action="click->new-shape#stopRecording">
-              <i class="fa-solid fa-microphone-slash"></i>
-            </button>
-          </div>
-        <% end %>
-
-
-      <button data-controller="last" data-action="click->delete-shape#canDelete click->new-shape#cannotDraw">Delete</button>
-
-            <div class="music-controle">
-            <div class="play">
-                  <button
-                    data-controller="play"
-                   data-action="click->play#play">
-                    <i class="fa-solid fa-play"></i>
-                  </button>
-            </div>
-
-            <div class="pause">
-                  <button
-                    data-controller="play"
-                   data-action="click->play#pause">
-                   <i class="fa-solid fa-pause"></i>
-                  </button>
-            </div>
-            </div>
+    <% if @project.music_file.attached? %>
+      <%= cl_video_tag @project.music_file.key,:source_types => [:mp3],:controls => true,:poster => false, class: "track-play play-track", id: "play-track", style: "width: 100%; height: auto;"%>
+    <%end%>
 
       <%# START OF FORM %>
 
@@ -96,9 +100,6 @@
     </div>
 
     <%# END OF FORM %>
-    <div>
-      <input type="color" data-new-shape-target="colorPicker">
-    </div>
 
     <div class="screenshot" data-controller="screenshot" data-screenshot-target="container">
     <%# <button class="btn btn-primary btn-lg" data-action="click->screenshot#screenshot">Screenshot</button> %>
@@ -107,86 +108,5 @@
         <%= f.submit "Screenshot", class: "btn btn-primary btn-lg", data: { screenshot_target: "input" }  %>
       <% end %>
     </div>
-
-    <% if @project.music_file.attached? %>
-      <%= cl_video_tag @project.music_file.key,:source_types => [:mp3],:controls => true,:poster => false, class: "track-play play-track", id: "play-track"%>
-    <%end%>
-
   </div>
-
 </div>
-
-
-
-
-<%# <div id="content">
-  <input type="file" id="thefile" accept="audio/*" />
-  <canvas id="canvas"></canvas>
-  <audio id="audio" controls></audio>
-</div>
-<script>
-window.onload = function() {
-
-  var file = document.getElementById("thefile");
-  var audio = document.getElementById("audio");
-
-  file.onchange = function() {
-    var files = this.files;
-    audio.src = URL.createObjectURL(files[0]);
-    audio.load();
-    audio.play();
-    var context = new AudioContext();
-    var src = context.createMediaElementSource(audio);
-    var analyser = context.createAnalyser();
-
-    var canvas = document.getElementById("canvas");
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-    var ctx = canvas.getContext("2d");
-
-    src.connect(analyser);
-    analyser.connect(context.destination);
-
-    analyser.fftSize = 256;
-
-    var bufferLength = analyser.frequencyBinCount;
-    console.log(bufferLength);
-
-    var dataArray = new Uint8Array(bufferLength);
-
-    var WIDTH = canvas.width;
-    var HEIGHT = canvas.height;
-
-    var barWidth = (WIDTH / bufferLength) * 2.5;
-    var barHeight;
-    var x = 0;
-
-    function renderFrame() {
-      requestAnimationFrame(renderFrame);
-
-      x = 0;
-
-      analyser.getByteFrequencyData(dataArray);
-
-      ctx.fillStyle = "#000";
-      ctx.fillRect(0, 0, WIDTH, HEIGHT);
-
-      for (var i = 0; i < bufferLength; i++) {
-        barHeight = dataArray[i];
-
-        var r = barHeight + (25 * (i/bufferLength));
-        var g = 250 * (i/bufferLength);
-        var b = 50;
-
-        ctx.fillStyle = "rgb(" + r + "," + g + "," + b + ")";
-        ctx.fillRect(x, HEIGHT - barHeight, barWidth, barHeight);
-
-        x += barWidth + 1;
-      }
-    }
-
-    audio.play();
-    renderFrame();
-  };
-};
-</script> %>
