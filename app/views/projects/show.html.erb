@@ -79,20 +79,21 @@
     <% end %>
 
     <button data-controller="last" class="delete-btn" data-action="click->delete-shape#canDelete click->new-shape#cannotDraw">Delete shape</button>
-      <div class="music-controle">
-        <div class="play">
-          <button data-controller="play" data-action="click->play#play"><i class="fa-solid fa-play"></i></button>
-        </div>
-        <div class="pause">
-          <button data-controller="play" data-action="click->play#pause"><i class="fa-solid fa-pause"></i></button>
-        </div>
-      </div>
 
-      <button data-action="click->load-shapes#playMusic">Start animate</button>
+      <%# <div class="music-controle"> %>
+        <%# <div class="play"> %>
+          <%# <button data-controller="play" data-action="click->play#play"><i class="fa-solid fa-play"></i></button> %>
+        <%# </div> %>
+        <%# <div class="pause"> %>
+          <%# <button data-controller="play" data-action="click->play#pause"><i class="fa-solid fa-pause"></i></button> %>
+        <%# </div> %>
+      <%# </div> %>
 
-    <% if @project.music_file.attached? %>
-      <%= cl_video_tag @project.music_file.key,:source_types => [:mp3],:controls => true,:poster => false, class: "track-play play-track", id: "play-track", style: "width: 100%; height: auto;"%>
-    <%end%>
+      <button data-action="click->load-shapes#playMusic" class="white-btn"><i class="fa-solid fa-play"></i></button>
+
+    <%# <% if @project.music_file.attached? %>
+      <%# <%= cl_video_tag @project.music_file.key,:source_types => [:mp3],:controls => true,:poster => false, class: "track-play play-track", id: "play-track", style: "width: 100%; height: auto;"%>
+    <%# <%end%>
 
 
 <!--       <button data-controller="last" data-action="click->delete-shape#canDelete click->new-shape#cannotDraw">Delete</button>
