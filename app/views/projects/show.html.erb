@@ -128,7 +128,7 @@
     <%# <button class="btn btn-primary btn-lg" data-action="click->screenshot#screenshot">Screenshot</button> %>
       <%= simple_form_for(@project, data: { screenshot_target: "form", action: "submit->screenshot#screenshot" }) do |f| %>
         <%= f.input :screenshot, label: false, input_html: { data: { screenshot_target: "photo" }, style: "display:none;"   } %>
-        <%= f.submit "Screenshot", class: "btn btn-primary btn-lg", data: { screenshot_target: "input" }  %>
+        <%= f.submit "Screenshot", class: "btn white-btn", data: { screenshot_target: "input" }  %>
       <% end %>
     </div>
 </div>
