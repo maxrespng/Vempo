@@ -3,9 +3,6 @@ import { Controller } from "@hotwired/stimulus";
 
 export default class extends Controller {
 
-
-
-
   static targets = ["canvas"]
   static values = {
     allShapes: Array
@@ -31,24 +28,27 @@ export default class extends Controller {
       console.log(`x mouse - ${mouse_x}`)
       console.log(`y mouse - ${mouse_y}`)
       let range_x = this.range(mouse_x - 50, mouse_x +50);
-      console.log(range_x);
       let range_y = this.range(mouse_y - 50, mouse_y + 50);
-      console.log(range_y);
       this.allShapesValue.forEach((shape) => {
         if (range_x.includes(parseInt(shape.start_x, 10)) && range_y.includes(parseInt(shape.start_y, 10))) {
           console.log("within range")
           this.deleteArray.push(shape);
           console.log(this.deleteArray);
-          // sort array by ascending shape.id value
-          this.deleteArray.sort((a, b) => a.id - b.id);
-          console.log(this.deleteArray);
-          // delete .last shape
-        }
-      });
+          }
+        });
+        this.sortedArray = this.deleteArray.sort((a, b) => a.id - b.id);
+        this.shapeToDelete = this.sortedArray.slice(-1)
+        console.log(this.shapeToDelete)
+        this.removeFromDatabase(this.shapeToDelete[0])
+      }
+    }
 
       //0.5 use client_x, client_y to work out where the click happened
+
       //1 find the area of the shape that was clicked on
+
       //1.5 iterate through all the shapes
+
       //1.6 push all shapes that fit between the x and the y co-ords into an array
       //1.7 order by id
       //1.75 remove the .last item in the array (will be the top shape within the clicked area)
@@ -56,8 +56,40 @@ export default class extends Controller {
       //3 refresh the page
 
       // findArea(shapeData);
+      // Send a DELETE request to delete a shape by its ID
+      // const allShapeIds = this.deleteArray.map(shape => shape.id);
+      // const maxShapeId = Math.max.apply(null, allShapeIds);
+
+    removeFromDatabase(shape) {
+      console.log(shape)
+      const csrf = document.querySelector("meta[name='csrf-token']").content
+      fetch(`/shapes/${shape.id}`, {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json',
+          'X-CSRF-Token': csrf,
+          'Accept': 'application/json'
+        },
+      })
+
+      if (this.deleteShape) {
+        window.location.reload();
+      }
+
+
+
+        // .then(response => {
+          //   if (response.ok) {
+          //     console.log('Shape deleted successfully.');
+          //   } else {
+          //     console.error('Error deleting shape.');
+          //   }
+          // })
+          // .catch(error => {
+          //   console.error('Error:', error);
+          // });
     }
-  }
+  // }
 
   range(start, end) {
     let ans = [];

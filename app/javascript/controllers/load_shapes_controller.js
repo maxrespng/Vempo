@@ -15,41 +15,51 @@ export default class extends Controller {
     // 3.2 repeat above for other shapes...
     console.log("load-shapes controller connected!");
     const shapeData = this.shapeInfoValue;
-    // console.log(shapeData);
+    this.preload();
 
     if (shapeData) {
-    shapeData.forEach((shape) => {
-      this.draw(shape.name, shape.start_x, shape.start_y, shape.width, shape.height, shape.color)
-      });
+      this.draw();
     }
     }
 
-  draw(name, start_x, start_y, width, height, color) {
-    fill(color);
+  draw() {
+    this.shapeInfoValue.forEach((shape) => {
+      // converting string numbers to integers:
+      const x1 = parseInt(shape.start_x, 10);
+      const y1 = parseInt(shape.start_y, 10);
+      const x2 = parseInt(shape.width, 10);
+      const y2 = parseInt(shape.height, 10);
+      const x3 = parseInt(shape.triangle_x, 10);
+      const y3 = parseInt(shape.triangle_y, 10);
 
-    if (name === "triangle") {
-      triangle(start_x, start_y - 50, width + 100, height, start_x + 200, start_y);
-    }
-
-
-    if (name === "circle") {
-      
-      circle(start_x, start_y - 50, width - start_x);
-
-    }
-    if (name === "square") {
-      square(start_x, start_y - 50, width - start_x);
-    }
-    if (name === "oval") {
-      ellipse(start_x, start_y - 50, width - start_x, height - start_y);
-    }
-    if (name === "rectangle") {
-      rect(start_x, start_y - 50, width - start_x, height - start_y);
-    }
-
-
+      fill(shape.color);
+      if (shape.name === "triangle") {
+        console.log(x3);
+        console.log(y3);
+        console.log(shape);
+        triangle(x1, y1 - 50, x2 + 100, y2, x3, y3);
+      }
+      if (shape.name === "circle") {
+        circle(x1, y1 - 50, x2 - x1);
+      }
+      if (shape.name === "square") {
+        square(x1, y1 - 50, x2 - x1);
+      }
+      if (shape.name === "oval") {
+        ellipse(x1, y1 - 50, x2 - x1, y2 - y1);
+      }
+      if (shape.name === "rectangle") {
+        rect(x1, y1 - 50, x2 - x1, y2 - y1);
+      }
+    });
   }
 
+  playMusic(event){
+    this.mySound.play()
+  }
 
-
+  preload() {
+    soundFormats('mp3', 'ogg');
+    this.mySound = loadSound(this.audioFileValue);
+  }
 }

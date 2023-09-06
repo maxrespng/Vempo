@@ -1,17 +1,19 @@
 
-
-<div data-controller="new-shape load-shapes delete-shape" data-new-shape-url-value="<%= shapes_url %>" data-load-shapes-shape-info-value="<%= @shapes.to_json() %>" data-delete-shape-all-shapes-value="<%= @shapes.to_json() %>">
+<div data-controller="new-shape load-shapes delete-shape move-shape" data-new-shape-url-value="<%= shapes_url %>" data-load-shapes-shape-info-value="<%= @shapes.to_json() %>" data-delete-shape-all-shapes-value="<%= @shapes.to_json() %>">
 
 
   <div class="parent"  data-load-shapes-project-id-value="<%= @project.id %>">
     <div class="" id="myCanvas" data-action="mousedown->new-shape#mouseDown mouseup->new-shape#mouseUp click->delete-shape#deleteShape" data-new-shape-target="p5Canvas" data-delete-shape-target="canvas">
   </div>
-  <script> function setup() {
-    const canvas = createCanvas(displayWidth,displayHeight);
 
+  <script>
+    function setup() {
+      const canvas = createCanvas(windowWidth, windowHeight - 45);
+      // let mic = new p5.AudioIn();
+      // mic.start();
       canvas.parent('myCanvas')
       console.log('canvas');
-  }
+    }
   </script>
 
   <div class="side-bar child" data-new-shape-target="checkboxes">
@@ -86,8 +88,29 @@
       <%= cl_video_tag @project.music_file.key,:source_types => [:mp3],:controls => true,:poster => false, class: "track-play play-track", id: "play-track", style: "width: 100%; height: auto;"%>
     <%end%>
 
-      <%# START OF FORM %>
 
+<!--       <button data-controller="last" data-action="click->delete-shape#canDelete click->new-shape#cannotDraw">Delete</button>
+
+            <div class="music-controle">
+            <div class="play">
+                  <button
+                    data-controller="play"
+                   data-action="click->play#play">
+                    <i class="fa-solid fa-play"></i>
+                  </button>
+            </div>
+
+            <div class="pause">
+                  <button
+                    data-controller="play"
+                   data-action="click->play#pause">
+                   <i class="fa-solid fa-pause"></i>
+                  </button>
+            </div>
+            </div> -->
+
+
+      <%# START OF SHAPE SELECTOR FORM %>
     <div class="hidden-form">
       <%= simple_form_for((@shape), data: { new_shape_target: "formElement"}) do |f| %>
       <%= f.input :start_x, input_html: { data: {new_shape_target: "input1"} } %>
@@ -98,8 +121,8 @@
       <div><%= f.submit %></div>
       <% end %>
     </div>
+    <%# END OF SHAPE SELECTOR FORM %>
 
-    <%# END OF FORM %>
 
     <div class="screenshot" data-controller="screenshot" data-screenshot-target="container">
     <%# <button class="btn btn-primary btn-lg" data-action="click->screenshot#screenshot">Screenshot</button> %>
@@ -108,5 +131,4 @@
         <%= f.submit "Screenshot", class: "btn btn-primary btn-lg", data: { screenshot_target: "input" }  %>
       <% end %>
     </div>
-  </div>
 </div>

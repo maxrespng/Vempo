@@ -34,29 +34,32 @@
                     <div class="row">
                       <div class="cards-container">
 <!------------------START THE CARD------------------------------------------->
-                        <% @projects.each do |project| %>
-                          <div class="project-card">
-                            <% if project.screenshot %>
-                              <div class="image-placeholder" style="background-image:url('<%= image_path project.screenshot %>');">
-                              </div>
-                            <% else %>
-                              <div class="image-placeholder" style="background-image:url('<%= cl_image_path project.photo.key if project.photo.attached? %>');">
-                              </div>
-                            <% end %>
-                            <div class="title">
-                              <div class="left-box">
-                                <h5><strong><%= project.name %></strong></h5>
-                              </div>
-                              <div class="right-box">
-                                <p><%= project.created_at.strftime("%d/%m/%Y") %></p>
-                              </div>
-                              <div class="btn-cancel">
-                                <p><%= link_to "Delete", project_path(project), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %></p>
-                              </div>
-                            </div>
-                            <h5><i class="fa-solid fa-ellipsis" style="color: #000000;"></i></h5>
-                          </div>
-                        <% end %>
+                   <% @projects.each do |project| %>
+  <div class="project-card">
+    <%= link_to project_path(project) do %>
+      <% if project.screenshot %>
+        <div class="image-placeholder" style="background-image:url('<%= image_path project.screenshot %>');">
+        </div>
+      <% else %>
+        <div class="image-placeholder" style="background-image:url('<%= cl_image_path project.photo.key if project.photo.attached? %>');">
+        </div>
+      <% end %>
+      <div class="title">
+        <div class="left-box">
+          <h5><strong><%= project.name %></strong></h5>
+        </div>
+        <div class="right-box">
+          <p><%= project.created_at.strftime("%d/%m/%Y") %></p>
+        </div>
+        <div class="btn-cancel">
+          <p><%= link_to "Delete", project_path(project), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %></p>
+        </div>
+      </div>
+      <h5><i class="fa-solid fa-ellipsis" style="color: #000000;"></i></h5>
+    <% end %>
+  </div>
+<% end %>
+
  <!------------------START THE CARD------------------------------------------->
                       </div>
                     </div>
