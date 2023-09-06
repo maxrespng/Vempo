@@ -11,7 +11,7 @@ export default class extends Controller {
   }
 
   connect() {
-    console.log("MOVE-SHAPE CONTROLLER CONNECTED!")
+    console.log("move-shape controller connected!")
     // console.log(this.canvasValue);
     // console.log(this.projectValue);
   }

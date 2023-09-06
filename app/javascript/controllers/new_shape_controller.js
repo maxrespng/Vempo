@@ -46,14 +46,9 @@ export default class extends Controller {
 
   connect() {
     console.log({ url: this.urlValue })
-
     this.shape
     this.soundData
     this.userCanDraw = false;
-    // this.audioContext = new (window.AudioContext || window.webkitAudioContext)();
-    // navigator.mediaDevices.getUserMedia({ audio: true }).then(stream => {
-    //   this.microphoneInput = this.audioContext.createMediaStreamSource(stream);
-    // });
 
   }
 
@@ -151,127 +146,113 @@ export default class extends Controller {
   }
 
   mouseDown(event) {
-    // use the form inout target
-    // change the value of the form input to mouse x and mouse y
-    console.log("mouseDown function triggered");
-    let mouse_x = event.clientX;
-    console.log(`mouse_x - ${mouse_x}`);
-    let mouse_y = event.clientY;
-    console.log(`mouse_y - ${mouse_y}`);
-    this.input1Target.value = mouse_x;
-    console.log(`input1Target.value - ${mouse_x}`);
-    this.input2Target.value = mouse_y;
-    console.log(`input2Target.value - ${mouse_y}`);
     console.log(`--------------------------------`);
-
+    console.log("mouseDown function triggered");
+    const mouse_x = event.clientX;
+    this.input1Target.value = mouse_x;
+    const mouse_y = event.clientY;
+    this.input2Target.value = mouse_y;
+    console.log(`--------------------------------`);
+    // this.p5CanvasTarget.dataset.action += " mouseup->new-shape#mouseUp"
   }
 
   mouseUp(event) {
     console.log('Mouse up!')
     const newMouse_x = event.clientX;
-    const newMouse_y = event.clientY;
     this.input3Target.value = newMouse_x;
-    console.log(`input3Target.value - ${newMouse_x}`);
+    const newMouse_y = event.clientY;
     this.input4Target.value = newMouse_y;
-    console.log(`input4Target.value - ${newMouse_y}`);
-    console.log(`--------------------------------`);
-    console.log(this.input1Target.value, this.input2Target.value, newMouse_x, newMouse_y);
-    this.draw(this.input1Target.value, this.input2Target.value, newMouse_x, newMouse_y,);
+    this.mouse_x = parseInt(this.input1Target.value);
+    this.mouse_y = parseInt(this.input2Target.value);
+    this.newMouse_x = parseInt(this.input3Target.value);
+    this.newMouse_y = parseInt(this.input4Target.value);
+    this.draw();
   }
 
-  draw(mouse_x, mouse_y, newMouse_x, newMouse_y) {
-    console.log(typeof this.projectIdTarget.value);
-    mouse_x = parseInt(mouse_x, 10);
-    mouse_y = parseInt(mouse_y, 10);
-    console.log(this.colorPickerTarget.value)
-    console.log(typeof this.colorPickerTarget.value)
+  draw() {
     let selectedColor = ''
     let name = ''
+
+    // defualt fill color to be black:
     if (this.colorPickerTarget.value === null) {
       selectedColor = "#000000"
     } else {
       selectedColor = this.colorPickerTarget.value;
     }
       fill(selectedColor);
-    // mouse_x = parseInt(mouse_x, 10);
-    // mouse_y = parseInt(mouse_y, 10);
+
+      //drawing the shape:
     if (this.userCanDraw) {
       if (this.shape === "triangle") {
-        // triangle(mouse_x, mouse_y - 50, newMouse_x - 100, newMouse_y + 100, mouse_x + 200, mouse_y + 200);
-
-        triangle(
-          mouse_x ,
-           mouse_y - 50,
-            newMouse_x + 100,
-             newMouse_y,
-             mouse_x + 200,
-              mouse_y,
-              );
-
-              name = 'triangle'
-
-        // trigger save/update method
+        triangle(this.mouse_x, this.mouse_y - 50, this.newMouse_x + 100, this.newMouse_y, this.mouse_x + 200, this.mouse_y);
+        name = 'triangle'
+        const stringMouseX = (this.mouse_x).toString();
+        const stringMouseY = (this.mouse_y).toString();
+        const triangle_x = (this.mouse_x + 200).toString();
+        const triangle_y = stringMouseY;
+        console.log(`triangle_x = ${triangle_x}`);
+        // trigger save/update method:
         const shapeData =  JSON.stringify({
-          name: name, start_x: mouse_x, start_y: mouse_y,
-          width: newMouse_x.toString(), height: newMouse_y.toString(),
+          name: name, start_x: stringMouseX, start_y: stringMouseY,
+          width: this.newMouse_x, height: this.newMouse_y, triangle_x: triangle_x, triangle_y: triangle_y,
           project_id: this.projectIdTarget.value, color: selectedColor
         });
         this.saveShape(shapeData)
       }
-
-
       else if (this.shape === "circle") {
-        circle(mouse_x, mouse_y - 50, newMouse_x - mouse_x);
+        circle(this.mouse_x, this.mouse_y - 50, this.newMouse_x - this.mouse_x);
         name = 'circle'
-        // trigger save/update method
+        // trigger save/update method:
         const shapeData =  JSON.stringify({
-          name: name, start_x: mouse_x, start_y: mouse_y,
-          width: newMouse_x.toString(), height: newMouse_y.toString(),
+          name: name, start_x: this.mouse_x, start_y: this.mouse_y,
+          width: this.newMouse_x,
           project_id: this.projectIdTarget.value, color: selectedColor
         });
         this.saveShape(shapeData)
       }
       else if (this.shape === "square") {
-        square(mouse_x, mouse_y - 50, newMouse_x - mouse_x);
+        square(this.mouse_x, this.mouse_y - 50, this.newMouse_x - this.mouse_x);
         name = 'square'
-        // trigger save/update method
+        // trigger save/update method:
         const shapeData =  JSON.stringify({
-          name: name, start_x: mouse_x, start_y: mouse_y,
-          width: newMouse_x.toString(),
+          name: name, start_x: this.mouse_x, start_y: this.mouse_y,
+          width: this.newMouse_x, height: this.newMouse_y,
           project_id: this.projectIdTarget.value, color: selectedColor
         });
         this.saveShape(shapeData)
 
       }
       else if (this.shape === "oval") {
-        ellipse(mouse_x, mouse_y - 50, newMouse_x - mouse_x, newMouse_y - mouse_y);
+        ellipse(this.mouse_x, this.mouse_y - 50, this.newMouse_x - this.mouse_x, this.newMouse_y - this.mouse_y);
         name = 'oval'
-        // trigger save/update method
+        // trigger save/update method:
         const shapeData =  JSON.stringify({
-          name: name, start_x: mouse_x, start_y: mouse_y,
-          width: newMouse_x.toString(), height: newMouse_y.toString(),
+          name: name, start_x: this.mouse_x, start_y: this.mouse_y,
+          width: this.newMouse_x, height: this.newMouse_y,
           project_id: this.projectIdTarget.value, color: selectedColor
         });
         this.saveShape(shapeData)
       }
       else if (this.shape === "rectangle") {
-        rect(mouse_x, mouse_y - 50, newMouse_x - mouse_x, newMouse_y - mouse_y);
+        rect(this.mouse_x, this.mouse_y - 50, this.newMouse_x - this.mouse_x, this.newMouse_y - this.mouse_y);
         name = 'rectangle'
-        // trigger save/update method
+        // trigger save/update method:
         const shapeData =  JSON.stringify({
-          name: name, start_x: mouse_x, start_y: mouse_y,
-          width: newMouse_x.toString(), height: newMouse_y.toString(),
+          name: name, start_x: this.mouse_x, start_y: this.mouse_y,
+          width: this.newMouse_x, height: this.newMouse_y,
           project_id: this.projectIdTarget.value, color: selectedColor
         });
         this.saveShape(shapeData)
       }
+
+      // this.p5CanvasTarget.dataset.action += " mousedown->new-shape#mouseDown"
 
     }
   }
 
   saveShape(shapeData) {
     const url = this.urlValue
-    console.log(shapeData)
+    console.log(`shapeData = ${shapeData}`)
     const csrf = document.querySelector("meta[name='csrf-token']").content
 
     fetch(this.formElementTarget.action, {
