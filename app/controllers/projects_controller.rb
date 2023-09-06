@@ -28,12 +28,13 @@ class ProjectsController < ApplicationController
   def update
     @project = Project.find(params[:id])
     @project.update!(project_params)
+    redirect_to project_path(@project)
     # @project.update(svg: params[:project][:svg])
 
-    respond_to do |format|
-      format.html { redirect_to project_path(@project) }
-      format.json # Follows the classic Rails flow and look for a create.json view
-    end
+    # respond_to do |format|
+    #   format.html { redirect_to project_path(@project) }
+    #   format.json # Follows the classic Rails flow and look for a create.json view
+    # end
   end
 
   def destroy
@@ -47,6 +48,12 @@ class ProjectsController < ApplicationController
     redirect_to root_path
   end
 
+  # def update
+  #   @project = Project.find(params[:id])
+  #   @project.update(project_params)
+  #   redirect_to project_path(@project)
+  # end
+
   private
 
   def project_params
@@ -57,11 +64,4 @@ class ProjectsController < ApplicationController
   #   @project = Project.find(params[:id])
   #   send_file @project.music_file.current_path
   # end
-
-  def update
-    @project = Project.find(params[:id])
-    @project.update(project_params)
-    redirect_to project_path(@project)
-  end
-
 end
