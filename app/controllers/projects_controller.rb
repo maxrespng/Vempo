@@ -22,7 +22,7 @@ class ProjectsController < ApplicationController
     @project.user = current_user
     if @project.save
       # @project.process_music_file(params[:project][:music_file])
-      redirect_to project_path(@project)
+      redirect_to project_path(@project), alert: "AutoSave is ON!"
     else
       render 'pages/home'
     end
