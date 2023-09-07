@@ -42,7 +42,6 @@ class ProjectsController < ApplicationController
 
   def destroy
     @project = Project.find(params[:id])
-
     if @project.destroy
       flash[:success] = "Project deleted successfully."
     else
