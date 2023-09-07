@@ -82,28 +82,24 @@
     <button data-controller="last" class="white-btn" data-action="click->delete-shape#canDelete click->new-shape#cannotDraw"><i class="fa-solid fa-trash" style="color: #000000;"></i></button>
 
     <%# <button data-action="click->load-shapes#playMusic" data-action="click->load-shapes#toggleButton" class="white-btn"><i class="fa-solid fa-play fa-pause"></i></button> %>
-<button data-load-shapes-target="play"data-action="click->load-shapes#playMusic click->load-shapes#toggleButton" class="white-btn">
-  <i class="fa-solid fa-play fa-pause"></i>
-</button>
-
-
-
-    <div class="screenshot" data-controller="screenshot" data-screenshot-target="container">
-    <%# <button class="btn btn-primary btn-lg" data-action="click->screenshot#screenshot">Screenshot</button> %>
-      <%= simple_form_for(@project, data: { screenshot_target: "form", action: "submit->screenshot#screenshot" }) do |f| %>
-        <%= f.input :screenshot, label: false, input_html: { data: { screenshot_target: "photo" }, style: "display:none;"   } %>
-        <%= f.submit "Screenshot", class: "white-btn", data: { screenshot_target: "input" }  %>
-      <% end %>
-    </div>
+  <button data-load-shapes-target="play"data-action="click->load-shapes#playMusic click->load-shapes#toggleButton" class="white-btn">
+    <i class="fa-solid fa-play fa-pause"></i>
+  </button>
+  <div class="screenshot" data-controller="screenshot" data-screenshot-target="container">
+    <%= simple_form_for(@project, defaults: { wrapper: false } ,data: { screenshot_target: "form", action: "submit->screenshot#screenshot" }) do |f| %>
+      <%= f.input :screenshot, label: false, input_html: { data: { screenshot_target: "photo" }, style: "display:none;"   } %>
+      <%= f.submit "Save creation", class: "white-btn screenshot-btn", data: { screenshot_target: "input" }  %>
+    <% end %>
+  </div>
     <%# <% if @project.music_file.attached? %>
       <%# <%= cl_video_tag @project.music_file.key,:source_types => [:mp3],:controls => true,:poster => false, class: "track-play play-track", id: "play-track", style: "width: 100%; height: auto;"%>
     <%# <%end%>
 
-    </div>
-      <button class="bottom-d" data-invert-button-target="button" data-action="click->new-shape#toggle" data-new-shape-target="bottomD">
-        <i class="fa-solid fa-arrow-right" data-new-shape-target="arrow"></i>
-      </button>
-    </div>
+  </div>
+    <button class="bottom-d" data-invert-button-target="button" data-action="click->new-shape#toggle" data-new-shape-target="bottomD">
+      <i class="fa-solid fa-arrow-right" data-new-shape-target="arrow"></i>
+    </button>
+  </div>
 
 <!--       <button data-controller="last" data-action="click->delete-shape#canDelete click->new-shape#cannotDraw">Delete</button>
 
