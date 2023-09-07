@@ -17,10 +17,12 @@
 
   a {
     text-decoration: none;
+    color: black;
   }
 
   &:hover {
-    background-color: $v-yellow;
+    // background-color: $v-green;
+    background-image: linear-gradient(0.45turn, $v-green , #3F8B03);
     cursor: pointer;
     transition: 300ms;
     // outline: 2px solid white;

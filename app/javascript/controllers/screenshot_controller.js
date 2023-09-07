@@ -1,12 +1,15 @@
 import { Controller } from "@hotwired/stimulus"
-import html2canvas from "html2canvas";
+// import html2canvas from "html2canvas";
 
 
 export default class extends Controller {
   static targets = ["submit", "photo", "form", "container"]
 
+  connect() {
+
+  }
+
   screenshot(event) {
-    event.preventDefault()
     console.log(event)
     let div = document.getElementById("defaultCanvas0");
     const imageString = div.toDataURL();

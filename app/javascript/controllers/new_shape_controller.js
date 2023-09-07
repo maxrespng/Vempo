@@ -45,11 +45,9 @@ export default class extends Controller {
   }
 
   connect() {
-    console.log({ url: this.urlValue })
     this.shape
     this.soundData
     this.userCanDraw = false;
-
   }
 
   cannotDraw(event) {
