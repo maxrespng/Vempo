@@ -101,14 +101,15 @@ export default class extends Controller {
   }
 
   playMusic(event){
-    window.draw = this.draw
-
     this.isPlaying = this.isPlaying ? !this.isPlaying : true
 
     if (this.isPlaying) {
+      window.draw = this.draw
+
       window.mic.start()
       this.mySound.play();
     } else {
+      window.draw = () => {}
       window.mic.stop()
       this.mySound.stop();
     }
