@@ -10,12 +10,6 @@ export default class extends Controller {
     // project: Object
   }
 
-  connect() {
-    console.log("move-shape controller connected!")
-    // console.log(this.canvasValue);
-    // console.log(this.projectValue);
-  }
-
   requestMicrophoneAccess() {
     let audioRecorder;
     let audioBitsPerSecond = 127;
