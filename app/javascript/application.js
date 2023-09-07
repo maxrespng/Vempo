@@ -5,3 +5,5 @@ import "@popperjs/core"
 import "bootstrap"
 // import "p5"
 // import "p5Sound"
+// Turbo.setFormMode("on" | "off" | "optin")
+Turbo.setFormMode("off")

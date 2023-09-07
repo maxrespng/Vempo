@@ -3,13 +3,11 @@ import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
 
-  static targets = ["p5Canvas", "checkboxes", "checkbox", "input1", "input2", "input3", "input4", "colorPicker",  "container", "projectId", "formElement","bottom","close","element","arrow", 'bottomD',"microphone","undoLastDrawing"]
+  static targets = ["p5Canvas","play", "checkboxes", "checkbox", "input1", "input2", "input3", "input4", "colorPicker",  "container", "projectId", "formElement","bottom","close","element","arrow", 'bottomD',"microphone","undoLastDrawing"]
   static values = {
     input: String,
     url: String,
   }
-
-
   close(event) {
     const bottomDElement = this.bottomDTarget;
     const currentRight = window.getComputedStyle(bottomDElement).getPropertyValue("right");
@@ -22,6 +20,7 @@ export default class extends Controller {
 
     }  console.log(close);
   }
+
 
   toggle(event) {
       // this one is to displey the side-bar
@@ -177,6 +176,10 @@ export default class extends Controller {
     } else {
       selectedColor = this.colorPickerTarget.value;
     }
+
+
+    let colorBox = this.element.querySelector(".white-btn-c");
+    colorBox.style.backgroundColor = selectedColor;
       fill(selectedColor);
 
       //drawing the shape:

@@ -4,9 +4,9 @@ Rails.application.routes.draw do
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   # resources :pages, only: [:try]
   # get 'testpfive', to: 'pages#testpfive', as: :testpfive
-  get 'testhome', to: 'pages#testhome', as: :testhome
-  get 'testproject', to: 'pages#testproject', as: :testproject
-  get 'testpfive/:id', to: 'pages#testpfive'
+  # get 'testhome', to: 'pages#testhome', as: :testhome
+  # get 'testproject', to: 'pages#testproject', as: :testproject
+  # get 'testpfive/:id', to: 'pages#testpfive'
 
   # get "projects/:id/shapes", to: "projects#get_shapes"
 
