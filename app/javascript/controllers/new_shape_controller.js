@@ -8,8 +8,6 @@ export default class extends Controller {
     input: String,
     url: String,
   }
-
-
   close(event) {
     const bottomDElement = this.bottomDTarget;
     const currentRight = window.getComputedStyle(bottomDElement).getPropertyValue("right");
