@@ -7,14 +7,14 @@
     </div>
     <div class="buttons">
 
-      <a href="#anchor-tag" class="purple-btn">start from a template <i class="fa-solid fa-arrow-down" style="color: #000000;"></i></a>
+       <a href="#anchor-tag" class="purple-btn"> How it works  <i class="fa-solid fa-arrow-down" style="color: #000000;"></i></a>
 
       <a class="green-btn" data-bs-target="#exampleModalToggle" data-bs-toggle="modal">start from a blank canvas  <i class="fa-solid fa-arrow-right" style="color: #000000;"></i></a>
     </div>
   </div>
     <h4>How it works</h4>
     <div class="how-to">
-      <div class="tile-green">
+      <div class="tile-green" id="anchor-tag">
         <h2 class="num-outline">1</h2>
         <p>Create a visual composition using shapes and graphics.</p>
         <%= image_tag("step1.svg", alt: "Step 1", style: "width: 80%; height: 80%;") %>
@@ -31,30 +31,6 @@
        <%= image_tag("step3.svg", alt: "Step 1", style: "width: 80%; height: 80%;") %>
       </div>
     </div>
-
-    <h4>Quick-start templates</h4>
-
-      <div id="anchor-tag" class="template-container" data-bs-target="#exampleModalToggle" data-bs-toggle="modal">
-        <div class="template-card" style="background-image: url('<%= image_path "step1.svg" %>')">
-
-         <h6>Template 1</h6>
-        </div>
-        <div class="template-card" style="background-image: url('<%= image_path "test-template-project.png" %>')" >
-         <h6>Template 2</h6>
-        </div>
-        <div class="template-card" style="background-image: url('<%= image_path "test-template-project.png" %>')">
-          <h6>Template 3</h6>
-        </div>
-        <div class="template-card" style="background-image: url('<%= image_path "test-template-project.png" %>')">
-          <h6>Template 4</h6>
-        </div>
-        <div class="template-card" style="background-image: url('<%= image_path "test-template-project.png" %>')">
-          <h6>Template 5</h6>
-        </div>
-        <div class="template-card" style="background-image: url('<%= image_path "test-template-project.png" %>')">
-          <h6>Template 6</h6>
-        </div>
-      </div>
 
     <div class="back-to-top">
     <%= link_to testhome_path, class: "yellow-btn" do %>
