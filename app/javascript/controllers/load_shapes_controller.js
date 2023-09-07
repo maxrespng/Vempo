@@ -19,9 +19,7 @@ export default class extends Controller {
     const shapeData = this.shapeInfoValue;
     this.setupMic();
 
-    setTimeout(() => {
-      this.preload();
-    }, 800);
+    this.preload();
 
     console.log("this shapes = ", this.shapeInfoValue);
     if (shapeData) {
