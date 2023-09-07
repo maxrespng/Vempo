@@ -68,6 +68,13 @@
       <input class="color-picker" type="color" data-new-shape-target="colorPicker">
     </div>
 
+      <%# <label for="color" data-new-shape-target="colorPicker"  style="display:flex; ">
+    <i class="fa-solid fa-palette" style="color: #000000; font-size: 30px;"></i><div data-new-shape-target="colorFill" style="height:6px;width:10px"></div>
+
+    <input type="color" name="color">
+
+    </label> %>
+
     <% if @project.music_file == nil %>
       <div class="bottom-microphone" >
         <button data-controller="microphone" data-action="click->new-shape#requestMicrophoneAccess">
