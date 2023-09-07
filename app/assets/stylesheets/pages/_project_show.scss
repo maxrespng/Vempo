@@ -42,8 +42,8 @@ audio {
   }
 
   .form-check-input:checked {
-    background-color: lightblue;
-    border-color: lightblue;
+    background-color: #D680FF;
+    border-color: black;
 
   }
 }
@@ -58,6 +58,8 @@ audio {
   cursor: pointer;
   z-index: 1;
   border-radius: 6px;
+  background-color: #D680FF;
+  border-color: black;
 }
 
 // .color-picker-box {
