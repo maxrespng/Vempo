@@ -24,21 +24,25 @@ labelledby="exampleModalToggleLabel" tabindex="-1">
 
 
 
-      <%= simple_form_for(@project, input_html: { data: { data_controller: "upload" }, class: "btn", id: "btn-upload"}) do |f| %>
-       <div class="button-cont">
-       <i class="bi bi-cloud-arrow-up-fill"></i>
-          <%= f.input :music_file,  label: "Upload a Sound", as: :file, input_html: { style: "display:none;", class: 'mini-btn', data: { data_action: "change->upload#uploadFeedback" } } %>
-          <%= f.label(:submit) do %>
-          <%= f.button :submit, 'Create', input_html: { style: "display:none;", id: "create-button" } %>
-      <svg data-upload-target="svg" xmlns='http://www.w3.org/2000/svg' width='35' height='26' fill='currentColor'
-        class='bi bi-arrow-right-circle-fill' viewBox='0 0 16 16'>
-        <path
-          d='M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0zM4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H4.5z' />
-      </svg>
+  <%= simple_form_for(@project, input_html: { data: { data_controller: "upload" }, class: "btn", id: "btn-upload" }) do |f| %>
+  <div class="button-cont">
+    <div class="combined-buttons" data-controller="upload">
+      <%# <label class="btn" for="project_music_file" id="upload-sound-button"> %>
+      <%= f.label(:music_file) do %>
+        Upload a Sound
+        <%= f.input :music_file, label: false, as: :file, input_html: { style: "display:none;", class: 'mini-btn', data: { action: "change->upload#uploadFeedback" } } %>
+      <% end %>
+      <%= button_tag(type: :submit, style:'border:none;') do %>
+        <svg xmlns="http://www.w3.org/2000/svg" data-upload-target="svg" width="35" height="26" fill="currentColor" class="bi bi-arrow-right-circle-fill" viewBox="0 0 16 16">
+        <path d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0zM4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H4.5z"/>
+        </svg>
+      <% end %>
+      </div>
+      <%= hidden_field_tag :has_mic, true, id: "has-mic-hidden-input" %>
     </div>
-       <%= hidden_field_tag :has_mic, true, id: "has-mic-hidden-input" %>
-     <% end %>
     <% end %>
+
+
 
     </div>
 
