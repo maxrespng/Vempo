@@ -13,11 +13,17 @@
   width: 450px;
   margin: 30px;
   text-align: right;
+  text-decoration: none;
+
+  a {
+    text-decoration: none;
+  }
+
   &:hover {
     background-color: $v-yellow;
     cursor: pointer;
     transition: 300ms;
-    outline: 2px solid white;
+    // outline: 2px solid white;
   }
 }
 
@@ -37,6 +43,7 @@
   align-items: baseline;
   justify-content: space-between;
   font-size: 0.9em;
+  text-decoration: none;
   .left-box {
     text-align: left;
   }
