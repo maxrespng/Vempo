@@ -179,6 +179,10 @@ export default class extends Controller {
     } else {
       selectedColor = this.colorPickerTarget.value;
     }
+
+
+    let colorBox = this.element.querySelector(".white-btn-c");
+    colorBox.style.backgroundColor = selectedColor;
       fill(selectedColor);
 
       //drawing the shape:
