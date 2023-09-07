@@ -10,6 +10,7 @@
 
 .navbar-lewagon .navbar-brand img {
   width: 40px;
+  align-items: center;
 }
 
 .navbar {
@@ -25,4 +26,13 @@
 
 .image-placeholder {
   background-size: cover;
+}
+
+.nav-text {
+  align-items: center;
+  font-size: 1.2em;
+}
+
+.centralise {
+  align-items: center;
 }

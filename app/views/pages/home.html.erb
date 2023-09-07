@@ -7,54 +7,30 @@
     </div>
     <div class="buttons">
 
-      <a href="#anchor-tag" class="purple-btn">start from a template <i class="fa-solid fa-arrow-down" style="color: #000000;"></i></a>
+       <a href="#anchor-tag" class="purple-btn"> How it works  <i class="fa-solid fa-arrow-down" style="color: #000000;"></i></a>
 
       <a class="green-btn" data-bs-target="#exampleModalToggle" data-bs-toggle="modal">start from a blank canvas  <i class="fa-solid fa-arrow-right" style="color: #000000;"></i></a>
     </div>
   </div>
     <h4>How it works</h4>
     <div class="how-to">
-      <div class="tile-green">
+      <div class="tile-green" id="anchor-tag">
         <h2 class="num-outline">1</h2>
-        <p>Create a visual composition using shapes and graphics.</p>
-        <%= image_tag("step1.svg", alt: "Step 1", style: "width: 80%; height: 80%;") %>
+        <p>Upload your audio</p>
+        <%# <%= image_tag("Asset 3.svg", alt: "Step 1", style: "width: 80%; height: 80%") %>
       </div>
       <div class="tile-purple">
         <h2 class="num-outline">2</h2>
-        <p>Assign behaviours and modifiers to your graphics.</p>
-        <%#= image_tag("step2.svg", alt: "Step 1", style: "width: 80%; height: 80%;") %>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19.78 4H4.22A2.25 2.25 0 002 6.29v11.42A2.25 2.25 0 004.22 20h15.56A2.25 2.25 0 0022 17.71V6.29A2.25 2.25 0 0019.78 4zm-1.15 13.12H5.37a.57.57 0 01-.46-.89l2.42-3.58a.54.54 0 01.91 0l2.4 3.55 3.76-5.58a.54.54 0 01.91 0l3.78 5.61a.57.57 0 01-.46.89z"></path></svg>
+        <p>Create your canvas</p>
+        <%# <%= image_tag("Asset 4.svg", alt: "Step 2", style: "width: 80%; height: 80%;") %>
+        <%# <svg xmlns="Asset 3.svg" viewBox="0 0 24 24"><path d="M19.78 4H4.22A2.25 2.25 0 002 6.29v11.42A2.25 2.25 0 004.22 20h15.56A2.25 2.25 0 0022 17.71V6.29A2.25 2.25 0 0019.78 4zm-1.15 13.12H5.37a.57.57 0 01-.46-.89l2.42-3.58a.54.54 0 01.91 0l2.4 3.55 3.76-5.58a.54.54 0 01.91 0l3.78 5.61a.57.57 0 01-.46.89z"></path></svg> %>
       </div>
       <div class="tile-yellow">
         <h2 class="num-outline">3</h2>
-       <p>Play your selected audio, and watch your canvas dance!</p>
-       <%= image_tag("step3.svg", alt: "Step 1", style: "width: 80%; height: 80%;") %>
+       <p>Make it dance</p>
+       <%# <%= image_tag("Asset 5.svg", alt: "Step 3", style: "width: 80%; height: 80%;") %>
       </div>
     </div>
-
-    <h4>Quick-start templates</h4>
-
-      <div link_to project_path(project) id="anchor-tag" class="template-container" data-bs-target="#exampleModalToggle" data-bs-toggle="modal">
-        <div class="template-card" style="background-image: url('<%= image_path "step1.svg" %>')">
-
-         <h6>Template 1</h6>
-        </div>
-        <div class="template-card" style="background-image: url('<%= image_path "test-template-project.png" %>')" >
-         <h6>Template 2</h6>
-        </div>
-        <div class="template-card" style="background-image: url('<%= image_path "test-template-project.png" %>')">
-          <h6>Template 3</h6>
-        </div>
-        <div class="template-card" style="background-image: url('<%= image_path "test-template-project.png" %>')">
-          <h6>Template 4</h6>
-        </div>
-        <div class="template-card" style="background-image: url('<%= image_path "test-template-project.png" %>')">
-          <h6>Template 5</h6>
-        </div>
-        <div class="template-card" style="background-image: url('<%= image_path "test-template-project.png" %>')">
-          <h6>Template 6</h6>
-        </div>
-      </div>
 
     <div class="back-to-top">
     <%= link_to testhome_path, class: "yellow-btn" do %>
