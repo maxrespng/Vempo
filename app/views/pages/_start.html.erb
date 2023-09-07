@@ -21,7 +21,7 @@ labelledby="exampleModalToggleLabel" tabindex="-1">
       <%# <label class="btn" for="project_music_file" id="upload-sound-button"> %>
       <div class="margin">
       <%= f.label(:music_file) do %>
-        Upload a Sound
+        Upload a sound
         <%= f.input :music_file, label: false, as: :file, input_html: { style: "display:none;", class: 'mini-btn', data: { action: "change->upload#uploadFeedback" } } %>
       <% end %>
       <%= button_tag(type: :submit, style:'border:none;background-color:white;margin-left:-5px;') do %>
@@ -35,5 +35,3 @@ labelledby="exampleModalToggleLabel" tabindex="-1">
     </div>
     <% end %>
   </div>
-
-
