@@ -103,7 +103,7 @@
   border-radius: 42.67px;
   .bi {
     border-radius: 50px;
-    fill: rgba(159, 232, 0, 1);
+    fill: rgba(242, 148, 255, 1);
     color:white;
     cursor: pointer;
   }
@@ -141,6 +141,26 @@
 
 .btn-close:hover {
   opacity: 1;
+}
+
+.combined-buttons {
+  box-sizing: border-box;
+  width: 280px;
+  height: 40px;
+  left: 30px;
+  top: 100px;
+  border: 1px solid #000000;
+  border-radius: 42.67px;
+  padding-left: 56px;
+}
+
+.margin {
+  margin-top: 5px;
+}
+
+.input-white-btn:hover {
+  background-color: #D680FF;
+  border-color: black;
 }
 
 // SOME BUTTON EXAMPLES:

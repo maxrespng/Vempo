@@ -37,7 +37,7 @@
 <!------------------START THE CARD------------------------------------------->
                    <% @projects.each do |project| %>
   <div class="project-card">
-    <%= link_to project_path(project) do %>
+    <%= link_to project_path(project), data: {turbo: false} do %>
       <% if project.screenshot %>
         <div class="image-placeholder" style="background-image:url('<%= image_path project.screenshot %>');">
         </div>

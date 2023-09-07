@@ -37,6 +37,15 @@ audio {
   border-radius: 8px;
   padding: 15px;
   transition: right 0.5s ease;
+  .form-check-input[type="checkbox"]:checked {
+      --bs-form-check-bg-image: none;
+  }
+
+  .form-check-input:checked {
+    background-color: #D680FF;
+    border-color: black;
+
+  }
 }
 
 .color-picker {
@@ -49,6 +58,8 @@ audio {
   cursor: pointer;
   z-index: 1;
   border-radius: 6px;
+  background-color: #D680FF;
+  border-color: black;
 }
 
 // .color-picker-box {
