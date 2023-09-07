@@ -5,6 +5,8 @@
   justify-content: center;
   align-items: center;
   // margin: 0px;
+  max-width: fit-content;
+  display: block;
   border-radius: 20px;
   border: black solid 1px;
   box-shadow: 0px 6px 0px rgba(0, 0, 0, 1.0);
@@ -12,8 +14,6 @@
   margin: 20px;
   cursor: pointer;
   font-size: 0.9em;
-  position: absolute;
-  right: 0px;
 
   &:hover {
     transition: 300ms;
@@ -22,6 +22,7 @@
     transform: translateY(6px);
   }
 }
+
 
 .yellow-btn {
   background-color: $v-yellow;
@@ -52,9 +53,12 @@
   background-color: $v-purple;
   color: $black;
   padding: 8px 16px;
-  justify-content: center;
-  align-items: center;
+  display: block;
+  max-width: fit-content;
+  // justify-content: center;
+  // align-items: center;
   margin: 0px;
+  box-sizing: border-box;
   border-radius: 20px;
   border: black solid 1px;
   box-shadow: 0px 6px 0px rgba(0, 0, 0, 1.0);
@@ -62,14 +66,14 @@
   margin: 20px;
   cursor: pointer;
   font-size: 0.9em;
-  position: absolute;
-  left: 0px;
+  // position: absolute;
+  // left: 0px;
 
   &:hover {
     transition: 300ms;
     box-shadow: 0px 0px 0px rgba(0, 0, 0, 0);
     background-color: #d655e7;
-    transform: translateY(6px)
+    transform: translateY(6px);
   }
 }
 
