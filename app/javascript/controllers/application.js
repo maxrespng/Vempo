@@ -10,5 +10,5 @@ export { application }
 
 // Screenshot Controller
 
-import ScreenshotController from "./screenshot_controller"
-Stimulus.register("screenshot", ScreenshotController)
+// import ScreenshotController from "./screenshot_controller"
+// Stimulus.register("screenshot", ScreenshotController)

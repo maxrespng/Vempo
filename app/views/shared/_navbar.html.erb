@@ -47,16 +47,15 @@
       <% end %>
       <div class="title">
         <div class="left-box">
-          <h5><strong><%= project.name %></strong></h5>
+          <h6><strong><%= project.name %></strong></h6>
         </div>
         <div class="right-box">
-          <p><%= project.created_at.strftime("%d/%m/%Y") %></p>
+          <h5> Date Created: <%= project.created_at.strftime("%d/%m/%Y") %> <h5>
         </div>
-        <div class="btn-cancel">
+        <div class="btn-delete ">
           <p><%= link_to "Delete", project_path(project), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %></p>
         </div>
       </div>
-      <h5><i class="fa-solid fa-ellipsis" style="color: #000000;"></i></h5>
     <% end %>
   </div>
 <% end %>

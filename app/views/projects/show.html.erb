@@ -63,7 +63,7 @@
         </label>
       </div>
     </div>
-    <div class="color-picker-box white-btn">
+    <div class="color-picker-box white-btn-c">
       Colour
       <input class="color-picker" type="color" data-new-shape-target="colorPicker">
     </div>
@@ -81,16 +81,12 @@
 
     <button data-controller="last" class="white-btn" data-action="click->delete-shape#canDelete click->new-shape#cannotDraw">Delete shape</button>
 
-      <%# <div class="music-controle"> %>
-        <%# <div class="play"> %>
-          <%# <button data-controller="play" data-action="click->play#play"><i class="fa-solid fa-play"></i></button> %>
-        <%# </div> %>
-        <%# <div class="pause"> %>
-          <%# <button data-controller="play" data-action="click->play#pause"><i class="fa-solid fa-pause"></i></button> %>
-        <%# </div> %>
-      <%# </div> %>
+    <%# <button data-action="click->load-shapes#playMusic" data-action="click->load-shapes#toggleButton" class="white-btn"><i class="fa-solid fa-play fa-pause"></i></button> %>
+<button data-load-shapes-target="play"data-action="click->load-shapes#playMusic click->load-shapes#toggleButton" class="white-btn">
+  <i class="fa-solid fa-play fa-pause"></i>
+</button>
 
-      <button data-action="click->load-shapes#playMusic" class="white-btn"><i class="fa-solid fa-play"></i></button>
+
 
     <div class="screenshot" data-controller="screenshot" data-screenshot-target="container">
     <%# <button class="btn btn-primary btn-lg" data-action="click->screenshot#screenshot">Screenshot</button> %>

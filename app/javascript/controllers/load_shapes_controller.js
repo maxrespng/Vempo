@@ -3,7 +3,9 @@ import { Controller } from "@hotwired/stimulus"
 
 // Connects to data-controller="load-shapes"
 export default class extends Controller {
+  static targets = ["play"]
   static values = {
+
     shapeInfo: Array,
     projectId: String,
     musicFile: String
@@ -17,26 +19,39 @@ export default class extends Controller {
     window.shapeInfoValue = this.shapeInfoValue;
     console.log("load-shapes controller connected!");
     const shapeData = this.shapeInfoValue;
-    this.setupMic();
 
-    this.preload();
+    setTimeout(() => {
+      this.setupMic()
+      this.preload();
+
+      if (shapeData) {
+        this.initialDraw();
+      }
+    }, 1500);
 
     console.log("this shapes = ", this.shapeInfoValue);
-    if (shapeData) {
-      setTimeout(() => {
-        this.initialDraw();
-      }, 800);
-    }
   }
 
   setupMic() {
-    setTimeout(() => {
-      window.mic = new p5.AudioIn();
-      window.mic.start()
-      window.draw = this.draw
-    }, 1000);
+    window.mic = new p5.AudioIn();
+    console.log('mic ready')
   }
 
+
+
+  toggleButton(event) {
+    const iconElement = this.playTarget.querySelector("i");
+
+    if (iconElement.classList.contains("fa-play")) {
+
+      iconElement.classList.remove("fa-play");
+      iconElement.classList.add("fa-pause");
+    } else {
+
+      iconElement.classList.remove("fa-pause");
+      iconElement.classList.add("fa-play");
+    }
+  }
   initialDraw() {
     this.shapeInfoValue.forEach((shape) => {
       // converting string numbers to integers:
@@ -70,6 +85,7 @@ export default class extends Controller {
   }
 
   draw() {
+    console.log("trying to draw")
     let vol = (window.mic.getLevel() * 4);
 
     window.shapeInfoValue.forEach((shape) => {
@@ -102,8 +118,18 @@ export default class extends Controller {
   }
 
   playMusic(event){
-    console.log(this.mySound)
-    this.mySound.play();
+    this.isPlaying = this.isPlaying ? !this.isPlaying : true
+
+    if (this.isPlaying) {
+      window.draw = this.draw
+
+      window.mic.start()
+      this.mySound.play();
+    } else {
+      window.draw = () => {}
+      window.mic.stop()
+      this.mySound.stop();
+    }
   }
 
   preload() {
