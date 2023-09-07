@@ -3,7 +3,9 @@ import { Controller } from "@hotwired/stimulus"
 
 // Connects to data-controller="load-shapes"
 export default class extends Controller {
+  static targets = ["play"]
   static values = {
+
     shapeInfo: Array,
     projectId: String,
     musicFile: String
@@ -35,6 +37,21 @@ export default class extends Controller {
     console.log('mic ready')
   }
 
+
+
+  toggleButton(event) {
+    const iconElement = this.playTarget.querySelector("i");
+
+    if (iconElement.classList.contains("fa-play")) {
+
+      iconElement.classList.remove("fa-play");
+      iconElement.classList.add("fa-pause");
+    } else {
+
+      iconElement.classList.remove("fa-pause");
+      iconElement.classList.add("fa-play");
+    }
+  }
   initialDraw() {
     this.shapeInfoValue.forEach((shape) => {
       // converting string numbers to integers:

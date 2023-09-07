@@ -80,7 +80,10 @@
 
     <button data-controller="last" class="white-btn" data-action="click->delete-shape#canDelete click->new-shape#cannotDraw">Delete shape</button>
 
-    <button data-action="click->load-shapes#playMusic" class="white-btn"><i class="fa-solid fa-play fa-pause"></i></button>
+    <%# <button data-action="click->load-shapes#playMusic" data-action="click->load-shapes#toggleButton" class="white-btn"><i class="fa-solid fa-play fa-pause"></i></button> %>
+<button data-load-shapes-target="play"data-action="click->load-shapes#playMusic click->load-shapes#toggleButton" class="white-btn">
+  <i class="fa-solid fa-play fa-pause"></i>
+</button>
 
 
 

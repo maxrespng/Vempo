@@ -4,13 +4,16 @@ import { Controller } from "@hotwired/stimulus"
 export default class extends Controller {
 
 
-  static targets = ["playSong"]
+  static targets = ["playSong","play"]
   connect() {
 
 
     this.audio = new Audio('/musical100.mp3');
     // this.audio = new Audio('https://interactive-examples.mdn.mozilla.net/media/cc0-audio/t-rex-roar.mp3');
   }
+
+
+
 
 
 //   playlist = {

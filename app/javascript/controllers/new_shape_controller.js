@@ -3,7 +3,7 @@ import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
 
-  static targets = ["p5Canvas", "checkboxes", "checkbox", "input1", "input2", "input3", "input4", "colorPicker",  "container", "projectId", "formElement","bottom","close","element","arrow", 'bottomD',"microphone","undoLastDrawing"]
+  static targets = ["p5Canvas","play", "checkboxes", "checkbox", "input1", "input2", "input3", "input4", "colorPicker",  "container", "projectId", "formElement","bottom","close","element","arrow", 'bottomD',"microphone","undoLastDrawing"]
   static values = {
     input: String,
     url: String,
@@ -22,6 +22,7 @@ export default class extends Controller {
 
     }  console.log(close);
   }
+
 
   toggle(event) {
       // this one is to displey the side-bar
