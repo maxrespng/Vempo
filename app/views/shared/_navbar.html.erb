@@ -50,7 +50,7 @@
           <h5><strong><%= project.name %></strong></h5>
         </div>
         <div class="right-box">
-          <p><%= project.created_at.strftime("%d/%m/%Y") %></p>
+          <h5>Last updated: <%= project.updated_at.strftime("%d/%m/%Y") %></h5>
         </div>
     <% end %>
         <div class="btn-delete">
