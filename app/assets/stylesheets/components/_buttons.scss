@@ -139,6 +139,17 @@
   opacity: 1;
 }
 
+.combined-buttons {
+  box-sizing: border-box;
+  width: 280px;
+  height: 40px;
+  left: 30px;
+  top: 100px;
+  border: 1px solid #000000;
+  border-radius: 42.67px;
+  padding-left: 35px;
+}
+
 // SOME BUTTON EXAMPLES:
 
 // <a class="green-btn">start from blank <i class="fa-solid fa-arrow-right" style="color: #000000;"></i></a>
