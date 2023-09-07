@@ -30,8 +30,7 @@ export default class extends Controller {
 
           // this.containerTarget.insertAdjacentHTML("beforeend", data.inserted_item)
         }
-        alert("Screenshot Taken")
       })
-
+      alert("Screenshot Taken")
   }
 }

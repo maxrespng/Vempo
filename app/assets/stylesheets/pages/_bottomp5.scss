@@ -3,12 +3,14 @@
   width: 3%;
   height: 5vh;
   position: absolute;
-  right: 130px;
-  top: 445px;
+  right: 200px;
+  top: 65%;
   border-top-left-radius: 15px;
   border-bottom-left-radius: 15px;
   transition: right 0.5s ease-in;
   border: 0;
+  background-color: rgba(255, 255, 255, 0.4);
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
 }
 
 .arrow {

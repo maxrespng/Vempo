@@ -72,7 +72,7 @@ export default class extends Controller {
   }
 
   draw() {
-    let vol = (window.mic.getLevel() * 10);
+    let vol = (window.mic.getLevel() * 4);
 
     window.shapeInfoValue.forEach((shape) => {
 
