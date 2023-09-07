@@ -1,15 +1,16 @@
 
-<div class="main-container">
+<div class="main-container ">
   <div class="header-container">
-    <h1>Let sound take shape</h1>
-    <div class="description">
-      <h5>Vempo merges the realms of audio and visual <br> by giving sound a personality to dance with.</h5>
-    </div>
-    <div class="buttons">
-
-       <a href="#anchor-tag" class="purple-btn"> How it works  <i class="fa-solid fa-arrow-down" style="color: #000000;"></i></a>
-
-      <a class="green-btn" data-bs-target="#exampleModalToggle" data-bs-toggle="modal">start from a blank canvas  <i class="fa-solid fa-arrow-right" style="color: #000000;"></i></a>
+    <%= image_tag"back_img",   class: "video"  %>
+    <div class="home-page-box">
+      <h1>Let sound take shape</h1>
+      <div class="description">
+        <h5>Vempo merges the realms of audio and visual <br> by giving sound a personality to dance with.</h5>
+      </div>
+      <div class="buttons d-flex justify-content-evenly">
+        <a href="#anchor-tag" class="purple-btn"> How it works  <i class="fa-solid fa-arrow-down" style="color: #000000;"></i></a>
+        <a class="green-btn" data-bs-target="#exampleModalToggle" data-bs-toggle="modal">start from a blank canvas  <i class="fa-solid fa-arrow-right" style="color: #000000;"></i></a>
+      </div>
     </div>
   </div>
     <h4>How it works</h4>
@@ -31,6 +32,7 @@
        <%# <%= image_tag("Asset 5.svg", alt: "Step 3", style: "width: 80%; height: 80%;") %>
       </div>
     </div>
+</div>
 
     <div class="back-to-top">
     <%= link_to root_path, class: "yellow-btn" do %>

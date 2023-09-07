@@ -64,7 +64,7 @@
       </div>
     </div>
     <div class="color-picker-box white-btn-c">
-      Colour
+      <i class="fa-solid fa-palette" style="color: #000000;"></i>
       <input class="color-picker" type="color" data-new-shape-target="colorPicker">
     </div>
 
@@ -86,7 +86,7 @@
       </div>
     <% end %>
 
-    <button data-controller="last" class="white-btn" data-action="click->delete-shape#canDelete click->new-shape#cannotDraw">Delete shape</button>
+    <button data-controller="last" class="white-btn" data-action="click->delete-shape#canDelete click->new-shape#cannotDraw"><i class="fa-solid fa-trash" style="color: #000000;"></i></button>
 
     <%# <button data-action="click->load-shapes#playMusic" data-action="click->load-shapes#toggleButton" class="white-btn"><i class="fa-solid fa-play fa-pause"></i></button> %>
 <button data-load-shapes-target="play"data-action="click->load-shapes#playMusic click->load-shapes#toggleButton" class="white-btn">

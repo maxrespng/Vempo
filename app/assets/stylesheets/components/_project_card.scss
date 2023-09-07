@@ -22,9 +22,9 @@
 
   &:hover {
     // background-color: $v-green;
-    background-image: linear-gradient(0.45turn, $v-green , #3F8B03);
-    cursor: pointer;
     transition: 300ms;
+    background-image: linear-gradient(0.45turn, $v-green , #96ff45);
+    cursor: pointer;
     // outline: 2px solid white;
   }
 }
